@@ -1,0 +1,80 @@
+Analysis of RosR Timcourse ChIP data
+===================================
+
+```{r reset}
+rm(list=ls())
+```
+
+# Load Libraries and Data
+
+```{r load}
+library(ggplot2)
+source("chipchip.utils.R")
+data( "halo.lowres", package="MeDiChI" )
+operons = read.delim("data/nrc1_operons.csv")
+gene.coords$Gene_Name = gene.coords$canonical_Name
+
+data_dir = "preprocessing/output/"
+experiment = "0258_none_densityLoess_max100/"
+
+targets = c("noH2O2.fits.Rdata",
+         "wH2O2_10m.fits.Rdata",
+         "wH2O2_20m.fits.Rdata",
+         "wH2O2_60m.fits.Rdata",
+         "0258_22.fits.Rdata",
+         "0258_11.fits.Rdata",
+         "0258_12.fits.Rdata",
+         "0258_13.fits.Rdata")
+
+targets = sapply(targets,function(x) paste(data_dir,experiment,x,sep=""))
+
+datasets = c("noH2O2",
+             "wH2O2_10m",
+             "wH2O2_20m",
+             "wH2O2_60m",
+             "0258_22",
+             "0258_11",
+             "0258_12",
+             "0258_13")
+
+conditions = c("noH2O2",
+             "wH2O2_10m",
+             "wH2O2_20m",
+             "wH2O2_60m",
+               "noH2O2",
+               "noH2O2",
+               "noH2O2",
+               "noH2O2")
+
+```
+
+```{r combine.hits}
+
+hits = combineHits(targets,datasets,conditions,.2,250)
+hits.combined = combineGeneHitsByDataset(hits,datasets)
+hits.condition = combineGeneHitsByCondition(hits,conditions)
+
+```
+
+```{r process.hits}
+# Convert NA pvalues to 10^(-.5) ~ .31
+# and NA intensities to the minimum value
+pval.cols = grep("pval",colnames(hits.condition))
+intens.cols = grep("intens",colnames(hits.condition))
+intens.avg.cols = grep("intens.avg",colnames(hits.condition))
+for(col in pval.cols){
+  hits.condition[is.na(hits.condition[,col]),col] = 10^(-.5)
+}
+for(col in intens.cols){
+  hits.condition[is.na(hits.condition[,col]),col] = min(hits.condition[,intens.cols],na.rm=T)
+}
+
+#use rows with at least one pvalue <.05
+hits.condition = hits.condition[apply(hits.condition[,pval.cols],1,function(x){any(x<.05)}),]
+
+#add operons to conditional hits
+hits.condition = duplicateOperonRows(hits.condition,operons)
+
+#save table
+write.table(hits.combined,file="results/tables/chip.hits.all.txt",sep="\t",quote=F,row.names=F)
+```
