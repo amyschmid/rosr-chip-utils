@@ -187,66 +187,10 @@ hljs.initHighlightingOnLoad();
 <h1>Load Libraries and Data</h1>
 
 <pre><code class="r">library(ggplot2)
-source(&quot;chipchip.utils.R&quot;)
+source(&quot;lib/medichi.utils.R&quot;)
 </code></pre>
 
-<pre><code>## Loading required package: BiocGenerics
-</code></pre>
-
-<pre><code>## Attaching package: &#39;BiocGenerics&#39;
-</code></pre>
-
-<pre><code>## The following object(s) are masked from &#39;package:stats&#39;:
-## 
-## xtabs
-</code></pre>
-
-<pre><code>## The following object(s) are masked from &#39;package:base&#39;:
-## 
-## anyDuplicated, cbind, colnames, duplicated, eval, Filter, Find, get,
-## intersect, lapply, Map, mapply, mget, order, paste, pmax, pmax.int, pmin,
-## pmin.int, Position, rbind, Reduce, rep.int, rownames, sapply, setdiff,
-## table, tapply, union, unique
-</code></pre>
-
-<pre><code>## Loading required package: Biobase
-</code></pre>
-
-<pre><code>## Welcome to Bioconductor
-## 
-## Vignettes contain introductory material; view with &#39;browseVignettes()&#39;. To
-## cite Bioconductor, see &#39;citation(&quot;Biobase&quot;)&#39;, and for packages
-## &#39;citation(&quot;pkgname&quot;)&#39;.
-</code></pre>
-
-<pre><code>## Loading required package: lars
-</code></pre>
-
-<pre><code>## Loaded lars 1.1
-</code></pre>
-
-<pre><code>## Loading required package: quadprog
-</code></pre>
-
-<pre><code>## Loading required package: corpcor
-</code></pre>
-
-<pre><code>## Loading required package: Matrix
-</code></pre>
-
-<pre><code>## Loading required package: lattice
-</code></pre>
-
-<pre><code>## Attaching package: &#39;Matrix&#39;
-</code></pre>
-
-<pre><code>## The following object(s) are masked from &#39;package:stats&#39;:
-## 
-## toeplitz
-</code></pre>
-
-<pre><code>## Loading MeDiChI, version 0.4.0 (Tue Oct 12 11:20:57 2010)
-## MeDiChI utils. (c) David J Reiss, ISB.
+<pre><code>## MeDiChI utils. (c) David J Reiss, ISB.
 ## Please email dreiss@systemsbiology.org for questions or comments.
 ## Loading function &#39;get.strongest.hits&#39;
 ## Loading function &#39;get.data&#39;
@@ -259,38 +203,37 @@ source(&quot;chipchip.utils.R&quot;)
 ## Loading function &#39;medichi.to.genome.browser&#39; (thanks, Tie!)
 </code></pre>
 
-<pre><code class="r">data(&quot;halo.lowres&quot;, package = &quot;MeDiChI&quot;)
+<pre><code class="r">source(&quot;lib/chipchip.utils.R&quot;)
+data(&quot;halo.lowres&quot;, package = &quot;MeDiChI&quot;)
 operons = read.delim(&quot;data/nrc1_operons.csv&quot;)
 gene.coords$Gene_Name = gene.coords$canonical_Name
 
-data_dir = &quot;preprocessing/output/&quot;
-experiment = &quot;0258_none_densityLoess_max100/&quot;
+data_dir = &quot;&quot;
+experiment = &quot;rosr/&quot;
 
 targets = c(&quot;noH2O2.fits.Rdata&quot;, &quot;wH2O2_10m.fits.Rdata&quot;, &quot;wH2O2_20m.fits.Rdata&quot;, 
-    &quot;wH2O2_60m.fits.Rdata&quot;, &quot;0258_22.fits.Rdata&quot;, &quot;0258_11.fits.Rdata&quot;, &quot;0258_12.fits.Rdata&quot;, 
-    &quot;0258_13.fits.Rdata&quot;)
+    &quot;wH2O2_60m.fits.Rdata&quot;, &quot;0258_22.fits.Rdata&quot;, &quot;0258_11.fits.Rdata&quot;, &quot;0258_13.fits.Rdata&quot;)
 
 targets = sapply(targets, function(x) paste(data_dir, experiment, x, sep = &quot;&quot;))
 
 datasets = c(&quot;noH2O2&quot;, &quot;wH2O2_10m&quot;, &quot;wH2O2_20m&quot;, &quot;wH2O2_60m&quot;, &quot;0258_22&quot;, &quot;0258_11&quot;, 
-    &quot;0258_12&quot;, &quot;0258_13&quot;)
+    &quot;0258_13&quot;)
 
 conditions = c(&quot;noH2O2&quot;, &quot;wH2O2_10m&quot;, &quot;wH2O2_20m&quot;, &quot;wH2O2_60m&quot;, &quot;noH2O2&quot;, &quot;noH2O2&quot;, 
-    &quot;noH2O2&quot;, &quot;noH2O2&quot;)
+    &quot;noH2O2&quot;)
 </code></pre>
 
 <pre><code class="r">
 hits = combineHits(targets, datasets, conditions, 0.2, 250)
 </code></pre>
 
-<pre><code>## N.COEFFS = 404 
-## N.COEFFS = 144 
-## N.COEFFS = 213 
-## N.COEFFS = 392 
-## N.COEFFS = 630 
-## N.COEFFS = 480 
-## N.COEFFS = 349 
-## N.COEFFS = 220
+<pre><code>## N.COEFFS = 389 
+## N.COEFFS = 152 
+## N.COEFFS = 205 
+## N.COEFFS = 382 
+## N.COEFFS = 673 
+## N.COEFFS = 515 
+## N.COEFFS = 232
 </code></pre>
 
 <pre><code class="r">hits.combined = combineGeneHitsByDataset(hits, datasets)
@@ -317,140 +260,11 @@ hits.condition = hits.condition[apply(hits.condition[, pval.cols], 1, function(x
 
 # add operons to conditional hits
 hits.condition = duplicateOperonRows(hits.condition, operons)
+
+# save table
+write.table(hits.condition, file = &quot;rosr/table_s2.csv&quot;, sep = &quot;\t&quot;, quote = F, 
+    row.names = F)
 </code></pre>
-
-<h1>Compare results with previous analysis</h1>
-
-<pre><code class="r">
-# load table from Amy sent 7/10
-old.hits = read.table(&quot;results/tables/ST1_07102013.csv&quot;, sep = &quot;\t&quot;, header = T)
-old.genes = unlist(strsplit(as.character(old.hits$genes..not.operon.expanded.), 
-    &quot; &quot;))
-old.genes = unique(old.genes)
-
-all.genes = unique(c(old.genes, as.character(hits.condition$Gene)))
-comparison = data.frame(gene = all.genes, group = ifelse(all.genes %in% old.genes &amp; 
-    all.genes %in% hits.condition$Gene, &quot;both&quot;, ifelse(all.genes %in% old.genes, 
-    &quot;old&quot;, &quot;new&quot;)))
-
-# load ma2c hits from previous pipeline
-load(&quot;results/data/ma2c_genes.RData&quot;)
-
-comparison = cbind(comparison, in.ma2c = comparison$gene %in% ma2c_genes)
-
-c &lt;- ggplot(comparison, aes(group, fill = in.ma2c))
-c + geom_bar()
-</code></pre>
-
-<p><img src="figure/compare%20to%20previous%20hits.png" alt="plot of chunk compare to previous hits"/> </p>
-
-<p>There are 679 unique genes hit across all datasets (1644 total hits).</p>
-
-<pre><code class="r">
-h2o2_expression = cbind(read.table(&quot;data/rosr/expression/1a_h2o2.csv&quot;, header = T, 
-    sep = &quot;\t&quot;), cluster = &quot;1a&quot;)
-h2o2_expression = rbind(h2o2_expression, cbind(read.table(&quot;data/rosr/expression/1b_h2o2.csv&quot;, 
-    sep = &quot;\t&quot;, header = T), cluster = &quot;1b&quot;))
-h2o2_expression = rbind(h2o2_expression, cbind(read.table(&quot;data/rosr/expression/2a_h2o2.csv&quot;, 
-    header = T, sep = &quot;\t&quot;), cluster = &quot;2a&quot;))
-h2o2_expression = rbind(h2o2_expression, cbind(read.table(&quot;data/rosr/expression/2b_early_h2o2.csv&quot;, 
-    header = T, sep = &quot;\t&quot;), cluster = &quot;2b_early&quot;))
-h2o2_expression = rbind(h2o2_expression, cbind(read.table(&quot;data/rosr/expression/2b_late_h2o2.csv&quot;, 
-    header = T, sep = &quot;\t&quot;), cluster = &quot;2b_late&quot;))
-h2o2_expression = rbind(h2o2_expression, cbind(read.table(&quot;data/rosr/expression/3_h2o2.csv&quot;, 
-    header = T, sep = &quot;\t&quot;), cluster = &quot;3&quot;))
-h2o2_expression = rbind(h2o2_expression, cbind(read.table(&quot;data/rosr/expression/4a_h2o2.csv&quot;, 
-    header = T, sep = &quot;\t&quot;), cluster = &quot;4a&quot;))
-h2o2_expression = rbind(h2o2_expression, cbind(read.table(&quot;data/rosr/expression/4b_h2o2.csv&quot;, 
-    header = T, sep = &quot;\t&quot;), cluster = &quot;4b&quot;))
-h2o2_expression_dynamic = cbind(read.table(&quot;data/rosr/expression/dynamic_h2o2.csv&quot;, 
-    header = T, sep = &quot;\t&quot;), Standard = &quot;&quot;, cluster = &quot;dynamic&quot;)
-colnames(h2o2_expression_dynamic)[3] &lt;- &quot;genbank.gi&quot;
-colnames(h2o2_expression_dynamic)[7] &lt;- &quot;protein.fxn&quot;
-h2o2_expression = rbind(h2o2_expression, h2o2_expression_dynamic[, c(1, 2, 3, 
-    4, 6, 5, 7, 9)])
-
-deg = h2o2_expression
-
-hits.combined = duplicateOperonRows(hits.combined, operons)
-hits.allGenes = hits.combined
-
-hits.combined = hits.combined[hits.combined$Gene %in% deg$ORF, ]
-hits.combined = merge(hits.combined, deg, by.x = &quot;Gene&quot;, by.y = &quot;ORF&quot;)
-hits.allGenes = merge(hits.allGenes, deg, by.x = &quot;Gene&quot;, by.y = &quot;ORF&quot;, all.x = T)
-# intens = hits.combined[,grep(&#39;*.intens&#39;,names(hits.combined))]
-# intens[is.na(intens)]=0
-# 
-# pval = hits.combined[,grep(&#39;*.p.val&#39;,names(hits.combined))]
-# pval[is.na(pval)] = 1
-</code></pre>
-
-<p>There are 134 hits from differentially expressed genes.</p>
-
-<h1>Visualize DEG ChIP timecourse</h1>
-
-<pre><code class="r">expression = read.table(&quot;data/rosr/expression/allGenes_h2o2.csv&quot;, header = T)
-
-expression_data = data.frame(gene = expression$gene)
-for (tp in c(&quot;X.40&quot;, &quot;X.20&quot;, &quot;X0&quot;, &quot;X10&quot;, &quot;X20&quot;, &quot;X40&quot;, &quot;X60&quot;, &quot;X80&quot;)) {
-    # log ratio intensity
-    ratio = rowMeans(expression[, grep(paste(tp, &quot;_ura3*&quot;, sep = &quot;&quot;), colnames(expression))]) - 
-        rowMeans(cbind(expression[, grep(paste(tp, &quot;_0258*&quot;, sep = &quot;&quot;), colnames(expression))], 
-            expression[, grep(paste(tp, &quot;_0258*&quot;, sep = &quot;&quot;), colnames(expression))]))
-    expression_data = cbind(expression_data, data.frame(ratio))
-    colnames(expression_data)[ncol(expression_data)] = tp
-}
-</code></pre>
-
-<pre><code class="r">hits.condition = hits.condition[hits.condition$Gene %in% deg$ORF, ]
-
-matplot(c(0, 10, 20, 60), t(hits.condition[, intens.avg.cols]), type = &quot;l&quot;, 
-    col = &quot;black&quot;, xlab = &quot;time&quot;, ylab = &quot;ChIP intensity&quot;, lty = 1)
-</code></pre>
-
-<p><img src="figure/visualize%20deg%20chip.png" alt="plot of chunk visualize deg chip"/> </p>
-
-<pre><code class="r">
-k = 6
-clusters = kmeans(hits.condition[, intens.avg.cols], k, iter.max = 50)
-
-par(mfrow = c(k, 1))
-for (i in 1:k) {
-    matplot(c(0, 10, 20, 60), t(hits.condition[clusters$cluster == i, intens.avg.cols]), 
-        type = &quot;l&quot;, col = &quot;grey&quot;, xlab = &quot;time&quot;, ylab = &quot;ChIP intensity&quot;, lty = 1)
-    title(paste(clusters$size[i], &quot;genes in cluster.&quot;))
-    par(new = T)
-    plot(c(0, 10, 20, 60), colMeans(hits.condition[clusters$cluster == i, intens.avg.cols]), 
-        type = &quot;l&quot;, lty = 1, lwd = 3, col = &quot;black&quot;, xlab = &quot;&quot;, ylab = &quot;&quot;)
-}
-</code></pre>
-
-<p><img src="figure/cluster%20chip%20data.png" alt="plot of chunk cluster chip data"/> </p>
-
-<pre><code class="r">
-# combine ge and chip data
-combined.data = merge(expression_data, cbind(hits.condition$Gene, hits.condition[, 
-    intens.avg.cols]), by.x = &quot;gene&quot;, by.y = &quot;hits.condition$Gene&quot;)
-combined.data[, -1] = scale(combined.data[, -1])
-
-k = 5
-clusters = kmeans(combined.data[, -1], k, iter.max = 50)
-
-par(mfrow = c(k, 1))
-for (i in 1:k) {
-    matplot(c(-40, -20, 0, 10, 20, 40, 60, 80), t(combined.data[clusters$cluster == 
-        i, 2:9]), type = &quot;l&quot;, col = &quot;red&quot;, xlab = &quot;time&quot;, ylab = &quot;ChIP intensity&quot;, 
-        lty = 1)
-    par(new = T)
-    matplot(c(0, 10, 20, 60), t(hits.condition[clusters$cluster == i, intens.avg.cols]), 
-        type = &quot;l&quot;, col = &quot;grey&quot;, xlab = &quot;time&quot;, ylab = &quot;ChIP intensity&quot;, lty = 1, 
-        xlim = c(-40, 80))
-    # title(paste(clusters$size[i],&#39;genes in cluster.&#39;)) par(new=T)
-    # plot(c(0,10,20,60),colMeans(hits.condition[clusters$cluster==i,intens.avg.cols]),type=&#39;l&#39;,lty=1,lwd=3,col=&#39;black&#39;,xlab=&#39;&#39;,ylab=&#39;&#39;)
-}
-</code></pre>
-
-<p><img src="figure/cluster%20chip%20and%20deg.png" alt="plot of chunk cluster chip and deg"/> </p>
 
 </body>
 

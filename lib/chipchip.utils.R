@@ -569,7 +569,7 @@ combineHits<-function(targets,dataset=c(),condition=c(),cutoff=.05,dist=500)
   
   
   rename = names(hits)
-  rename = rename[! rename == "GeneName"] #all columns other than Gene
+  rename = rename[! rename == "Gene"] #all columns other than Gene
   
   names(out)[2:ncol(out)] = paste(datasets[1],rename,sep=".") #set column names to match dataset
   
@@ -577,7 +577,7 @@ combineHits<-function(targets,dataset=c(),condition=c(),cutoff=.05,dist=500)
   out = out[,-(ncol(out)-length(rename)+dataset.col)] # remove dataset column
   
   for(i in 2:length(datasets)){
-    out = merge(out,hits[hits$dataset==datasets[i],],by="GeneName",all=T)
+    out = merge(out,hits[hits$dataset==datasets[i],],by="Gene",all=T)
     names(out)[(ncol(out)-length(rename)+1):ncol(out)] = paste(datasets[i],rename,sep=".") #set new column names to match dataset
     out = out[,-(ncol(out)-length(rename)+dataset.col)] # remove dataset column
   }
