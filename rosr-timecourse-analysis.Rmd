@@ -73,6 +73,13 @@ hits.condition = hits.condition[apply(hits.condition[,pval.cols],1,function(x){a
 #add operons to conditional hits
 hits.condition = duplicateOperonRows(hits.condition,operons)
 
+#load expression
+exp = read.csv("data/rosr_h2o2_exp.csv",header=T)
+deg = read.table("deg.csv")
+
+final_table = merge(exp,hits.condition,by.x="gene",by.y="Gene")
+final_table = final_table[as.character(final_table$gene) %in% deg$V1,]
+
 #save table
-write.table(hits.condition,file="rosr/table_s2.csv",sep="\t",quote=F,row.names=F)
+write.table(final_table,file="rosr/table_s2.csv",sep="\t",quote=F,row.names=F)
 ```
