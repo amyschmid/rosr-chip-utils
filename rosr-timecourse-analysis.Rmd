@@ -22,9 +22,12 @@ targets = c("noH2O2.fits.Rdata",
          "wH2O2_10m.fits.Rdata",
          "wH2O2_20m.fits.Rdata",
          "wH2O2_60m.fits.Rdata",
-         "0258_22.fits.Rdata",
          "0258_11.fits.Rdata",
-         "0258_13.fits.Rdata")
+         "0258_13.fits.Rdata", 
+         "0258_21.fits.Rdata",
+         "0258_22.fits.Rdata",
+         "0258_32.fits.Rdata",
+         "0258_33.fits.Rdata")
 
 targets = sapply(targets,function(x) paste(data_dir,experiment,x,sep=""))
 
@@ -32,14 +35,20 @@ datasets = c("noH2O2",
              "wH2O2_10m",
              "wH2O2_20m",
              "wH2O2_60m",
-             "0258_22",
              "0258_11",
-             "0258_13")
+             "0258_13",
+             "0258_21",
+             "0258_22",
+             "0258_32",
+             "0258_33")
 
 conditions = c("noH2O2",
              "wH2O2_10m",
              "wH2O2_20m",
              "wH2O2_60m",
+               "noH2O2",
+               "noH2O2",
+               "noH2O2",
                "noH2O2",
                "noH2O2",
                "noH2O2")
@@ -77,9 +86,35 @@ hits.condition = duplicateOperonRows(hits.condition,operons)
 exp = read.csv("data/rosr_h2o2_exp.csv",header=T)
 deg = read.table("deg.csv")
 
-final_table = merge(exp,hits.condition,by.x="gene",by.y="Gene")
-final_table = final_table[as.character(final_table$gene) %in% deg$V1,]
+expression_data.ura = data.frame(gene=exp$gene)
+for(tp in c("X.40","X.20","X0","X10","X20","X40","X60","X80"))
+{
+
+  ura.ratio = 
+    rowMeans(
+    exp[,grep(paste(tp,"_ura3*",sep=""),colnames(exp))]
+    ) 
+  expression_data.ura = cbind(expression_data.ura,data.frame(ura.ratio))
+  colnames(expression_data.ura) = tp
+}
+colnames(expression_data.ura) <- c("gene","ge-40.ura","ge-20.ura","ge0.ura","ge10.ura","ge20.ura","ge40.ura","ge60.ura","ge80.ura")
+
+combined.data.ura = merge(expression_data.ura,hits.condition,by.x="gene",by.y="Gene")
+
+# remove redundant orfs
+load("data/updated.coords_ORFs.RData")
+vngsplit = strsplit(as.character(updated.coords$vng),"|",fixed=T)
+vngsplitcount = sapply(vngsplit,length)
+vng_duplicates = unique(unlist(vngsplit[vngsplitcount>1]))
+
+combined.data.ura = combined.data.ura[!combined.data.ura$gene %in% vng_duplicates,]
+
+#final_table = merge(exp,hits.condition,by.x="gene",by.y="Gene")
+#final_table = final_table[as.character(final_table$gene) %in% deg$V1,]
 
 #save table
-write.table(final_table,file="rosr/table_s2.csv",sep="\t",quote=F,row.names=F)
+#write.table(final_table,file="rosr/table_s2.csv",sep="\t",quote=F,row.names=F)
+write.table(combined.data.ura,file="rosr/table_s2.csv",sep="\t",quote=F,row.names=F)
+
+
 ```
