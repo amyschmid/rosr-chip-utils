@@ -1,6 +1,6 @@
 library(affy)
 library(ggplot2)
-require(MeDiChI)
+library(MeDiChI)
 
 ##################
 ##Datset functions
@@ -489,7 +489,6 @@ combineHits<-function(targets,dataset=c(),condition=c(),cutoff=.05,dist=500)
     hits$Pk.intens = as.double(as.character(hits$Pk.intens))
     hits$Pk.p.val = as.double(as.character(hits$Pk.p.val))
     hits = hits[!hits$Where=="downstream",]
-  
     
     if(nrow(hits)==0)
       next;
@@ -563,7 +562,7 @@ combineHits<-function(targets,dataset=c(),condition=c(),cutoff=.05,dist=500)
 #   data
 # }
 
-  combineGeneHitsByDataset<-function(hits,datasets)
+combineGeneHitsByDataset<-function(hits,datasets)
 {
   out = hits[hits$dataset==datasets[1],]
   
@@ -642,8 +641,6 @@ combineGeneHitsByCondition<-function(hits,conditions)
   
   cond.combined
 }
-
-
 
 # Link generic features (requiring only position and chromosome location) to the provided set of genes
 # Assuming genes follow dataframe structure of Koiede et al. annotation (updated.coords_ORFs.RData)

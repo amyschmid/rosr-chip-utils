@@ -146,6 +146,7 @@ get.genes.hit <- function( fits, coeffs=NULL, p.cutoff=0.05, dist.cut=2000 ) {
   is.for <- coords$Orientation == "For"
   start <- as.integer( as.vector( coords$Start ) )
   end <- as.integer( as.vector( coords$Stop ) )
+  size<-as.integer(as.vector(abs(start-end)))
   wheres <- as.character( coords$where )
   genes <- as.character( coords$canonical_Name )
   name <- as.character( coords$Gene_Name )
@@ -161,10 +162,10 @@ get.genes.hit <- function( fits, coeffs=NULL, p.cutoff=0.05, dist.cut=2000 ) {
     where.hit <- 
         ifelse( dists[ hits ] <= 0 & is.for[ hits ], "upstream",
             ifelse( dists[ hits ] >= 0 & ! is.for[ hits ], "upstream",
-                ifelse( dists[ hits ] > 0 & is.for[ hits ] & dists[ hits ] <= end[ hits ], "coding",
-                    ifelse( dists[ hits ] < 0 & ! is.for[ hits ] & dists[ hits ] >= end[ hits ], "coding",
-                        ifelse( dists[ hits ] > end[ hits ] & is.for[ hits ], "downstream",
-                            ifelse( dists[ hits ] < end[ hits ] & ! is.for[ hits ], "downstream", "" ) ) ) ) ) )
+                ifelse( dists[ hits ] > 0 & is.for[ hits ] & dists[ hits ] <= size[ hits ], "coding",
+                    ifelse( dists[ hits ] < 0 & ! is.for[ hits ] & abs(dists[ hits ]) <= size[ hits ], "coding",
+                     	ifelse ( dists[hits] > 0 & is.for[ hits ] & dists[ hits ] > size[ hits ], "downstream",
+                     		ifelse (dists[ hits ] < 0 & ! is.for[ hits ] & abs(dists[ hits ]) > size[ hits ], "downstream", "" ) ) ) ) ) )
 
     out <- rbind( out, data.frame( name[ hits ], round( abs( dists[ hits ] ) ), where.hit, chr[ hits ],
                              round( rep( coeffs[ i, 1 ], length( hits ) ) ),
