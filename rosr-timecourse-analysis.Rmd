@@ -57,7 +57,7 @@ conditions = c("noH2O2",
 
 ```{r combine.hits}
 
-hits = combineHits(targets,datasets,conditions,.2,250)
+hits = combineHits(targets,datasets,conditions,.5,250)
 hits.combined = combineGeneHitsByDataset(hits,datasets)
 hits.condition = combineGeneHitsByCondition(hits,conditions)
 
@@ -102,12 +102,8 @@ colnames(expression_data.ura) <- c("gene","ge-40.ura","ge-20.ura","ge0.ura","ge1
 combined.data.ura = merge(expression_data.ura,hits.condition,by.x="gene",by.y="Gene")
 
 # remove redundant orfs
-load("data/updated.coords_ORFs.RData")
-vngsplit = strsplit(as.character(updated.coords$vng),"|",fixed=T)
-vngsplitcount = sapply(vngsplit,length)
-vng_duplicates = unique(unlist(vngsplit[vngsplitcount>1]))
-
-combined.data.ura = combined.data.ura[!combined.data.ura$gene %in% vng_duplicates,]
+redundant_orfs = read.delim("data/redundant_orfs.csv",sep="\t")
+combined.data.ura = combined.data.ura[!combined.data.ura$gene %in% redundant_orfs$ORF.Name,]
 
 #final_table = merge(exp,hits.condition,by.x="gene",by.y="Gene")
 #final_table = final_table[as.character(final_table$gene) %in% deg$V1,]
