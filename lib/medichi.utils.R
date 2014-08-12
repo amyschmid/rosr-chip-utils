@@ -177,6 +177,7 @@ get.genes.hit <- function( fits, coeffs=NULL, p.cutoff=0.05, dist.cut=2000 ) {
   out
 }
 
+
 cat( "Loading function 'chip.hits.to.sif'\n" )
 chip.hits.to.sif <- function( fits.list, p.cutoff=0.05, dist.cut=2000, org=NULL, dir.out=NULL,
                              append=T ) {
