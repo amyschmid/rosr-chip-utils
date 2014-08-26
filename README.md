@@ -7,7 +7,7 @@ ChIP-chip processing pipeline for Tonner et al. "A regulatory hierarchy controls
 
 ## Dependencies
 
-* R (version 2.15) - knitr, MeDiChI (available here: http://cran.r-project.org/src/contrib/Archive/MeDiChI/)
+* R (version 2.15.2) - knitr, limma (http://www.bioconductor.org/packages/release/bioc/html/limma.html) MeDiChI (http://cran.r-project.org/src/contrib/Archive/MeDiChI/)
 
 
 ## Steps to recreate table:
