@@ -1,7 +1,7 @@
 pandas
 numpy
 fastqc							https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-trim-galore					https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+trim-galore		  			https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
 bowtie2							http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 samtools						http://samtools.sourceforge.net/
 deeptools						https://deeptools.readthedocs.io/en/develop/
