@@ -1,1 +1,1 @@
-halobacterium sequence files generatied using reutils package and genes reported in Tonner et al. 2015
+halobacterium sequence files generatied using reutils package and genes reported in Tonner et al. 2015 using https://github.com/amyschmid/rosr-chip-utils/blob/master/COG_analysis/code/getseqs_hbt_peaks.Rmd
