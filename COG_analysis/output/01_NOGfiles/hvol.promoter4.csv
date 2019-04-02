@@ -1,0 +1,43 @@
+query,NOGs,COG_category,HMM_description
+WP_004040944.1,COG0642@NOG COG2203@NOG,T,His Kinase A (phospho-acceptor) domain
+WP_004040951.1,COG0449@NOG,M,"Catalyzes the first step in hexosamine metabolism, converting fructose-6P into glucosamine-6P using glutamine as a nitrogen source (By similarity)"
+WP_004040952.1,COG1208@NOG,M,Nucleotidyl transferase
+WP_004041509.1,0YYDE@NOG,NA,NA
+WP_004041510.1,COG0582@NOG,L,Integrase
+WP_004041894.1,COG1349@NOG,K,Inherit from arCOG: Phage PhiH1 repressor protein
+WP_004042153.1,12987@NOG,NA,NA
+WP_004042280.1,0ZRVB@NOG,S,Inherit from arCOG: Cell surface glycoprotein
+WP_004042365.1,COG0512@NOG,E,anthranilate synthase
+WP_004042367.1,COG0147@NOG,E,anthranilate synthase component I
+WP_004042369.1,COG0135@NOG,E,N-(5'phosphoribosyl)anthranilate isomerase
+WP_004042371.1,COG0547@NOG,E,anthranilate phosphoribosyltransferase (EC 2.4.2.18)
+WP_004043457.1,COG1405@NOG,K,Stabilizes TBP binding to an archaeal box-A promoter. Also responsible for recruiting RNA polymerase II to the pre- initiation complex (DNA-TBP-TFIIB) (By similarity)
+WP_004043458.1,COG1525@NOG,L,nuclease-like protein
+WP_004043530.1,121J4@NOG,S,DoxX family
+WP_004043531.1,0Z3X3@NOG,K,Inherit from arCOG: Transcriptional regulator
+WP_004043609.1,COG0500@NOG,Q,Inherit from eurNOG: Methyltransferase domain
+WP_004043677.1,COG1757@NOG,C,Na H antiporter
+WP_004043678.1,0XSMX@NOG,S,Aerotolerance regulator N-terminal
+WP_004043679.1,0ZVCK@NOG,S,von Willebrand factor type A
+WP_004043680.1,1251F@NOG,M,Inherit from NOG: ribonuclease BN
+WP_004043681.1,10ZTR@NOG,NA,NA
+WP_004043682.1,COG0714@NOG,S,methanol dehydrogenase regulatory protein
+WP_004043683.1,COG1721@NOG,S,Protein of unknown function DUF58
+WP_004043688.1,COG5485@NOG,S,SnoaL-like polyketide cyclase
+WP_004043862.1,COG1208@NOG,M,Nucleotidyl transferase
+WP_004043863.1,COG3357@NOG,K,transcriptional regulator containing an HTH domain fused to a Zn-ribbon
+WP_004043914.1,COG1028@NOG,I,Short-chain dehydrogenase reductase SDR
+WP_004043915.1,COG1826@NOG,U,"twin-arginine translocation protein, TatA E family subunit"
+WP_004044271.1,11171@NOG,NA,NA
+WP_004044398.1,COG0395@NOG,G,binding-protein-dependent transport systems inner membrane component
+WP_004044399.1,COG1175@NOG,G,binding-protein-dependent transport systems inner membrane component
+WP_004045282.1,COG2076@NOG,P,quaternary ammonium compound-resistance protein
+WP_004045284.1,COG1591@NOG,L,holliday junction resolvase
+WP_004045334.1,COG1241@NOG,L,mcm family
+WP_013035036.1,COG0361@NOG,J,Seems to be required for maximal rate of protein biosynthesis. Enhances ribosome dissociation into subunits and stabilizes the binding of the initiator Met-tRNA(I) to 40 S ribosomal subunits (By similarity)
+WP_013035196.1,COG3385@NOG,L,Transposase
+WP_013035225.1,COG1474@NOG,L,Involved in regulation of DNA replication (By similarity)
+WP_013035385.1,COG4923@NOG,S,Protein of unknown function (DUF429)
+WP_013035537.1,110FC@NOG,NA,NA
+WP_049914915.1,COG1378@NOG,K,"transcriptional regulator, TrmB"
+WP_049941497.1,COG2259@NOG,S,DoxX family

@@ -1,0 +1,136 @@
+query,NOGs,COG_category,HMM_description
+WP_008526012.1,0ZHP4@NOG,K,Inherit from arCOG: Phage PhiH1 repressor protein
+WP_010901954.1,0YM3N@NOG,NA,NA
+WP_010901955.1,COG3359@NOG,L,Inherit from COG: Exonuclease-like protein
+WP_010901967.1,10ZN6@NOG,NA,NA
+WP_010901973.1,COG1598@NOG,S,Inherit from COG: family UPF0150
+WP_010901974.1,0XUD5@NOG,S,YcfA family
+WP_010901979.1,COG1943@NOG,L,transposase IS200-family protein
+WP_010901992.1,0YCQD@NOG,NA,NA
+WP_010902028.1,COG0286@NOG,V,type I restriction-modification system
+WP_010902030.1,COG0610@NOG,V,"Type I site-specific deoxyribonuclease, HsdR family"
+WP_010902031.1,COG1451@NOG,S,Protein of unknown function DUF45
+WP_010902046.1,COG0501@NOG,O,Peptidase M48 Ste24p
+WP_010902090.1,COG5524@NOG,S,Halorhodopsin
+WP_010902091.1,COG0095@NOG,H,biotin lipoate A B protein ligase
+WP_010902100.1,COG3609@NOG,K,"transcriptional regulator, copg family"
+WP_010902106.1,0YSDR@NOG,NA,NA
+WP_010902112.1,COG0582@NOG,L,Phage integrase family
+WP_010902115.1,COG3378@NOG COG4983@NOG,S,Primase C terminal 2 (PriCT-2)
+WP_010902147.1,COG1695@NOG,K,regulator
+WP_010902148.1,COG0221@NOG,C,pyrophosphate phosphohydrolase
+WP_010902167.1,COG0675@NOG,L,Pfam:Transposase_35
+WP_010902501.1,COG1309@NOG,K,"transcriptional regulator, TetR family"
+WP_010902508.1,COG1405@NOG,K,Stabilizes TBP binding to an archaeal box-A promoter. Also responsible for recruiting RNA polymerase II to the pre- initiation complex (DNA-TBP-TFIIB) (By similarity)
+WP_010902509.1,COG0784@NOG,T,response regulator receiver protein
+WP_010902522.1,COG1695@NOG,K,Transcriptional regulator
+WP_010902645.1,COG0642@NOG COG2202@NOG,T,His Kinase A (phospho-acceptor) domain
+WP_010902647.1,COG0463@NOG,M,glycosyl transferase family 2
+WP_010902699.1,111T3@NOG,NA,NA
+WP_010902708.1,110ND@NOG,NA,NA
+WP_010902718.1,1105A@NOG,NA,NA
+WP_010902719.1,COG1681@NOG,N,Flagellin
+WP_010902728.1,COG0558@NOG,I,CDP-alcohol phosphatidyltransferase
+WP_010902758.1,COG0438@NOG,M,Glycosyl transferases group 1
+WP_010902759.1,COG0500@NOG,Q,"methyltransferase, fkbm family"
+WP_010902761.1,0YM5U@NOG,NA,NA
+WP_010902762.1,0YGV9@NOG,NA,NA
+WP_010902782.1,COG0104@NOG,F,Plays an important role in the de novo pathway of purine nucleotide biosynthesis
+WP_010902783.1,COG2835@NOG,S,UPF0434 protein
+WP_010902812.1,COG0099@NOG,J,"Located at the top of the head of the 30S subunit, it contacts several helices of the 16S rRNA. In the 70S ribosome it contacts the 23S rRNA (bridge B1a) and protein L5 of the 50S subunit (bridge B1b), connecting the 2 subunits"
+WP_010902816.1,COG1727@NOG,J,50S ribosomal protein L18e
+WP_010902915.1,COG1601@NOG,J,eIF-2 functions in the early steps of protein synthesis by forming a ternary complex with GTP and initiator tRNA (By similarity)
+WP_010902916.1,COG1745@NOG,S,Uncharacterised protein family UPF0058
+WP_010902920.1,11120@NOG,NA,NA
+WP_010903069.1,COG5524@NOG,S,bacteriorhodopsin
+WP_010903157.1,COG1479@NOG,S,Protein of unknown function DUF262
+WP_010903159.1,110F7@NOG,NA,NA
+WP_010903199.1,COG0512@NOG,E,anthranilate synthase
+WP_010903200.1,COG0147@NOG,E,anthranilate synthase component I
+WP_010903201.1,COG0135@NOG,E,N-(5'phosphoribosyl)anthranilate isomerase
+WP_010903202.1,COG0547@NOG,E,anthranilate phosphoribosyltransferase (EC 2.4.2.18)
+WP_010903203.1,0YTZS@NOG,NA,NA
+WP_010903205.1,COG0464@NOG,O,AAA domain (Cdc48 subfamily)
+WP_010903232.1,COG0477@NOG,G,Major Facilitator Superfamily
+WP_010903233.1,COG2106@NOG,S,Pfam:DUF171
+WP_010903234.1,COG0087@NOG,J,"One of the primary rRNA binding proteins, it binds directly near the 3'-end of the 23S rRNA, where it nucleates assembly of the 50S subunit (By similarity)"
+WP_010903235.1,COG0088@NOG,J,"One of the primary rRNA binding proteins, this protein initially binds near the 5'-end of the 23S rRNA. It is important during the early stages of 50S assembly. It makes multiple contacts with different domains of the 23S rRNA in the assembled 50S subunit and ribosome (By similarity)"
+WP_010903236.1,COG0089@NOG,J,Binds to 23S rRNA. One of the proteins that surrounds the polypeptide exit tunnel on the outside of the ribosome (By similarity)
+WP_010903237.1,COG0090@NOG,J,"One of the primary rRNA binding proteins. Required for association of the 30S and 50S subunits to form the 70S ribosome, for tRNA binding and peptide bond formation. It has been suggested to have peptidyltransferase activity"
+WP_010903238.1,COG0185@NOG,J,Protein S19 forms a complex with S13 that binds strongly to the 16S ribosomal RNA (By similarity)
+WP_010903239.1,COG0091@NOG,J,"The globular domain of the protein is located near the polypeptide exit tunnel on the outside of the subunit, while an extended beta-hairpin is found that lines the wall of the exit tunnel in the center of the 70S ribosome (By similarity)"
+WP_010903240.1,COG0092@NOG,J,Binds the lower part of the 30S subunit head (By similarity)
+WP_010903241.1,COG0255@NOG,J,50S ribosomal protein L29P
+WP_010903242.1,COG1588@NOG,J,"Part of ribonuclease P, a protein complex that generates mature tRNA molecules by cleaving their 5'-ends (By similarity)"
+WP_010903243.1,COG0186@NOG,J,"One of the primary rRNA binding proteins, it binds specifically to the 5'-end of 16S ribosomal RNA (By similarity)"
+WP_010903244.1,COG0093@NOG,J,Binds to 23S rRNA. Forms part of two intersubunit bridges in the 70S ribosome (By similarity)
+WP_010903245.1,COG0198@NOG,J,Located at the polypeptide exit tunnel on the outside of the subunit (By similarity)
+WP_010903246.1,COG1471@NOG,J,30S ribosomal protein S4E
+WP_010903247.1,COG0094@NOG,J,"This is 1 of the proteins that binds and probably mediates the attachment of the 5S RNA into the large ribosomal subunit, where it forms part of the central protuberance. In the 70S ribosome it contacts protein S13 of the 30S subunit (bridge B1b), connecting the 2 subunits"
+WP_010903248.1,COG0199@NOG,J,"Binds 16S rRNA, required for the assembly of 30S particles (By similarity)"
+WP_010903249.1,COG0096@NOG,J,"One of the primary rRNA binding proteins, it binds directly to 16S rRNA central domain where it helps coordinate assembly of the platform of the 30S subunit (By similarity)"
+WP_010903250.1,COG0097@NOG,J,"This protein binds to the 23S rRNA, and is important in its secondary structure. It is located near the subunit interface in the base of the L7 L12 stalk, and near the tRNA binding site of the peptidyltransferase center"
+WP_010903251.1,COG0468@NOG COG1717@NOG,J,50S ribosomal protein L32e
+WP_010903252.1,COG2147@NOG,J,Binds to the 23S rRNA (By similarity)
+WP_010903253.1,COG0256@NOG,J,"This is one of the proteins that binds and probably mediates the attachment of the 5S RNA into the large ribosomal subunit, where it forms part of the central protuberance (By similarity)"
+WP_010903254.1,COG0098@NOG,J,With S4 and S12 plays an important role in translational accuracy (By similarity)
+WP_010903255.1,COG1841@NOG,J,50S ribosomal protein L30P
+WP_010903256.1,COG0200@NOG,J,Binds to the 23S rRNA (By similarity)
+WP_010903257.1,COG0201@NOG,U,"The central subunit of the protein translocation channel SecYEG. Consists of two halves formed by TMs 1-5 and 6-10. These two domains form a lateral gate at the front which open onto the bilayer between TMs 2 and 7, and are clamped together by SecE at the back. The channel is closed by both a pore ring composed of hydrophobic SecY resides and a short helix (helix 2A) on the extracellular side of the membrane which forms a plug. The plug probably moves laterally to allow the channel to open. The ring and the pore may move independently (By similarity)"
+WP_010903265.1,1279I@NOG COG1226@NOG,P,ion transport 2 domain protein
+WP_010903267.1,10ZTS@NOG,NA,NA
+WP_010903268.1,COG3217@NOG,S,MOSC domain containing protein
+WP_010903282.1,10ZTS@NOG,NA,NA
+WP_010903386.1,101KW@NOG,L,NurA domain
+WP_010903451.1,COG3430@NOG,S,Inherit from arCOG: Protein of unknown function (DUF1628)
+WP_010903453.1,COG2865@NOG,K,Transcriptional regulator
+WP_010903540.1,COG0174@NOG,E,glutamine synthetase
+WP_010903541.1,COG1522@NOG,K,AsnC family transcriptional regulator
+WP_010903629.1,COG3794@NOG,C,Halocyanin
+WP_010903690.1,0ZFRM@NOG,NA,NA
+WP_010903706.1,110P6@NOG,S,Protein of unknown function (DUF2029)
+WP_010903707.1,COG0633@NOG,C,Ferredoxin
+WP_010903708.1,COG0106@NOG,E,Phosphoribosylformimino-5-aminoimidazole carboxamide ribotide isomerase
+WP_010903901.1,COG2078@NOG,S,AMMECR1 domain protein
+WP_010903994.1,COG0195@NOG,K,Transcription elongation factor NusA-like protein
+WP_010903995.1,COG0086@NOG,K,"DNA-directed RNA polymerase, subunit a'"
+WP_010903996.1,COG0086@NOG,K,"DNA-directed RNA polymerase, subunit a'"
+WP_010903997.1,COG0085@NOG,K,DNA-directed RNA polymerase subunit b'
+WP_010904032.1,COG0433@NOG,L,Inherit from COG: Aaa atpase
+WP_010904037.1,COG1474@NOG,L,orc1 cdc6 family replication initiation protein
+WP_010904055.1,COG0569@NOG,P,TRK potassium uptake system protein
+WP_010904056.1,COG2060@NOG,P,"One of the components of the high-affinity ATP-driven potassium transport (or KDP) system, which catalyzes the hydrolysis of ATP coupled with the exchange of hydrogen and potassium ions (By similarity)"
+WP_010904064.1,COG0589@NOG,T,UspA domain protein
+WP_010904071.1,COG2161@NOG,K,CopG family transcriptional regulator
+WP_010904078.1,COG0071@NOG,O,heat shock protease protein
+WP_010904139.1,COG2161@NOG,K,CopG domain protein DNA-binding domain protein
+WP_010904142.1,COG3316@NOG,L,Transposase
+WP_010904144.1,COG0376@NOG,P,Bifunctional enzyme with both catalase and broad- spectrum peroxidase activity (By similarity)
+WP_010904147.1,COG4670@NOG,I,CoA transferase having broad substrate specificity for short-chain acyl-CoA thioesters with the activity decreasing when the length of the carboxylic acid chain exceeds four carbons (By similarity)
+WP_010904157.1,COG0018@NOG,J,Arginyl-tRNA synthetase
+WP_010904158.1,COG1757@NOG,C,Na H antiporter
+WP_010904162.1,COG1414@NOG,K,regulator
+WP_010904167.1,10ZRF@NOG,NA,NA
+WP_010904188.1,COG2333@NOG,S,beta-lactamase domain protein
+WP_010904192.1,COG0675@NOG,L,Transposase
+WP_010904200.1,111D7@NOG,K,Pfam:SpoVT_AbrB
+WP_010904215.1,COG2402@NOG,V,nucleic acid-binding protein contains PIN domain-like region
+WP_010904242.1,1108B@NOG,NA,NA
+WP_012289079.1,COG1474@NOG,L,Involved in regulation of DNA replication (By similarity)
+WP_012289116.1,COG0206@NOG,D,Essential cell division protein that forms a contractile ring structure (Z ring) at the future cell division site. The regulation of the ring assembly controls the timing and the location of cell division. One of the functions of the FtsZ ring is to recruit other cell division proteins to the septum to produce a new cell wall between the dividing cells. Binds GTP and shows GTPase activity (By similarity)
+WP_012289235.1,0YYDE@NOG,NA,NA
+WP_012289247.1,COG0784@NOG,T,response regulator receiver protein
+WP_012289261.1,COG0516@NOG COG0517@NOG,F,"Catalyzes the conversion of inosine 5'-phosphate (IMP) to xanthosine 5'-phosphate (XMP), the first committed and rate- limiting step in the de novo synthesis of guanine nucleotides, and therefore plays an important role in the regulation of cell growth (By similarity)"
+WP_012289276.1,COG3388@NOG,NA,NA
+WP_012289386.1,0Y4YD@NOG,NA,NA
+WP_012289388.1,COG0441@NOG,J,Threonyl-tRNA synthetase
+WP_012289533.1,COG0675@NOG,L,Inherit from arCOG: IS1341-type transposase
+WP_012289608.1,11UJV@NOG,L,Transposase (ISH5)
+WP_012289610.1,COG1192@NOG,D,Cobyrinic acid ac-diamide synthase
+WP_012289640.1,COG0540@NOG,F,Aspartate transcarbamylase
+WP_012289734.1,COG1192@NOG,D,CobQ/CobB/MinD/ParA nucleotide binding domain
+WP_012289743.1,COG1715@NOG,V,restriction endonuclease
+WP_012289746.1,COG1556@NOG,S,"Uncharacterised ACR, YkgG family COG1556"
+WP_012289747.1,COG1620@NOG,C,l-lactate permease
+WP_012289748.1,COG1848@NOG,V,VapC-type toxin
+WP_081422761.1,COG3177@NOG,K,filamentation induced by cAMP protein fic

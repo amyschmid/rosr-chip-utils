@@ -1,0 +1,169 @@
+query,NOGs,COG_category,HMM_description
+WP_004056114.1,COG3540@NOG,H,PhoD-like phosphatase
+WP_004056209.1,COG2079@NOG,S,MmgE/PrpD family
+WP_004056211.1,COG1809@NOG,H,(2R)-phospho-3-sulfolactate synthase (ComA)
+WP_004056225.1,COG1136@NOG,V,ABC transporter
+WP_004056227.1,COG1361@NOG,M,Inherit from arCOG: domain protein
+WP_004056229.1,11GX7@NOG,K,Inherit from arCOG: Thrombospondin type 3 repeat-containing protein
+WP_004056305.1,COG0642@NOG,T,Histidine kinase
+WP_004056315.1,COG4716@NOG,Q,Streptococcal 67 kDa myosin-cross-reactive antigen like family
+WP_004056367.1,COG4221@NOG,I,KR domain
+WP_004056368.1,COG0502@NOG,H,Catalyzes the conversion of dethiobiotin (DTB) to biotin by the insertion of a sulfur atom into dethiobiotin via a radical- based mechanism (By similarity)
+WP_004056369.1,0ZC0B@NOG,NA,NA
+WP_004056370.1,COG0156@NOG,H,8-amino-7-oxononanoate synthase (EC 2.3.1.47)
+WP_004056371.1,COG0132@NOG,H,"Catalyzes a mechanistically unusual reaction, the ATP- dependent insertion of CO2 between the N7 and N8 nitrogen atoms of 7,8-diaminopelargonic acid (DAPA) to form an ureido ring (By similarity)"
+WP_004056430.1,COG1131@NOG,V,ABC transporter
+WP_004056431.1,11NF1@NOG,NA,NA
+WP_004056451.1,COG1082@NOG,G,Xylose isomerase domain protein TIM barrel
+WP_004056485.1,0YUMU@NOG,NA,NA
+WP_004056498.1,COG0824@NOG,S,Thioesterase superfamily protein
+WP_004056500.1,COG0720@NOG,H,synthase
+WP_004056508.1,COG0602@NOG,H,"Catalyzes the conversion of 6-carboxy-5,6,7,8- tetrahydropterin (CPH4) to 7-carboxy-7-deazaguanine (CDG) (By similarity)"
+WP_004056510.1,COG0603@NOG,S,Catalyzes the ATP-dependent conversion of 7-carboxy-7- deazaguanine (CDG) to 7-cyano-7-deazaguanine (preQ(0)) (By similarity)
+WP_004056517.1,COG4276@NOG,S,Cyclase dehydrase
+WP_004056519.1,COG3387@NOG,G,Glucan 14-alpha-glucosidase
+WP_004056634.1,COG0642@NOG,T,HATPase_c
+WP_004056696.1,0XUMF@NOG,Q,"Gas vesicles are small, hollow, gas filled protein structures that are found in several microbial planktonic microorganisms. They allow the positioning of the organism at the favorable depth for growth (By similarity)"
+WP_004056697.1,1209X@NOG,Q,Gas vesicle synthesis GvpLGvpF
+WP_004056698.1,0ZY4M@NOG,Q,Gas vesicle K
+WP_004056699.1,0ZXDU@NOG,Q,"Gas vesicles are small, hollow, gas filled protein structures that are found in several microbial planktonic microorganisms. They allow the positioning of the organism at the favorable depth for growth (By similarity)"
+WP_004056700.1,111CS@NOG,NA,NA
+WP_004056702.1,0Y69N@NOG,Q,gas-vesicle operon protein
+WP_004056703.1,11VUC@NOG,Q,Gas vesicle synthesis GvpLGvpF
+WP_004056704.1,COG1695@NOG,K,PadR family
+WP_004056734.1,COG0012@NOG,J,Translation-associated GTPase
+WP_004056735.1,COG5485@NOG,S,SnoaL-like polyketide cyclase
+WP_004056736.1,11HND@NOG,P,Ferrichrome-binding protein
+WP_004056877.1,127TA@NOG,K,CopG family transcriptional regulator
+WP_004056878.1,COG1310@NOG,S,"Inherit from COG: Component of the eukaryotic translation initiation factor 3 (eIF-3) complex, which is involved in protein synthesis and, together with other initiation factors, stimulates binding of mRNA and methionyl-tRNAi to the 40S ribosome (By similarity)"
+WP_004056913.1,COG1405@NOG,K,Stabilizes TBP binding to an archaeal box-A promoter. Also responsible for recruiting RNA polymerase II to the pre- initiation complex (DNA-TBP-TFIIB) (By similarity)
+WP_004057001.1,COG3173@NOG,S,Aminoglycoside phosphotransferase
+WP_004057032.1,COG3291@NOG,S,"Inherit from COG: Part of the outer membrane protein assembly complex, which is involved in assembly and insertion of beta-barrel proteins into the outer membrane (By similarity)"
+WP_004057215.1,0ZCAN@NOG,S,Uncharacterised protein family (UPF0175)
+WP_004057217.1,COG1474@NOG,L,orc1 cdc6 family replication initiation protein
+WP_004057391.1,0ZWTH@NOG,Q,Met-10+ like-protein
+WP_004057392.1,COG0385@NOG,S,Bile acid sodium symporter
+WP_004057670.1,COG0630@NOG,N,type II secretion system protein
+WP_004057672.1,0Y9Z9@NOG,N,type II secretion system
+WP_004057673.1,0Y99T@NOG,M,"Inherit from NOG: von Willebrand factor, type A"
+WP_004057675.1,0YY3A@NOG,NA,NA
+WP_004057677.1,0YSDR@NOG,NA,NA
+WP_004057679.1,0YPGV@NOG,NA,NA
+WP_004057681.1,0YTEX@NOG,NA,NA
+WP_004057690.1,0YQVI@NOG,S,Pfam:TRF2
+WP_004057696.1,10ZZ6@NOG,NA,NA
+WP_004057729.1,COG0619@NOG,P,cobalt abc transporter
+WP_004057731.1,COG1122@NOG,G,ABC transporter related
+WP_004057736.1,COG2045@NOG,H,2-phosphosulfolactate phosphatase
+WP_004057738.1,COG1082@NOG,G,Xylose isomerase-like TIM barrel
+WP_004057805.1,COG0840@NOG,N,Methyl-accepting chemotaxis sensory transducer
+WP_004057806.1,COG0683@NOG,E,system periplasmic substrate-binding protein
+WP_004057807.1,COG0249@NOG,L,that it carries out the mismatch recognition step. This protein has a weak ATPase activity (By similarity)
+WP_004057808.1,11QGQ@NOG COG0323@NOG,L,"This protein is involved in the repair of mismatches in DNA. It is required for dam-dependent methyl-directed DNA mismatch repair. May act as a molecular matchmaker , a protein that promotes the formation of a stable complex between two or more DNA-binding proteins in an ATP-dependent manner without itself being part of a final effector complex (By similarity)"
+WP_004057811.1,COG0524@NOG,G,PfkB domain protein
+WP_004057818.1,0Z77K@NOG,T,Inherit from NOG: Histidine kinase
+WP_004057819.1,COG0864@NOG,K,Transcriptional regulator (By similarity)
+WP_004057905.1,COG3119@NOG,P,sulfatase
+WP_004057907.1,COG1278@NOG,K,cold-shock DNA-binding domain protein
+WP_004058140.1,111H1@NOG,NA,NA
+WP_004058142.1,COG0784@NOG COG2202@NOG,T,multi-sensor signal transduction histidine kinase
+WP_004058177.1,COG0239@NOG,D,Protein CrcB homolog
+WP_004058401.1,1113Q@NOG,NA,NA
+WP_004058473.1,COG0293@NOG,J,Specifically methylates the uridine in position 2552 of 23S rRNA at the 2'-O position of the ribose in the fully assembled 50S ribosomal subunit (By similarity)
+WP_004058479.1,COG0642@NOG,T,Histidine kinase
+WP_004058481.1,0YC8Q@NOG,NA,NA
+WP_004058648.1,COG0347@NOG,E,nitrogen regulatory protein P-II
+WP_004058650.1,COG0004@NOG,P,Ammonium transporter
+WP_004058652.1,COG0347@NOG,E,nitrogen regulatory protein P-II
+WP_004058688.1,COG0569@NOG COG1522@NOG,K,asnC family transcriptional regulator
+WP_004058963.1,COG4666@NOG,S,"TRAP transporter, 4TM 12TM fusion protein"
+WP_004058965.1,COG4729@NOG,S,TRAP-type transport system protein small subunit
+WP_004058967.1,COG2358@NOG,P,"TRAP transporter solute receptor, TAXI family"
+WP_004059116.1,COG3413@NOG,K,Bacterio-opsin activator HTH domain protein
+WP_004059117.1,0XQIW@NOG,E,ABC transporter
+WP_004059118.1,COG0559@NOG,E,Branched-chain amino acid ABC transporter permease protein
+WP_004059119.1,COG4177@NOG,E,Branched-chain amino acid ABC transporter permease protein
+WP_004059234.1,COG3413@NOG,K,bacterio-opsin activator HTH domain protein
+WP_004059269.1,COG1164@NOG,E,oligoendopeptidase F
+WP_004059270.1,COG2234@NOG,S,Peptidase M28
+WP_004059313.1,COG0494@NOG,L,NUDiX hydrolase
+WP_004059314.1,COG0477@NOG,G,major facilitator superfamily
+WP_004059349.1,COG0491@NOG,S,beta-lactamase domain protein
+WP_004059350.1,COG1131@NOG,V,ABC transporter
+WP_004059351.1,COG1277@NOG,S,Inherit from arCOG: ABC-type transport system involved in multi-copper enzyme maturation permease component-like protein
+WP_004059477.1,COG0596@NOG,S,Alpha beta hydrolase fold protein
+WP_004059478.1,11NKY@NOG,NA,NA
+WP_004059481.1,COG0500@NOG,Q,Methyltransferase type 11
+WP_004059531.1,COG0737@NOG,F,5'-nucleotidase
+WP_004059532.1,COG1109@NOG,G,Phosphoglucosamine mutase
+WP_004059578.1,COG2130@NOG,S,Alcohol dehydrogenase zinc-binding domain protein
+WP_004059584.1,11HND@NOG,P,Ferrichrome-binding protein
+WP_004059585.1,10ZYJ@NOG,K,DNA binding protein
+WP_004059659.1,COG1520@NOG,T,Pyrrolo-quinoline quinone
+WP_004059660.1,COG0152@NOG,F,phosphoribosylaminoimidazolesuccinocarboxamide synthase
+WP_004059823.1,COG3413@NOG,T,PAS PAC sensor protein
+WP_004059824.1,COG0442@NOG,J,"Catalyzes the attachment of proline to tRNA(Pro) in a two-step reaction proline is first activated by ATP to form Pro- AMP and then transferred to the acceptor end of tRNA(Pro). As ProRS can inadvertently accommodate and process non-cognate amino acids such as alanine and cysteine, to avoid such errors it has two additional distinct editing activities against alanine. One activity is designated as 'pretransfer' editing and involves the tRNA(Pro)-independent hydrolysis of activated Ala-AMP. The other activity is designated 'posttransfer' editing and involves deacylation of mischarged Ala-tRNA(Pro). The misacylated Cys- tRNA(Pro) is not edited by ProRS (By similarity)"
+WP_004059877.1,110DB@NOG,NA,NA
+WP_004059907.1,COG0147@NOG,E,anthranilate synthase component I
+WP_004059909.1,COG0135@NOG,E,N-(5'phosphoribosyl)anthranilate isomerase
+WP_004059911.1,COG0547@NOG,E,anthranilate phosphoribosyltransferase (EC 2.4.2.18)
+WP_004059913.1,111CV@NOG,S,Uncharacterized protein conserved in bacteria (DUF2062)
+WP_004060332.1,0Z77K@NOG,T,Inherit from NOG: Histidine kinase
+WP_004060333.1,COG2719@NOG,S,Stage V sporulation protein R-like protein
+WP_004060335.1,COG2718@NOG,S,Protein of unknown function (DUF444)
+WP_004060338.1,COG2766@NOG,T,serine protein kinase
+WP_004060340.1,COG2766@NOG,T,Serine protein kinase
+WP_004060342.1,0YQSW@NOG,NA,NA
+WP_004060344.1,COG1860@NOG,S,UPF0179 protein
+WP_004060357.1,0YG7Y@NOG,NA,NA
+WP_004060358.1,COG0112@NOG,E,"Catalyzes the reversible interconversion of serine and glycine with tetrahydrofolate (THF) serving as the one-carbon carrier. Also exhibits THF-independent aldolase activity toward beta-hydroxyamino acids, producing glycine and aldehydes, via a retro-aldol mechanism (By similarity)"
+WP_004060383.1,COG0454@NOG,K,GCN5-related N-acetyltransferase
+WP_004060384.1,COG0840@NOG,N,transducer
+WP_004060423.1,COG3217@NOG,S,MOSC domain containing protein
+WP_004060424.1,COG1228@NOG,F,amidohydrolase
+WP_004060604.1,COG0517@NOG,S,CBS
+WP_004060606.1,COG1545@NOG,S,DUF35 OB-fold domain
+WP_004060622.1,COG1335@NOG,Q,isochorismatase hydrolase
+WP_004060623.1,COG1335@NOG,Q,Isochorismatase
+WP_004060628.1,11GP4@NOG,S,phospholipase Carboxylesterase
+WP_004060631.1,121J4@NOG,S,DoxX family
+WP_004060641.1,COG0494@NOG,L,NUDIX hydrolase
+WP_004060713.1,COG0605@NOG,P,radicals which are normally produced within the cells and which are toxic to biological systems
+WP_004060714.1,110NM@NOG,NA,NA
+WP_004060783.1,COG0446@NOG,P,FAD-dependent pyridine nucleotide-disulfide oxidoreductase
+WP_004060823.1,0Z77K@NOG,T,Inherit from NOG: Histidine kinase
+WP_004060828.1,COG1109@NOG,G,Phosphoglucosamine mutase
+WP_004060946.1,COG2141@NOG,C,Luciferase-like monooxygenase
+WP_004060947.1,11NF1@NOG,NA,NA
+WP_004060948.1,COG1131@NOG,V,ABC transporter
+WP_004060955.1,COG0171@NOG COG0388@NOG,H,nh(3)-dependent nad( ) synthetase
+WP_004060997.1,COG3608@NOG,S,deacylase-like protein
+WP_004060998.1,COG1695@NOG,K,Transcriptional regulator
+WP_004061007.1,COG2865@NOG,K,Transcriptional regulator
+WP_004061042.1,0Y5RZ@NOG,O,"peptidase (S8 and S53, subtilisin, kexin, sedolisin"
+WP_004061044.1,COG0071@NOG,O,heat shock protease protein
+WP_004572414.1,COG5485@NOG,S,SnoaL-like polyketide cyclase
+WP_004572579.1,COG0285@NOG COG0294@NOG,H,dihydropteroate synthase
+WP_004572623.1,COG0367@NOG,E,Asparagine synthase
+WP_004572624.1,COG0613@NOG,S,PHP domain protein
+WP_004572625.1,COG0517@NOG,S,signal transduction protein with CBS domains
+WP_004572675.1,COG0006@NOG,E,peptidase M24
+WP_004572676.1,COG1253@NOG,P,Domain of unknown function DUF21
+WP_004572677.1,COG1404@NOG,O,S53 subtilisin kexin sedolisin
+WP_004572678.1,125Q4@NOG,NA,NA
+WP_014732138.1,11M6G@NOG,NA,NA
+WP_014732145.1,COG0382@NOG,H,UbiA prenyltransferase
+WP_014732321.1,COG1525@NOG,L,nuclease-like protein
+WP_014732346.1,COG0467@NOG,T,GvpD gas vesicle
+WP_014732347.1,COG0071@NOG,O,GvpH
+WP_014732380.1,1267B@NOG,NA,NA
+WP_014732396.1,COG0582@NOG,L,Integrase
+WP_014732423.1,11HND@NOG,P,ABC-type Fe3 -hydroxamate transport system periplasmic component-like protein
+WP_014732665.1,COG3413@NOG,K,Bacterio-opsin activator HTH domain protein
+WP_014732699.1,0ZJV0@NOG,NA,NA
+WP_014732744.1,11KPI@NOG,O,Subtilase family
+WP_014732814.1,0Z77K@NOG,T,Inherit from NOG: Histidine kinase
+WP_049917400.1,0Y98F@NOG,NA,NA
+WP_049917496.1,110YE@NOG,NA,NA
+WP_049917527.1,COG0560@NOG,E,phosphoserine phosphatase
+WP_049917571.1,11HND@NOG,P,Ferrichrome-binding protein

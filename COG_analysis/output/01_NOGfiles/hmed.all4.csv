@@ -1,0 +1,55 @@
+query,NOGs,COG_category,HMM_description
+WP_004056225.1,COG1136@NOG,V,ABC transporter
+WP_004056227.1,COG1361@NOG,M,Inherit from arCOG: domain protein
+WP_004056229.1,11GX7@NOG,K,Inherit from arCOG: Thrombospondin type 3 repeat-containing protein
+WP_004056498.1,COG0824@NOG,S,Thioesterase superfamily protein
+WP_004056696.1,0XUMF@NOG,Q,"Gas vesicles are small, hollow, gas filled protein structures that are found in several microbial planktonic microorganisms. They allow the positioning of the organism at the favorable depth for growth (By similarity)"
+WP_004056697.1,1209X@NOG,Q,Gas vesicle synthesis GvpLGvpF
+WP_004056698.1,0ZY4M@NOG,Q,Gas vesicle K
+WP_004056699.1,0ZXDU@NOG,Q,"Gas vesicles are small, hollow, gas filled protein structures that are found in several microbial planktonic microorganisms. They allow the positioning of the organism at the favorable depth for growth (By similarity)"
+WP_004056700.1,111CS@NOG,NA,NA
+WP_004056702.1,0Y69N@NOG,Q,gas-vesicle operon protein
+WP_004056703.1,11VUC@NOG,Q,Gas vesicle synthesis GvpLGvpF
+WP_004056704.1,COG1695@NOG,K,PadR family
+WP_004056735.1,COG5485@NOG,S,SnoaL-like polyketide cyclase
+WP_004056736.1,11HND@NOG,P,Ferrichrome-binding protein
+WP_004056877.1,127TA@NOG,K,CopG family transcriptional regulator
+WP_004056878.1,COG1310@NOG,S,"Inherit from COG: Component of the eukaryotic translation initiation factor 3 (eIF-3) complex, which is involved in protein synthesis and, together with other initiation factors, stimulates binding of mRNA and methionyl-tRNAi to the 40S ribosome (By similarity)"
+WP_004057032.1,COG3291@NOG,S,"Inherit from COG: Part of the outer membrane protein assembly complex, which is involved in assembly and insertion of beta-barrel proteins into the outer membrane (By similarity)"
+WP_004057670.1,COG0630@NOG,N,type II secretion system protein
+WP_004057672.1,0Y9Z9@NOG,N,type II secretion system
+WP_004057673.1,0Y99T@NOG,M,"Inherit from NOG: von Willebrand factor, type A"
+WP_004057675.1,0YY3A@NOG,NA,NA
+WP_004057677.1,0YSDR@NOG,NA,NA
+WP_004057679.1,0YPGV@NOG,NA,NA
+WP_004057681.1,0YTEX@NOG,NA,NA
+WP_004057696.1,10ZZ6@NOG,NA,NA
+WP_004057811.1,COG0524@NOG,G,PfkB domain protein
+WP_004057818.1,0Z77K@NOG,T,Inherit from NOG: Histidine kinase
+WP_004057819.1,COG0864@NOG,K,Transcriptional regulator (By similarity)
+WP_004057905.1,COG3119@NOG,P,sulfatase
+WP_004057907.1,COG1278@NOG,K,cold-shock DNA-binding domain protein
+WP_004058177.1,COG0239@NOG,D,Protein CrcB homolog
+WP_004058479.1,COG0642@NOG,T,Histidine kinase
+WP_004058481.1,0YC8Q@NOG,NA,NA
+WP_004058648.1,COG0347@NOG,E,nitrogen regulatory protein P-II
+WP_004058650.1,COG0004@NOG,P,Ammonium transporter
+WP_004058652.1,COG0347@NOG,E,nitrogen regulatory protein P-II
+WP_004058688.1,COG0569@NOG COG1522@NOG,K,asnC family transcriptional regulator
+WP_004059578.1,COG2130@NOG,S,Alcohol dehydrogenase zinc-binding domain protein
+WP_004059585.1,10ZYJ@NOG,K,DNA binding protein
+WP_004059907.1,COG0147@NOG,E,anthranilate synthase component I
+WP_004059909.1,COG0135@NOG,E,N-(5'phosphoribosyl)anthranilate isomerase
+WP_004059911.1,COG0547@NOG,E,anthranilate phosphoribosyltransferase (EC 2.4.2.18)
+WP_004059913.1,111CV@NOG,S,Uncharacterized protein conserved in bacteria (DUF2062)
+WP_004060622.1,COG1335@NOG,Q,isochorismatase hydrolase
+WP_004060623.1,COG1335@NOG,Q,Isochorismatase
+WP_004060823.1,0Z77K@NOG,T,Inherit from NOG: Histidine kinase
+WP_004572623.1,COG0367@NOG,E,Asparagine synthase
+WP_004572624.1,COG0613@NOG,S,PHP domain protein
+WP_004572625.1,COG0517@NOG,S,signal transduction protein with CBS domains
+WP_014732145.1,COG0382@NOG,H,UbiA prenyltransferase
+WP_014732347.1,COG0071@NOG,O,GvpH
+WP_014732380.1,1267B@NOG,NA,NA
+WP_014732814.1,0Z77K@NOG,T,Inherit from NOG: Histidine kinase
+WP_049917400.1,0Y98F@NOG,NA,NA
