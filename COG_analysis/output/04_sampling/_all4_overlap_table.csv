@@ -1,0 +1,8 @@
+overlap.region,number.NOGs,approx.pval,ttest.padj,hbt.peaks,hmed.peaks,hvol.peaks
+hbt,143,0.9813,1,158,NA,NA
+hbt&hmed,5,0.5948,1,6,5,NA
+hbt&hvol,9,0.0766,0,14,NA,9
+hbt&hvol&hmed,3,0.0215,0,3,3,3
+hmed,39,0.9463,1,NA,43,NA
+hvol,38,0.9982,1,NA,NA,40
+hvol&hmed,3,0.2527,0,NA,3,3
