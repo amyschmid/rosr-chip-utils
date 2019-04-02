@@ -1,0 +1,388 @@
+---
+title: "NOG_enrichment in peaks versus genomes"
+output: html_notebook
+---
+
+```{r, message=FALSE}
+library(plyr); library(tidyverse); library(eulerr); library(viridis)
+`%ni%` = Negate(`%in%`)
+
+hbt.peak <- read_csv("../output/01_NOGfiles/hbt.all.csv")
+hbt.wg <- read_csv("../../genomes_gffs/20181113_hbt_GCF_000006805.1_ASM680v1_GETNOG.csv")
+hmed.peak <- read_csv("../output/01_NOGfiles/hmed.all4.csv")
+hmed.wg <- read_csv("../../genomes_gffs/20181113_hfxmed_GCF_000306765.2_ASM30676v2_GETNOG.csv")
+hvol.peak <- read_csv("../output/01_NOGfiles/hvol.all4.csv")
+hvol.wg <- read_csv("../../genomes_gffs/20181113_hvol_GCF_000025685.1_ASM2568v1_GETNOG.csv")
+
+peaks.by.region <- read_csv("../output/02_overlaps/all4_peaklist_overlap_regions.csv")
+overlaps <- read_csv("../output/02_overlaps/all4_obsNOGcounts.csv")
+cog.cats <- read.csv("../data/COG-descriptions.csv")
+colnames(cog.cats)[1] <- "COG_category"
+```
+
+##functions
+these functions are adapted from KD CNV scripts. specific changed include soft coding the number of COG categories to be considered, and adding a description column to the results df. Since no general descriptions are in eggNOG results, I am using an external table I loaded in. Be sure to include that in any r.data files or environment. performs a hypergeometric test, but doesn't do any multiple testing corrections.
+```{r}
+source("00_fxns_eggnog.R")
+```
+
+##How does funcation annotation coverage vary across genomes?
+looking at you H. med...
+```{r, message=F, warning=F}
+count(hbt.wg,COG_category) %>%
+  missingasS(.,"COG_category") %>%
+  freq.as.percent(., "hbt.percent") -> tmp
+
+count(hmed.wg, COG_category) %>%
+  missingasS(., "COG_category") %>%
+  freq.as.percent(., "hmed.percent")-> tmp2
+
+count(hvol.wg, COG_category) %>%
+  missingasS(., "COG_category") %>%
+  freq.as.percent(., "hvol.percent") -> tmp3
+
+full_join(tmp, tmp2) %>%
+  full_join(., tmp3) %>%
+  left_join(., cog.cats) -> NOG.freq.prot
+NOG.freq.prot
+
+count(hbt.wg, COG_category) %>%
+  all.domains(., missingasS = T) %>%
+  freq.as.percent(., "hbt.percent") -> tmp
+
+count(hmed.wg, COG_category) %>%
+  all.domains(., missingasS = T) %>%
+  freq.as.percent(., "hmed.percent") -> tmp2
+
+count(hvol.wg, COG_category) %>%
+  all.domains(., missingasS = T) %>%
+  freq.as.percent(., "hvol.percent") -> tmp3
+
+full_join(tmp, tmp2) %>%
+  full_join(., tmp3) %>%
+  left_join(., cog.cats) -> NOG.freq.domain
+NOG.freq.domain
+```
+
+%coverage of either whole prot or domain annotations... if I include NA as S or unknown function. 
+```{r}
+select_if(NOG.freq.prot, is.numeric) %>% colSums(., na.rm = T)
+select_if(NOG.freq.domain, is.numeric) %>% colSums(., na.rm = T)
+```
+
+long format:
+```{r}
+gather(NOG.freq.prot, key = species, value = percent, -COG_category, -Description) %>% drop_na(percent) -> NOG.freq.prot.long
+gather(NOG.freq.domain, key = species, value = percent, -COG_category, -Description) %>% drop_na(percent)  -> NOG.freq.domain.long
+```
+
+plot: 
+```{r}
+ggplot(NOG.freq.prot.long, aes(x=reorder(Description, desc(Description)), y=percent, fill = species)) +
+  geom_bar(stat="identity", position=position_dodge()) +
+  labs(y = "percent proteins in genome", 
+       x = NULL, 
+       title = "Protein Functions Across Species") +
+  scale_fill_manual(values = c("#440154FF", "#FDE725FF", "#21908CFF"), 
+                    labels = c("Hfx. volcanii", "Hbt. salinarum", "Hfx. medd"))+
+  coord_flip() + theme_classic() +
+  theme(legend.position="bottom", 
+        legend.title = element_blank(), 
+        legend.spacing.x = unit(0.2, 'cm')) -> cog.whole.prot
+
+ggplot(NOG.freq.domain.long, aes(x=reorder(Description, desc(Description)), y=percent, fill = species)) +
+  geom_bar(stat="identity", position=position_dodge()) +
+  labs(y = "percent proteins in genome", 
+       x = NULL, 
+       title = "Domain Functions Across Species") +
+  scale_fill_manual(values = c("#440154FF", "#FDE725FF", "#21908CFF"), 
+                    labels = c("Hfx. volcanii", "Hbt. salinarum", "Hfx. medd"))+
+  coord_flip() + theme_classic() +
+  theme(legend.position="bottom", 
+        legend.title = element_blank(), 
+        legend.spacing.x = unit(0.2, 'cm')) -> cog.prot.domains
+```
+
+```{r}
+cog.whole.prot
+cog.prot.domains
+```
+
+
+##Are any NOGs in the peaks list overrepresented?
+characterize the distribution of NOGs in each species genome. Perform hypergeometric test. 
+append COG cat to nog.lists and peak lists  
+```{r}
+hbt.wg$COG_category[is.na(hbt.wg$COG_category)] <- "S"
+hbt.wg$HMM_description[is.na(hbt.wg$HMM_description)] <- "function unknown, manually assigned by RKH"
+
+hmed.wg$COG_category[is.na(hmed.wg$COG_category)] <- "S"
+hmed.wg$HMM_description[is.na(hmed.wg$HMM_description)] <- "function unknown, manually assigned by RKH"
+
+hvol.wg$COG_category[is.na(hvol.wg$COG_category)] <- "S"
+hvol.wg$HMM_description[is.na(hvol.wg$HMM_description)] <- "function unknown, manually assigned by RKH"
+
+nogtest(hbt.peak[["query"]], hbt.wg, 0.05, cutoff = 1)
+nogtest(hmed.peak[["query"]], hmed.wg, 0.05, cutoff = 1)
+nogtest(hvol.peak[["query"]], hvol.wg, 0.05, cutoff = 1)
+```
+at the species level for total peaks, there is variation in enriched functions. Hbt is most different of the species, perhaps capturing biological and technical differences. Both hfx species are enriched for Q, or secondary metabolites. 
+
+
+##By region, test for enriched NOGs
+First, reassign NOGs missing function to category "s" for all species. Filter by species, get vector of accs for each overlap region, and test each region for enrichment  
+```{r}
+pvalue <- 1
+sig.nogs <- list()
+counter = 1
+
+#testing only against the genome of each species within the region of interest
+for (i in unique(peaks.by.region$species)){
+for (x in unique(peaks.by.region$overlap.region)){
+  peaks.by.region %>% filter(species == i) %>% filter(overlap.region == x)-> tmp
+  a <- tmp$query
+  genome.df <- eval(as.name(paste(i, "wg", sep = ".")))
+    genome.df$COG_category[is.na(genome.df$COG_category)] <- "S"
+    genome.df$HMM_description[is.na(genome.df$HMM_description)] <- "function unknown, manually assigned by RKH"
+  nogs <- nogtest(a, genome.df, pvalue, cutoff = 1)
+  if (nrow(nogs) == 0){
+    vec <- data.frame("species" = rep(i, 1),
+           "overlap.region" = rep(x, 1),
+           "COG_category" = NA,
+           "p.val" = NA,
+           "expected" = NA,
+           "count" = NA)
+  } else {
+    vec <- data.frame("species" = rep(i, nrow(nogs)),
+           "overlap.region" = rep(x, nrow(nogs)),
+           "COG_category" = rownames(nogs),
+           "p.val" = nogs$probability,
+           "expected" = nogs$expect,
+           "count" = nogs$count) 
+  }
+  
+  sig.nogs[[counter]] <- vec
+  counter <-  counter+1
+}}
+
+bind_rows(sig.nogs) %>% arrange(overlap.region) %>% drop_na(.) -> enriched.fxns
+
+#Would be useful is to test the inclusive sets (e.g. include the genes in  hbt or hmed genes in "hbt&hvol&hmed" when testing "hbt&hvol")
+
+sig.nogs <- list()
+counter = 1
+
+for (i in unique(peaks.by.region$species)){
+  genome.df <- eval(as.name(paste(i, "wg", sep = ".")))
+    genome.df$COG_category[is.na(genome.df$COG_category)] <- "S"
+    genome.df$HMM_description[is.na(genome.df$HMM_description)] <- "function unknown, manually assigned by RKH"
+  tmp <- unique(peaks.by.region$overlap.region)[str_detect(unique(peaks.by.region$overlap.region), i)]
+  
+  intersection <- peaks.by.region %>% filter(species == i) %>% filter(overlap.region == tmp[1])
+  pairwise1 <- peaks.by.region %>% filter(species == i) %>% 
+    filter(overlap.region == tmp[1]|overlap.region == tmp[2])
+  pairwise2 <- peaks.by.region %>% filter(species == i) %>% 
+    filter(overlap.region == tmp[1]|overlap.region == tmp[3]) 
+  union <- peaks.by.region %>% filter(species == i)
+  
+  nog1 <- nogtest(intersection$query, genome.df, pvalue, cutoff = 1)
+  #add species and region columns
+    nog1$species <- rep(i, nrow(nog1))
+    nog1$overlap.region <- rep(tmp[1], nrow(nog1))
+  nog2 <- nogtest(pairwise1$query, genome.df, pvalue, cutoff = 1)
+    nog2$species <- rep(i, nrow(nog2))
+    nog2$overlap.region <- rep(tmp[2], nrow(nog2))
+  nog3 <- nogtest(pairwise2$query, genome.df, pvalue, cutoff = 1)
+    nog3$species <- rep(i, nrow(nog3))
+    nog3$overlap.region <- rep(tmp[3], nrow(nog3))
+  nog4 <- nogtest(union$query, genome.df, pvalue, cutoff = 1)
+    nog4$species <- rep(i, nrow(nog4))
+    nog4$overlap.region <- rep(tmp[4], nrow(nog4))
+  #bring all df together
+  NOG <- join_all(list(nog1, nog2, nog3, nog4), type = "full")
+  sig.nogs[[counter]] <- NOG
+  counter <-  counter+1
+}
+
+bind_rows(sig.nogs) %>% arrange(overlap.region) -> enriched.fxns.cumm
+enriched.fxns.cumm <- enriched.fxns.cumm[, c("species", "overlap.region", "COG_category", "probability", "expected", "count")]
+
+#testing against the concatonated the genomes in the region of interest
+  #sig.nogs2 <- list()
+  #counter = 1
+  #for (i in unique(peaks.by.region$species)){
+  #for (x in unique(peaks.by.region$overlap.region)){
+  #  peaks.by.region %>% 
+  #    filter(species == i) %>% 
+  #    filter(overlap.region == x)-> tmp
+  #  query <- tmp$query
+  #  unlist(str_split(x, "&")) %>% 
+  #  paste(., "wg", sep = ".") -> genomes
+  #  print(genomes)
+  #  cat.genome <- data.frame()
+  #  for (y in 1:length(genomes)) {
+  #    df <- eval(as.name(genomes[y]))
+  #    df$COG_category[is.na(df$COG_category)] <- "S"
+  #    df$HMM_description[is.na(df$HMM_description)] <- "function unknown, manually assigned by RKH"
+  #    cat.genome <- bind_rows(cat.genome, name = df)
+  #  }
+  #  nogs <- nogtest(query, cat.genome, pvalue, cutoff = 1)
+  #  if (nrow(nogs) == 0){vec <- data.frame("species" = rep(i, 1),"overlap.region" = rep(x, 1),"COG_category" = NA,"p.val" = NA)} else {vec <- data.frame("species" = rep(i, nrow(nogs)), "overlap.region" = rep(x, nrow(nogs)),"COG_category" = rownames(nogs), "p.val" = nogs$probability) }
+  #  sig.nogs2[[counter]] <- vec
+  #  counter <-  counter+1
+  #}}
+#bind_rows(sig.nogs2) %>% arrange(overlap.region)
+
+#testing against a pan genome as reference for hypergeometric test (not by region)
+  #sig.nogs3 <- list()
+  #cat.genome <- rbind(hbt.wg, hmed.wg, hvol.wg)
+  #counter = 1
+  #for (i in unique(peaks.by.region$species)){
+  #for (x in unique(peaks.by.region$overlap.region)){
+  #  peaks.by.region %>% filter(species == i) %>% filter(overlap.region == x)-> tmp
+  #  a <- tmp$query
+  #  genome.df <- cat.genome
+  #    genome.df$COG_category[is.na(genome.df$COG_category)] <- "S"
+  #    genome.df$HMM_description[is.na(genome.df$HMM_description)] <- "function unknown, manually assigned by RKH"
+  #  nogs <- nogtest(a, genome.df, pvalue, cutoff = 1)
+  #  if (nrow(nogs) == 0){vec <- data.frame("species" = rep(i, 1),"overlap.region" = rep(x, 1),"COG_category" = NA, "p.val" = NA)} else {vec <- data.frame("species" = rep(i, nrow(nogs)),"overlap.region" = rep(x, nrow(nogs)),"COG_category" = rownames(nogs),"p.val" = nogs$probability)}
+  #  sig.nogs3[[counter]] <- vec
+  #  counter <-  counter+1
+  #}}
+#(bind_rows(sig.nogs3) %>% arrange(overlap.region))
+```
+There is a potential bug in phyper that is apparent when looking at the NOgs on teh intersection. I think it has to do with the fact that x = k.
+
+#compile final table:
+```{r}
+enriched2 <- enriched.fxns %>% dplyr::select(-c(expected, count))
+enriched3 <- enriched.fxns.cumm %>% dplyr::select(-c(expected, count))
+merge(peaks.by.region, enriched2, by = c("species", "overlap.region", "COG_category"), all.x = T) -> peaks.by.region2
+merge(peaks.by.region2, enriched3, by = c("species", "overlap.region", "COG_category"), all.x = T) -> peaks.by.region2
+
+colnames(peaks.by.region2)[8] <- "COG.pval.by.region"
+colnames(peaks.by.region2)[9] <- "COG.pval.cummulative"
+
+enriched3[enriched3$probability <= 0.05,]
+```
+
+##make venn diagrams, but change labels
+```{r}
+set.seed(1234)
+plot(eulerr::euler(unlist(overlaps[1,]), shape = "ellipse"), 
+     quantities = list(labels = c("J, V", "G, M, U", "N, Q, T", "L, N, Q", "K, M, O", "P, S", "E"), fontsize = 10, font = 2, fontfamily = "sans"), 
+     fills = viridis(3, option = "D"), alpha = 0.5,  
+     labels = list(labels = c("Hbt. salinarum", "Hfx. volcanii", "Hfx. mediterranei"), font = 4, fontsize = 13, fontfamily = "sans"),
+     legend = list(labels = c("J, K, L, V","M, U", "N, Q"), fontsize = 10, fontfamily = "sans"),
+     col = viridis(3, option = "D"), alpha = 0.5,
+     main = list(labels = "Significant COGs by region", fontsize = 13, fontfamily = "sans")
+     )
+set.seed(1234)
+plot(eulerr::euler(unlist(overlaps[1,]), shape = "ellipse"), 
+     quantities = list(labels = c("J, V, L, V", "M, U", "N, Q", "E, L, N, Q", "E, K, M, O", "E, P", "E"), fontsize = 10, font = 2, fontfamily = "sans"), 
+     fills = viridis(3, option = "D"), alpha = 0.5,  
+     labels = list(labels = c("Hbt. salinarum", "Hfx. volcanii", "Hfx. mediterranei"), font = 4, fontsize = 13, fontfamily = "sans"),
+     #legend = list(labels = c("J, K, L, V","M, U", "N, Q"), fontsize = 10, fontfamily = "sans"),
+     col = viridis(3, option = "D"), alpha = 0.5,
+     main = list(labels = "Significant COGs by cummulative region", fontsize = 13, fontfamily = "sans")
+     )
+set.seed(1234)
+plot(eulerr::euler(unlist(overlaps[1,]), shape = "ellipse"), 
+     quantities = list(fontsize = 10, font = 2), 
+     fills = viridis(3, option = "D"), alpha = 0.5,  
+     labels = list(labels = c("Hbt. salinarum", "Hfx. volcanii", "Hfx. mediterranei"), font = 4, fontsize = 13, fontfamily = "sans"),
+     legend = list(labels = c("160","121", "143"), fontsize = 10, fontfamily = "sans"),
+     col = viridis(3, option = "D"), alpha = 0.5,
+     main = list(labels = "Number of orthologous groups in RosR regulons", fontsize = 13, fontfamily = "sans")
+     )
+```
+
+##export enriched genes and figures:
+```{r}
+dir.create(file.path("../output/", "03_enrichments"))
+write_csv(peaks.by.region2, paste("../output/03_enrichments/", "putative_regulon_fxn.csv", sep = ""))
+write_csv(enriched.fxns, paste("../output/03_enrichments/", "enrichments_by_vennregion.csv", sep = ""))
+write_csv(enriched.fxns.cumm, paste("../output/03_enrichments/", "cummulative_enrichments_by_vennregion.csv", sep = ""))
+
+pdf("../output/figures/03_cogsbyprotdomains.pdf", paper = "a4r")
+plot(cog.prot.domains)
+dev.off()
+
+pdf("../output/figures/03_cogsbywholeprot.pdf", paper = "a4r")
+plot(cog.whole.prot)
+dev.off()
+
+set.seed(123)
+pdf(file=file.path("../output/figures", paste("03_","Venn_NOGs_fxns.pdf", sep = "")), paper = "a4r")
+plot(eulerr::euler(unlist(overlaps[1,]), shape = "ellipse"), 
+     quantities = list(labels = c("J, V", "G, M, U", "N, Q, T", "L, N, Q", "K, M, O", "P, S", "E"), fontsize = 10, font = 2, fontfamily = "sans"), 
+     fills = viridis(3, option = "D"), alpha = 0.5,  
+     labels = list(labels = c("Hbt. salinarum", "Hfx. volcanii", "Hfx. mediterranei"), font = 4, fontsize = 13, fontfamily = "sans"),
+     legend = list(labels = c("J, K, L, V","M, U", "N, Q"), fontsize = 10, fontfamily = "sans"),
+     col = viridis(3, option = "D"), alpha = 0.5,
+     main = list(labels = "Significant COGs by region", fontsize = 13, fontfamily = "sans")
+     )
+dev.off()
+
+set.seed(123)
+pdf(file=file.path("../output/figures", paste("03_","Venn_NOGs_fxns_cumm.pdf", sep = "")), paper = "a4r")
+plot(eulerr::euler(unlist(overlaps[1,]), shape = "ellipse"), 
+     quantities = list(labels = c("J, V, L, V", "M, U", "N, Q", "E, L, N, Q", "E, K, M, O", "E, P", "E"), fontsize = 10, font = 2, fontfamily = "sans"), 
+     fills = viridis(3, option = "D"), alpha = 0.5,  
+     labels = list(labels = c("Hbt. salinarum", "Hfx. volcanii", "Hfx. mediterranei"), font = 4, fontsize = 13, fontfamily = "sans"),
+     #legend = list(labels = c("J, K, L, V","M, U", "N, Q"), fontsize = 10, fontfamily = "sans"),
+     col = viridis(3, option = "D"), alpha = 0.5,
+     main = list(labels = "Significant COGs by cummulative region", fontsize = 13, fontfamily = "sans")
+     )
+dev.off()
+
+set.seed(123)
+pdf(file=file.path("../output/figures", paste("03_", "Venn_NOGs_nums.pdf", sep = "")), paper = "a4r")
+plot(eulerr::euler(unlist(overlaps[1,]), shape = "ellipse"), 
+     quantities = list(fontsize = 10, font = 2), 
+     fills = viridis(3, option = "D"), alpha = 0.5,  
+     labels = list(labels = c("Hbt. salinarum", "Hfx. volcanii", "Hfx. mediterranei"), font = 4, fontsize = 13, fontfamily = "sans"),
+     legend = list(labels = c("160","121", "143"), fontsize = 10, fontfamily = "sans"),
+     col = viridis(3, option = "D"), alpha = 0.5,
+     main = list(labels = "Number of orthologous groups in RosR regulons", fontsize = 13, fontfamily = "sans")
+     )
+dev.off()
+```
+
+###try making pie charts...
+of the base line peak tests
+```{r}
+colnames(cog.cats)[1] <- "COG_category"
+detach(package:plyr)
+library(plotly)
+```
+
+```{r}
+p <- hvol.wg %>%
+  group_by(COG_category) %>%
+  summarise(count = n()) %>% 
+  left_join(., cog.cats, by = "COG_category") %>%
+  plot_ly(labels = ~COG_category, values = ~count, textinfo = "percent",
+          text = ~Description, hoverinfo = "labels + text+ values") %>%
+  add_pie(hole = 0.5) %>%
+  layout(title = "COG categories of H. volcanii genome", showlegend = F,
+         xaxis = list(showgrid = F, zeroline = F, showticklabels = F),
+         yaxis = list(showgrid = F, zeroline = F, showticklabels = F)) 
+p
+
+p <- hvol.peak %>%
+  group_by(COG_category) %>%
+  summarise(count = n()) %>%
+  left_join(., cog.cats, by = "COG_category") %>%
+  plot_ly(labels = ~COG_category, values = ~count, textinfo = "percent", text = ~Description,
+          hoverinfo = "labels + text+ values") %>%
+  add_pie(hole = 0.5) %>%
+  layout(title = "COG categories of H. volcanii peaks", showlegend = F,
+         xaxis = list(showgrid = F, zeroline = F, showticklabels = F),
+         yaxis = list(showgrid = F, zeroline = F, showticklabels = F))
+
+p
+```
+Roughly 25-33% of the cogs for each species are either Null or S (unknown function)
+Next, perform hypergeometric test to see if any NNOGs are significanly represented in the shared peaks...
+might it also be informative to see that is over represented in one species peak list compared to the others?

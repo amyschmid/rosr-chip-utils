@@ -1,0 +1,238 @@
+---
+title: "Determining overlap across peak lists"
+output:
+  html_document:
+    df_print: paged
+---
+##Load libraries and custom functions
+```{r, message=FALSE}
+library(tidyverse); library(eulerr); library(viridis); library(cowplot)
+source("00_fxns_eggnog.R")
+```
+##Read in files
+```{r, message=FALSE}
+listtype <- "all4_"
+hvo.nog <- read_csv("../output/01_NOGfiles/hvol.all4.csv")
+hmed.nog <- read_csv("../output/01_NOGfiles/hmed.all4.csv")
+hbt.nog <- read_csv("../output/01_NOGfiles/hbt.all.csv")
+
+hbt.key <- read_csv("../../genomes_gffs/20181113_hbt_GCF_000006805.1_ASM680v1_genomic.gff.key.csv")
+hmed.key <- read_csv("../../genomes_gffs/20181113_hfxmed_GCF_000306765.2_ASM30676v2_genomic.gff.key.csv")
+hvo.key <- read_csv("../../genomes_gffs/20181113_hvol_GCF_000025685.1_ASM2568v1_genomic.gff.key.csv") 
+```
+
+```{r, results='hold'}
+#check that there aren't duplicate query entries
+any.dupes(hvo.nog, "query")
+any.dupes(hmed.nog, "query")
+any.dupes(hbt.nog, "query")
+```
+
+*Note on calculating overlaps: The difference between taking the intersect of the \*.nog datafames and the str_extract option is that the df method only considers complete matches. If there is a multi-domain protein with multiple @NOG entries, all of the domains will be considered a single entry to match. This is more resticitive and requires that all domains of a protein match in order to be considered having shared homology. The str_extract method is more permissive; if any part of the protein is in a shared NOG, it is included.* 
+
+__Numbers of NOGs conserved:__ There are 16 distinct orthologous NOGs groups shared between hvol and hmed. That corresponds to `r nrow(hvo.nog[hvo.nog$NOGs %in% hvhm.nog,])`out of `r nrow(hvo.nog)` hvol proteins and `r nrow(hmed.nog[hmed.nog$NOGs %in% hvhm.nog,])` out of `r nrow(hmed.nog)` of hmed proteins.  
+
+###Get proteins in the conserved NOG groups and merge into one DF
+```{r}
+hvhm.nog <- intersect(hvo.nog$NOGs, hmed.nog$NOGs)
+hbhvhm.nog <- intersect(hvhm.nog, hbt.nog$NOGs)
+
+union.hvo <- hvo.nog[hvo.nog$NOGs %in% hbhvhm.nog,]
+union.hvo$species <- rep("hvol", nrow(union.hvo))
+
+union.hmed <- hmed.nog[hmed.nog$NOGs %in% hbhvhm.nog,]
+union.hmed$species <- rep("hmed", nrow(union.hmed))
+
+union.hbt <- hbt.nog[hbt.nog$NOGs %in% hbhvhm.nog,]
+union.hbt$species <- rep("hbt", nrow(union.hbt))
+
+rbind(union.hvo, union.hmed, union.hbt) -> sharedNOGs
+sharedNOGs$overlap.region <- rep("hbt&hvol&hmed", nrow(sharedNOGs))
+```
+###proteins in pairwise groups (omitting union)
+```{r}
+na.omit(intersect(hvo.nog$NOGs, hbt.nog$NOGs)) -> hvhb.nog
+na.omit(intersect(hmed.nog$NOGs, hbt.nog$NOGs)) -> hmhb.nog
+
+#remove NOGs that are in the all union
+hvhb.nog <- hvhb.nog[hvhb.nog %ni% hbhvhm.nog]
+hmhb.nog <- hmhb.nog[hmhb.nog %ni% hbhvhm.nog]
+hvhm.nog <- hvhm.nog[hvhm.nog %ni% hbhvhm.nog]
+
+#build DFs
+shared.hvo <- hvo.nog[hvo.nog$NOGs %in% hvhb.nog,]
+shared.hvo$species <- rep("hvol", nrow(shared.hvo))
+shared.hbt <-hbt.nog[hbt.nog$NOGs %in% hvhb.nog,]
+shared.hbt$species <- rep("hbt", nrow(shared.hbt))
+rbind(shared.hbt,shared.hvo) %>% arrange(species) -> hvo.hbt
+hvo.hbt$overlap.region <- rep("hbt&hvol", nrow(hvo.hbt))
+
+shared.hmed <- hmed.nog[hmed.nog$NOGs %in% hmhb.nog,]
+shared.hmed$species <- rep("hmed", nrow(shared.hmed))
+shared.hbt <- hbt.nog[hbt.nog$NOGs %in% hmhb.nog,]
+shared.hbt$species <- rep("hbt", nrow(shared.hbt))
+rbind(shared.hbt,shared.hmed) %>% arrange(species) -> hmed.hbt
+hmed.hbt$overlap.region <- rep("hbt&hmed", nrow(hmed.hbt))
+
+shared.hvo <- hvo.nog[hvo.nog$NOGs %in% hvhm.nog,]
+shared.hvo$species <- rep("hvol", nrow(shared.hvo))
+shared.hmed <- hmed.nog[hmed.nog$NOGs %in% hvhm.nog,]
+shared.hmed$species <- rep("hmed", nrow(shared.hmed))
+rbind(shared.hvo,shared.hmed) %>% arrange(species) -> hvo.hmed
+hvo.hmed$overlap.region <- rep("hvol&hmed", nrow(hvo.hmed))
+```
+###create unique NOG protein lists
+```{r, collapse=TRUE}
+unique.hbt <- na.omit(hbt.nog[hbt.nog$NOGs %ni% hbhvhm.nog,]$NOGs) %>%
+  .[. %ni% hmhb.nog] %>% 
+  .[. %ni% hvhb.nog] %>% 
+  unique(.)
+
+unique.hmed <- na.omit(hmed.nog[hmed.nog$NOGs %ni% hbhvhm.nog,]$NOGs) %>%
+  .[. %ni% hmhb.nog] %>% 
+  .[. %ni% hvhm.nog] %>% 
+  unique(.)
+
+unique.hvo <- na.omit(hvo.nog[hvo.nog$NOGs %ni% hbhvhm.nog,]$NOGs) %>%
+  .[. %ni% hvhb.nog] %>% 
+  .[. %ni% hvhm.nog] %>% 
+  unique(.)
+
+#Check:
+length(unique.hbt) == length(na.omit(unique(hbt.nog$NOGs)))-length(hbhvhm.nog)- length(hmhb.nog)- length(hvhb.nog)
+length(unique.hvo) == length(na.omit(unique(hvo.nog$NOGs))) - length(hbhvhm.nog)- length(hvhm.nog)- length(hvhb.nog)
+length(unique.hmed) == length(na.omit(unique(hmed.nog$NOGs))) - length(hbhvhm.nog)- length(hvhm.nog)- length(hmhb.nog)
+
+unique.hbt <- hbt.nog[hbt.nog$NOGs %in% unique.hbt,]
+unique.hmed <- hmed.nog[hmed.nog$NOGs %in% unique.hmed,]
+unique.hvo<- hvo.nog[hvo.nog$NOGs %in% unique.hvo,]
+
+unique.hbt$species <- rep("hbt", nrow(unique.hbt))
+unique.hbt$overlap.region <- rep("hbt", nrow(unique.hbt))
+
+unique.hvo$species <- rep("hvol", nrow(unique.hvo))
+unique.hvo$overlap.region <- rep("hvol", nrow(unique.hvo))
+
+unique.hmed$species <- rep("hmed", nrow(unique.hmed))
+unique.hmed$overlap.region <- rep("hmed", nrow(unique.hmed))
+```
+
+##Build df of genes in peaks
+```{r, message=F, collapse=TRUE}
+overlap.regions <- rbind(sharedNOGs, hvo.hbt, hmed.hbt, hvo.hmed, unique.hbt, unique.hvo, unique.hmed) %>% arrange(species)
+
+#check that all peaks are accounted for
+nrow(hbt.nog)+nrow(hvo.nog)+nrow(hmed.nog) == nrow(overlap.regions)
+
+#add locus tags
+hbt.key$locus_tag[hbt.key$acc %in% filter(overlap.regions, overlap.regions$species == "hbt")$query] -> locus.tags
+locus.tags <- append(locus.tags, hmed.key$locus_tag[hmed.key$acc %in% filter(overlap.regions, overlap.regions$species == "hmed")$query])
+locus.tags <- append(locus.tags, hvo.key$locus_tag[hvo.key$acc %in% filter(overlap.regions, overlap.regions$species == "hvol")$query])
+
+#remove a gene name that has a duplicated acc in the whole genome file
+locus.tags <- locus.tags[!(locus.tags == "HVO_RS03480")]
+length(locus.tags)
+
+length(hbt.key$locus_tag[hbt.key$acc %in% filter(overlap.regions, overlap.regions$species == "hbt")$query]) == nrow(hbt.nog)
+length(hmed.key$locus_tag[hmed.key$acc %in% filter(overlap.regions, overlap.regions$species == "hmed")$query]) == nrow(hmed.nog)
+length(hvo.key$locus_tag[hvo.key$acc %in% filter(overlap.regions, overlap.regions$species == "hvol")$query])-1 == nrow(hvo.nog)
+```
+
+```{r}
+#reorder columns
+overlap.regions$locus.tag <- locus.tags
+(overlap.regions <- overlap.regions[c(7,1,5,6,3,2,4)])
+```
+
+##Overlap of NOGs
+```{r}
+NOG.overlap <- c("hbt&hvol&hmed"= length(hbhvhm.nog),
+                 "hbt&hmed" = length(hmhb.nog),
+                 "hbt&hvol" = length(hvhb.nog),
+                 "hvol&hmed" = length(hvhm.nog), 
+                 "hbt" = length(na.omit(unique(hbt.nog$NOGs)))-length(hbhvhm.nog)- length(hmhb.nog)- length(hvhb.nog),
+                 "hvol"= length(na.omit(unique(hvo.nog$NOGs))) - length(hbhvhm.nog)- length(hvhm.nog)- length(hvhb.nog),
+                 "hmed" = length(na.omit(unique(hmed.nog$NOGs))) - length(hbhvhm.nog)- length(hvhm.nog)- length(hmhb.nog))
+
+NOGs <- as.data.frame(t(as.data.frame(NOG.overlap)))
+```
+
+##Pairwise overlaps
+```{r, fig.height=7, fig.width=7}
+na.omit(intersect(hvo.nog$NOGs, hmed.nog$NOGs)) -> hfx.shared
+hfx.v <- hvo.nog$NOGs[hvo.nog$NOGs %ni% hfx.shared]
+hfx.m <- hmed.nog$NOGs[hmed.nog$NOGs %ni% hfx.shared]
+
+hfx.overlap <- c("hvol&hmed" = length(hfx.shared),
+                 "hvol" = length(hfx.v),
+                 "hmed" = length(hfx.m))
+
+plot(eulerr::venn(hfx.overlap, input = "disjoint"), 
+     quantities = T, 
+     labels = list(labels = c("Hfx. volcanii", "Hfx. mediterranei"), font = 4, fontsize = 9.5, fontfamily = "sans"),
+     fills = c("#440154FF", "#21908CFF", "#FDE725FF"), alpha = 0.5) -> a
+
+na.omit(intersect(hvo.nog$NOGs, hbt.nog$NOGs)) -> h.shared1
+hfx.v <- hvo.nog$NOGs[hvo.nog$NOGs %ni% h.shared1]
+hbt.s <- hbt.nog$NOGs[hbt.nog$NOGs %ni% h.shared1]
+
+h.overlap1 <- c("hvol&hbt" = length(h.shared1),
+                 "hvol" = length(hfx.v),
+                 "hbt" = length(hbt.s))
+
+plot(eulerr::venn(h.overlap1, input = "disjoint"), 
+     quantities = T, 
+     labels = list(labels = c("Hfx. volcanii", "Hbt. salinarum"), font = 4, fontsize = 9.5, fontfamily = "sans"),
+     fills = c("#440154FF", "#7C7B78FF", "#FDE725FF"), alpha = 0.5) -> b
+
+na.omit(intersect(hbt.nog$NOGs, hmed.nog$NOGs)) -> h.shared2
+hbt.s <- hbt.nog$NOGs[hbt.nog$NOGs %ni% h.shared2]
+hfx.m <- hmed.nog$NOGs[hmed.nog$NOGs %ni% h.shared2]
+
+h.overlap2 <- c("hmed&hbt" = length(h.shared2),
+                 "hmed" = length(hfx.m),
+                 "hbt" = length(hbt.s))
+
+plot(eulerr::venn(h.overlap2, input = "disjoint"), 
+     quantities = T, 
+     labels = list(labels = c("Hfx. mediterranei", "Hbt. salinarum"), font = 4, fontsize = 9.5, fontfamily = "sans"),
+     fills = c("#21908CFF", "#7C7B78FF", "#FDE725FF"), alpha = 0.5) -> c
+
+title <- title <- ggdraw() + 
+  draw_label("Pairwise overlap of orthologous groups", fontfamily = "sans", size = 12,
+             fontface = 'bold')
+cowplot::plot_grid(b,c) -> d
+cowplot::plot_grid(title, a,d, labels = c(NA, "A", "B"), nrow = 3, rel_heights = c(0.1,0.8,1)) -> pairwise.NOGs
+plot(pairwise.NOGs)
+```
+
+##write out files and figures
+```{r, results='hide'}
+pdf(file=file.path("../output/figures", paste("02", listtype, "pairwise_NOGs.pdf", sep = "")), paper = "a4r")
+plot(pairwise.NOGs)
+dev.off()
+
+dir.create(file.path("../output/", "02_overlaps"))
+write_csv(overlap.regions, file.path("../output/02_overlaps", paste(listtype, "peaklist_overlap_regions.csv", sep = "")))
+write_csv(NOGs, file.path("../output/02_overlaps", paste(listtype, "obsNOGcounts.csv", sep = "")))
+```
+
+##export sequences for MSA
+```{r}
+#sharedNOGs$species
+#setwd("../output")
+#getseqs(sharedNOGs$query,paste(Sys.Date(),listtype,"sharedproteins_seqs.faa", sep = ""))
+```
+
+##final counts
+since the number of proteins associated with each NOG varies in the species, I have done this by NOG, and also by counts protein  
+```{r}
+unique.hbt$species <- rep("hbt", nrow(unique.hbt))
+unique.hmed$species <- rep("hmed", nrow(unique.hmed))
+unique.hvo$species <- rep("hvol", nrow(unique.hvo))
+unique.all <- rbind(unique.hbt, unique.hmed, unique.hvo) %>% arrange(species)
+
+#how does this correlate with genomes size?
+addmargins(table(sharedNOGs$COG_category,sharedNOGs$species))
+addmargins(table(unique.all$COG_category,unique.all$species))
+```

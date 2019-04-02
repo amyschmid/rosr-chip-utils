@@ -1,0 +1,292 @@
+---
+title: "eggNOG with random sampling"
+output: html_notebook
+---
+##load files
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse); library(grid); library(cowplot)
+
+listtype <- "_all1_"
+peaksbyregion <- read_csv("../output/02_overlaps/all1_peaklist_overlap_regions.csv")
+obs <- read_csv("../output/02_overlaps/all1_obsNOGcounts.csv")
+intersects <- obs$`hbt&hvol&hmed`
+
+hbt.peaks.nog <- read_csv("../output/01_NOGfiles/hbt.all.csv")
+hmed.peaks.nog <- read_csv("../output/01_NOGfiles/hmed.all1.csv")
+hvol.peaks.nog <- read_csv("../output/01_NOGfiles/hvol.all1.csv")
+
+hbt.nog <- read_csv("../../genomes_gffs/20181113_hbt_GCF_000006805.1_ASM680v1_GETNOG.csv")
+hmed.nog <- read_csv("../../genomes_gffs/20181113_hfxmed_GCF_000306765.2_ASM30676v2_GETNOG.csv")
+hvol.nog <- read_csv("../../genomes_gffs/20181113_hvol_GCF_000025685.1_ASM2568v1_GETNOG.csv")
+```
+##functions and descriptions:
+```{r}
+source("00_fxns_eggnog.R")
+#any.dupes <- function(x,colname)
+  #checks column for duplicates and returns the number of duplicates if present.
+
+#getNOGs <- function(x, colname, sep = " ", factors = FALSE) 
+  #splits eggNOGs column into individual columns... if multiple entries in NOG database per protein, returns cat version
+
+#sample.NOGs <- function(x, c, samples, nog = "NOGs", seed = TRUE) 
+  #x is a vector of df names corresponding to getNOG outputs of each species (whole genome)
+  #c is a vector of the number unique NOGs in each peak.list
+  #assumes x and c are in same order
+  #samples = the number of time to sample
+  #function randomly samples NOGs in genome with replacement until the number of samples NOGs for each species is equal to the number of unique NOGs observed in peak lists. function then calculates/returns overlap. sample.unique and sample.shared functions represent altered distributions to sample from
+
+#sample.unique.NOGs <- function(x, c, samples, nog = "NOGs", seed = TRUE)
+  #x is a vector of df names corresponding to GETNOG outputs of each species (whole genome)
+  #c is a vector of the number unique NOGs in each peak.list
+  #assumes x and c are in same order
+  #samples = the number of times to sample
+  #function randomly samples unique NOGs from genomes without replacement and calculates/returns the overlap in DF format.
+
+#sample.shared.NOGs <- function(x, c, samples, nog = "NOGs", seed = TRUE)
+  #x is a vector of df names corresponding to GETNOG outputs of each species (whole genome)
+  #c is a vector of the number unique NOGs in each peak.list
+  #assumes x and c are in same order
+  #samples = the number of times to sample
+  #function randomly samples from only NOGs that are conserved in all three species without replacement and calculates/returns the overlap in DF format.
+```
+
+###function Notes/Development  
+Issue with resampling? I'm getting all the same numbers. When I look at the actual
+list of NOGs, its different orderings of the same NOGs... It looks as though I am definately sampling different COGs with each sample. Currently, I am sampling the same number of genes for each genome. --> SOLVED BY SETTING SAMPLE(REPLACE = TRUE)
+
+The while loop was sligtly faster with scaling than the repeat loop. (~0.3 seconds faster when sampling 1000 times)
+
+since there are actually some NOGs with a substantial number of proteins associated with them, it might be useful to add a column containing the total number of genes in the union... OR to rewrite the function to return a list of lists (that way I can refer back for NOGs), and then pass that onto a calculate overlap function...
+
+sample.genome.NOGs currently doesn't return the corresponding number of genes in each NOGs... it's good to keep in mind that low NOGs doesn't always translate to low number of genes. I can get a better feel for this by plotting or creating a tabel of duplicate NOGs for each genomes. 
+
+HOW OFTEN DO I SAMPLE THE SAME GENE? I SHOULD CONTROL FOR THAT! Sampling the same gene allows for over representation of NOGs in indiv sp sample, and also reduces the likelihood of finding a shared NOG b/c it limits NOG diversity within a species... except it doesn't becasue I am sampling *until* I reach a number of unique NOGs.... so would only be an issue if i decide later to normalize the shared NOGs by the total NOGs sampled... 
+
+##Make dataframes and variables for function
+check how many of the protein are duplicates in the eggNOG results. Each were supplied all refseq annotated proteins for hvol hmed and hbt.
+```{r, results='hold'}
+any.dupes(hbt.nog, "query")
+any.dupes(hmed.nog, "query")
+any.dupes(hvol.nog, "query")
+```
+
+make getNOGs dataframes and vector of peak numbers. Doing this at the same time ensures that the order of the vectors are complimentary. Also generate the number of unique NOGS in peaks for sampling functions. 
+  *turn this into function one day?*
+```{r, warning=FALSE}
+genomes <- c("hbt", "hmed", "hvol")
+
+nog.list.names <- vector()          #vector of df object names
+peak.nog.list.names <- vector()     #vector of df object names
+peak.list <- vector()               #numbers of genes
+peak.nog.list <- vector()           #numbers of NOGs in peak list
+
+for (i in 1:length(genomes)) {
+  nog.list.names <- append(nog.list.names, paste(genomes[i], ".nog", sep = ""))
+  peak.nog.list.names <- append(peak.nog.list.names, paste(genomes[i], ".peaks.nog", sep = ""))
+  
+  peak.list <- append(peak.list, nrow(eval(as.name(paste(genomes[i], ".peaks.nog", sep = "")))))
+  names(peak.list)[i] <- paste(genomes[i])
+  
+  peak.nog.list <- append(peak.nog.list, length(na.omit(unique(eval(as.name(peak.nog.list.names[i]))[["NOGs"]]))))
+  names(peak.nog.list)[i] <- paste(genomes[i])
+}
+
+nog.list.names
+peak.nog.list.names
+peak.list 
+peak.nog.list
+```
+
+##what is the distribution in NOG frequency across the genomes?
+```{r}
+table(duplicated(hvol.nog$NOGs))
+as.data.frame(table(hvol.nog$NOGs)) %>% 
+  dplyr::arrange(desc(Freq)) -> hvo.nog.freq
+
+table(duplicated(hmed.nog$NOGs))
+as.data.frame(table(hmed.nog$NOGs)) %>% 
+  dplyr::arrange(desc(Freq))-> hmed.nog.freq
+
+table(duplicated(hbt.nog$NOGs))
+as.data.frame(table(hbt.nog$NOGs)) %>% 
+  dplyr::arrange(desc(Freq)) -> hbt.nog.freq
+
+(dplyr::rename(hvo.nog.freq, nog = Var1, hvo = Freq)-> hvo.nog.freq)
+(dplyr::rename(hmed.nog.freq, nog = Var1, hmed = Freq)-> hmed.nog.freq)
+(dplyr::rename(hbt.nog.freq, nog = Var1, hbt = Freq)-> hbt.nog.freq)
+```
+These table show that there is a distrubution of NOG frequencies across each genomes. Visually looking at the list, it appears that a lot of the more common noGs are shared... can I use shannon index / alpha and beta diversity to interrogate/characterize the number and frequency of NOGs between genomes?
+
+Make histogram to compare genomes:
+```{r}
+ggplot()+
+  geom_histogram(aes(x=hvo.nog.freq$hvo, fill = "#21908CFF"), bins = 36) +
+  geom_histogram(aes(x=hmed.nog.freq$hmed, fill = "#FDE725FF"), bins = 36) +
+  geom_histogram(aes(x=hbt.nog.freq$hbt, fill = "#440154FF"), bins = 36) +
+  xlim(0,36) + 
+  labs(title="Frequency of duplicate NOGs within each species", x = "Frequency", y = "NOG counts")+
+  scale_fill_manual(
+    name = NULL, 
+    guide = "legend", 
+    values = c("#21908CFF" = "#21908CFF", "#FDE725FF" = "#FDE725FF",  "#440154FF" = "#440154FF"), 
+    labels = c("Hfx. volcanii", "Hbt. salinarum", "Hfx. mediterranei")) +
+  scale_y_continuous(breaks = c(0,1,2,3,5,10,30,100,300,1000, 1500), trans="log1p", expand=c(0,0)) +
+  scale_x_continuous(breaks = c(1,2,3,4,5,10,15,20,25,30))+
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = c(0.7, 0.3),
+        legend.text = element_text(face = "italic")) -> freq.plot
+```
+
+##Generate random samples 
+Generate the sampled dfs for each genome based on a vector of NOG amounts. 4 different sampling schemes:
+```{r}
+NOG.samples <- sample.NOGs(nog.list.names, peak.nog.list, 5000, list.NOGs = T)
+NOG.unique.samples <- sample.unique.NOGs(nog.list.names, peak.nog.list, 5000, list.NOGs = T)
+NOG.shared.only.samples <- sample.shared.NOGs(nog.list.names, peak.nog.list, 5000, list.NOGs = T)
+```
+
+###max/min of sampled overlaps
+```{r}
+mean(NOG.samples$`hbt&hvol&hmed`)
+mean(NOG.unique.samples$`hbt&hvol&hmed`)
+mean(NOG.shared.only.samples$`hbt&hvol&hmed`)
+
+colMax(NOG.samples[-8])
+colMax(NOG.unique.samples[-8])
+colMax(NOG.shared.only.samples[-8])
+
+mean(NOG.samples$`hbt&hmed`)
+mean(NOG.shared.only.samples$`hbt&hmed`)
+
+mean(NOG.samples$`hbt&hvol`)
+mean(NOG.shared.only.samples$`hbt&hvol`)
+
+mean(NOG.samples$`hvol&hmed`)
+mean(NOG.shared.only.samples$`hbt&hvol`)
+```
+Intersting that the overall union of sampling only from shared NOGs isn't higher than observed, but the pairwise overlaps is greater. 
+
+See the range of overlaps, and how the mean overlap shifts with increasing sample size... maybe make one of those plots that shows the mean converging/plateauing?
+
+make histograms
+```{r, fig.height=10, fig.width=8}
+ggplot() +
+  geom_histogram(aes(x= NOG.samples$`hbt&hvol&hmed`), bins = 10, alpha = 0.8) +
+  geom_vline(aes(xintercept=intersects), color = "purple", linetype = "dashed", size = 1) +
+  xlab("Intesection between Hbt. sal, Hfx. med, and Hfx. vol \nN = 5000 from all NOGs") +
+  theme_cowplot() -> plot.sampled
+
+ggplot() +
+  geom_histogram(aes(x= NOG.shared.only.samples$`hbt&hvol&hmed`), bins = 10, alpha = 0.8) +
+  geom_vline(aes(xintercept=intersects), color = "purple", linetype = "dashed", size = 1) +
+  xlab("Intesection between Hbt. sal, Hfx. med, and Hfx. vol \nN = 5000 from only shared NOGs") +
+  theme_cowplot() -> plot.shared
+
+ggplot() +
+  geom_histogram(aes(x= NOG.unique.samples$`hbt&hvol&hmed`), bins = 10, alpha = 0.8) +
+  geom_vline(aes(xintercept=intersects), color = "purple", linetype = "dashed", size = 1) +
+  xlab("Intesection between Hbt. sal, Hfx. med, and Hfx. vol \nN = 5000 from only unique NOGs") +
+  theme_cowplot() -> plot.unique
+
+plot_grid(plot.sampled, plot.shared, plot.unique, ncol = 1)
+```
+
+calc p-value and correct for multiple testing
+```{r}
+(sampled.diff.obs <- t.test(NOG.samples$`hbt&hvol&hmed`, alternative = "less", mu = 8, var.equal = T))
+(sampled.diff.shared <- t.test(NOG.samples$`hbt&hvol&hmed`, NOG.shared.only.samples$`hbt&hvol&hmed`, alternative = "greater"))
+(shared.diff.unique <- t.test(NOG.shared.only.samples$`hbt&hvol&hmed`, NOG.unique.samples$`hbt&hvol&hmed`, alternative = "greater"))
+
+#approximate p-val
+(p.approx1 <- nrow(NOG.samples[NOG.samples$`hbt&hvol&hmed` >= intersects,])/nrow(NOG.samples)) #pval of getting more than 8 NOGs by chance
+(p.approx2 <- nrow(NOG.shared.only.samples[NOG.shared.only.samples$`hbt&hvol&hmed` >= 8,])/nrow(NOG.shared.only.samples))
+(p.approx3 <- nrow(NOG.unique.samples[NOG.unique.samples$`hbt&hvol&hmed` >= 8,])/nrow(NOG.unique.samples))
+```
+
+##are the shared.only and randomly sample distriductions different from another?
+```{r, collapse=TRUE}
+#test for normality
+shapiro.test(NOG.samples$`hbt&hvol&hmed`); shapiro.test(NOG.shared.only.samples$`hbt&hvol&hmed`)
+wilcox.test(NOG.samples$`hbt&hvol&hmed`, NOG.shared.only.samples$`hbt&hvol&hmed`)
+```
+Samples are not-normal... and the distributions are significantly different frone one another. 
+
+Now, test each random sample region of venn diagram for p-value and store as vector
+```{r}
+pval.approx <- vector()
+pval.ttest <- vector()
+
+for (i in 1:ncol(obs)){
+  pval.approx[i] <- nrow(NOG.samples[NOG.samples[i] >= obs[[i]],])/nrow(NOG.samples)
+  t <- t.test(NOG.samples[i], mu = obs[[i]], alternative = "less") 
+  pval.ttest[i] <-  p.adjust(t$p.value, method = "fdr", n = nrow(NOG.samples)) #correct for multiple testing
+}
+
+#if p-val is less than 0.05, it suggests that the true mean is less than what was observed in our ChIP-data
+pval.approx
+pval.ttest
+```
+
+Build final output table:
+```{r}
+overlap.table <- rownames_to_column(as.data.frame(t(obs)))
+colnames(overlap.table) <- c("overlap.region", "number.NOGs")
+
+overlap.table$approx.pval <- pval.approx
+overlap.table$ttest.padj <- pval.ttest
+
+#filter by species
+peaksbyregion %>% 
+  group_by(species) %>%
+  count(overlap.region) %>%
+  rename(peaks = n) -> prot.counts
+  
+prot.counts %>% filter(species == "hbt") -> tmp
+prot.counts %>% filter(species == "hmed") -> tmp2
+prot.counts %>% filter(species == "hvol") -> tmp3
+
+(merge(overlap.table, tmp[-1], by = "overlap.region", all.x = T) %>%
+  rename(hbt.peaks = peaks) %>%
+  merge(., tmp2[-1], by = "overlap.region", all.x = T) %>%
+  rename(hmed.peaks = peaks) %>%
+  merge(., tmp3[-1], by = "overlap.region", all.x = T) %>%
+  rename(hvol.peaks = peaks) -> overlap.table)
+```
+Currently, not sure what statiscial test is appropriate. If I did simulations for build an expected distribution, I know that is it appropraite to approximate my p-value. I'm not sure if its appropriate to correct that for multiple testing, or even if my ttest is ok. My ttests assume that if there was no enrichment, the observed value of NOGs in the union would be close to the mean.
+
+###create DF of sampled shared NOGs and Write out .csv for statistical analysis
+```{r}
+#create output directory:
+dir.create(file.path("../output/", "04_sampling"))
+
+#list DF names for the dfs containing random samples
+samples <- c("NOG.samples", "NOG.shared.only.samples", "NOG.unique.samples")
+
+for (i in samples){
+  max.NOGs <- colMax(eval(as.name(i))[1])[[1]]
+  intersection.NOGs <- list()
+  for (x in 1:nrow(eval(as.name(i)))) {
+    num.NAs <- max.NOGs - length(eval(as.name(i))[["intersection.NOGs"]][[x]])
+    vec.NA <- rep(NA, num.NAs)
+    a <-  append(eval(as.name(i))[["intersection.NOGs"]][[x]], vec.NA)
+    intersection.NOGs[[x]] <- a
+  }
+  intersection.NOGs <- as.data.frame(do.call(rbind, intersection.NOGs), stringsAsFactors = F)
+  
+  out.name <- paste(listtype, "intersectionNOGs.", i, ".csv",sep = "")
+  out.name2 <- paste(listtype, "NOGoverlaps.", i, ".csv",sep = "")
+  
+  write_csv(intersection.NOGs, paste("../output/04_sampling/", out.name, sep = ""))
+  write_csv(eval(as.name(i))[-8], paste("../output/04_sampling/", out.name2, sep = ""))
+}
+
+pdf(file=file.path("../output/figures", paste("04", listtype,"sampling_histograms.pdf", sep = "")), paper = "a4")
+plot_grid(plot.sampled, plot.shared, plot.unique, ncol = 1)
+dev.off()
+
+pdf(file=file.path("../output/figures", paste("04", listtype, "dupNOGfreq.pdf", sep = "")), paper = "a4r")
+print(freq.plot)
+dev.off()
+
+write_csv(overlap.table, paste("../output/04_sampling/", listtype, "overlap_table.csv", sep = ""))
+```

@@ -1,0 +1,82 @@
+---
+title: "Subset whole genome eggNOG output for ChIP peaks"
+output: html_notebook
+---
+
+This notebook parses eggNOG output files and appends COG categories to the dataframe for later use with hypergeometric tests. 
+```{r}
+library(tidyverse)
+library(reutils)
+source("00_fxns_eggnog.R")
+
+#whole genome eggnog results
+hbt.wg <- read_csv("../../genomes_gffs/20181113_hbt_GCF_000006805.1_ASM680v1_GETNOG.csv")
+hmed.wg <- read_csv("../../genomes_gffs/20181113_hfxmed_GCF_000306765.2_ASM30676v2_GETNOG.csv")
+hvol.wg <- read_csv("../../genomes_gffs/20181113_hvol_GCF_000025685.1_ASM2568v1_GETNOG.csv")
+
+#load in key files:
+hbt.key <- read_csv("../../genomes_gffs/20181113_hbt_GCF_000006805.1_ASM680v1_genomic.gff.key.csv")
+  hbt.key$old_locus_tag <- gsub("\\,.*", "", hbt.key$old_locus_tag)
+hmed.key <- read_csv("../../genomes_gffs/20181113_hfxmed_GCF_000306765.2_ASM30676v2_genomic.gff.key.csv")
+hvol.key <- read_csv("../../genomes_gffs/20181113_hvol_GCF_000025685.1_ASM2568v1_genomic.gff.key.csv")
+
+#gene lists
+hm_allreg_1rep <- read_tsv("../data/peaklists/Hm_all_regions_1rep.txt", col_names = "Hmed.peaks")
+  hm_allreg_1rep$Hmed.peaks <- gsub("HVX_", "HFX_", hm_allreg_1rep$Hmed.peaks) #correct a typo
+hm_allreg_4rep <- read_tsv("../data/peaklists/Hm_all_regions_4reps.txt", col_names = "Hmed.peaks")
+hm_pro_1rep <- read_tsv("../data/peaklists/Hm_promoter_1rep.txt", col_names = "Hmed.peaks")
+hm_pro_4rep <- read_tsv("../data/peaklists/Hm_promoter_4reps.txt", col_names = "Hmed.peaks")
+
+hv_allreg_1rep <- read_tsv("../data/peaklists/Hv_all_regions_1rep.txt", col_names = "Hvol.peaks")
+hv_allreg_4rep <- read_tsv("../data/peaklists/Hv_all_regions_4reps.txt", col_names = "Hvol.peaks")
+hv_pro_1rep <- read_tsv("../data/peaklists/Hv_promoter_1rep.txt", col_names = "Hvol.peaks")
+hv_pro_4rep <- read_tsv("../data/peaklists/Hv_promoter_4reps.txt", col_names = "Hvol.peaks")
+
+hbt_peak_all <- read_csv("../data/peaklists/tonner2015_predictedRosR.csv")
+hbt_peak_pro <- read_csv("../data/peaklists/tonner2015_upstream_anytime.csv")
+```
+
+get accs for peaks
+```{r}
+hbt.peak <- hbt.key$acc[hbt.key$old_locus_tag %in% hbt_peak_all$ORF_Name]
+hbt.peak.pro <- hbt.key$acc[hbt.key$old_locus_tag %in% hbt_peak_pro$gene]
+
+hmed.peak <- hmed.key$acc[hmed.key$locus_tag %in% hm_allreg_1rep$Hmed.peaks]
+  length(hmed.peak); length(hm_allreg_1rep$Hmed.peaks)
+hmed.peak.4rep <- hmed.key$acc[hmed.key$locus_tag %in% hm_allreg_4rep$Hmed.peaks]
+hmed.peak.1prep <- hmed.key$acc[hmed.key$locus_tag %in% hm_pro_1rep$Hmed.peaks]
+hmed.peak.4prep <- hmed.key$acc[hmed.key$locus_tag %in% hm_pro_4rep$Hmed.peaks]
+
+
+hvol.peak <- hvol.key$acc[hvol.key$locus_tag %in% hv_allreg_1rep$Hvol.peaks]
+  length(hvol.peak); length(hv_allreg_1rep$Hvol.peaks)
+hvol.peak.4rep <- hvol.key$acc[hvol.key$locus_tag %in% hv_allreg_4rep$Hvol.peaks]
+hvol.peak.1prep <- hvol.key$acc[hvol.key$locus_tag %in% hv_pro_1rep$Hvol.peaks]
+hvol.peak.4prep <- hvol.key$acc[hvol.key$locus_tag %in% hv_pro_4rep$Hvol.peaks]
+```
+
+Subset whole genome getNOG output and build file for each peak list
+```{r}
+hbt.all <- hbt.wg[hbt.wg$query %in% hbt.peak,]
+hbt.promoter <- hbt.wg[hbt.wg$query %in% hbt.peak.pro,]
+
+hvol.all1 <- hvol.wg[hvol.wg$query %in% hvol.peak,]
+hvol.all4 <- hvol.wg[hvol.wg$query %in% hvol.peak.4rep,]
+hvol.promoter1 <- hvol.wg[hvol.wg$query %in% hvol.peak.1prep,]
+hvol.promoter4 <- hvol.wg[hvol.wg$query %in% hvol.peak.4prep,]
+
+hmed.all1 <- hmed.wg[hmed.wg$query %in% hmed.peak,]
+hmed.all4 <- hmed.wg[hmed.wg$query %in% hmed.peak.4rep,]
+hmed.promoter1 <- hmed.wg[hmed.wg$query %in% hmed.peak.1prep,]
+hmed.promoter4 <- hmed.wg[hmed.wg$query %in% hmed.peak.4prep,]
+
+```
+
+Write out files
+```{r}
+filelist <- c("hbt.all", "hbt.promoter", "hvol.all1", "hvol.all4", "hvol.promoter1", "hvol.promoter4", "hmed.all1", "hmed.all4", "hmed.promoter1", "hmed.promoter4")
+
+for (i in 1:length(filelist)) {
+  write_csv(eval(as.name(filelist[i])), paste("../output/01_NOGfiles/", filelist[i], ".csv", sep = ""))
+}
+```
