@@ -1,0 +1,43 @@
+---
+title: "Protein sequences of Halobacterium RosR regulon"
+output: html_notebook
+---
+```{r}
+library(tidyverse)
+library(reutils)
+
+source("fxns_eggnog.R")
+
+#adapted from Tonner et.al 2015, supplemental table 2
+hbt <- read_csv("../data/peaklists/tonner2015_predictedRosR.csv")
+
+#annotation key file (parsegff.Rmd output)
+hbt.key <- read_csv("../../genomes_gffs/20181113_hbt_GCF_000006805.1_ASM680v1_genomic.gff.key.csv")
+
+#genes that in at least one conditon have a peak in the promotor region
+upstream.anytime <- read_csv("../data/peaklists/tonner2015_upstream_anytime.csv")
+```
+
+```{r}
+#keeps only the first entry in old_locys_column if any protein has multiple depreciated locus tags. 
+hbt.key$old_locus_tag <- gsub("\\,.*", "", hbt.key$old_locus_tag)
+hbt.key; hbt; upstream.anytime
+```
+
+get acc numbers for each locus
+```{r}
+#new df that contains all infor stored in key file
+peaks <- hbt.key[hbt.key$old_locus_tag %in% hbt$ORF_Name,]
+upstream.peaks <- hbt.key[hbt.key$old_locus_tag %in% upstream.anytime$gene,]
+
+#orf names that have been depreciated in updated genome annotation
+hbt$ORF_Name[hbt$ORF_Name %ni% hbt.key$old_locus_tag]
+upstream.anytime$gene[upstream.anytime$gene %ni% hbt.key$old_locus_tag]
+```
+
+export sequence file for MSA?
+```{r}
+setwd("../data/")
+write_csv(upstream.peaks, paste(Sys.Date(), "hbt_peaks_upstream.csv", sep = ""))
+getseqs(peaks$acc, "hbt_peaks_seqs.faa")
+```
