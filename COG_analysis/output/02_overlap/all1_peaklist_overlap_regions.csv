@@ -1,0 +1,490 @@
+locus.tag,query,species,overlap.region,COG_category,NOGs,HMM_description
+VNG_RS00060,WP_010901984.1,hbt,hbt&hvol&hmed,Q,COG0500@NOG,Inherit from COG: Methyltransferase
+VNG_RS00065,WP_010902112.1,hbt,hbt&hvol&hmed,L,COG0582@NOG,Phage integrase family
+VNG_RS13185,WP_010902508.1,hbt,hbt&hvol&hmed,K,COG1405@NOG,Stabilizes TBP binding to an archaeal box-A promoter. Also responsible for recruiting RNA polymerase II to the pre- initiation complex (DNA-TBP-TFIIB) (By similarity)
+VNG_RS00135,WP_010902759.1,hbt,hbt&hvol&hmed,Q,COG0500@NOG,"methyltransferase, fkbm family"
+VNG_RS00140,WP_010902763.1,hbt,hbt&hvol&hmed,Q,COG0500@NOG,FkbM family methyltransferase
+VNG_RS00145,WP_010903200.1,hbt,hbt&hvol&hmed,E,COG0147@NOG,anthranilate synthase component I
+VNG_RS00165,WP_010903201.1,hbt,hbt&hvol&hmed,E,COG0135@NOG,N-(5'phosphoribosyl)anthranilate isomerase
+VNG_RS00175,WP_010903202.1,hbt,hbt&hvol&hmed,E,COG0547@NOG,anthranilate phosphoribosyltransferase (EC 2.4.2.18)
+VNG_RS13205,WP_010904037.1,hbt,hbt&hvol&hmed,L,COG1474@NOG,orc1 cdc6 family replication initiation protein
+VNG_RS13210,WP_010904146.1,hbt,hbt&hvol&hmed,T,COG1520@NOG,Pyrrolo-quinoline quinone
+VNG_RS00195,WP_010904194.1,hbt,hbt&hvol&hmed,L,COG1474@NOG,Involved in regulation of DNA replication (By similarity)
+VNG_RS00210,WP_012289079.1,hbt,hbt&hvol&hmed,L,COG1474@NOG,Involved in regulation of DNA replication (By similarity)
+VNG_RS00235,WP_012289619.1,hbt,hbt&hvol&hmed,L,COG1474@NOG,Involved in regulation of DNA replication (By similarity)
+VNG_RS00240,WP_010901992.1,hbt,hbt&hvol,NA,0YCQD@NOG,NA
+VNG_RS00415,WP_010902699.1,hbt,hbt&hvol,NA,111T3@NOG,NA
+VNG_RS00420,WP_010902719.1,hbt,hbt&hvol,N,COG1681@NOG,Flagellin
+VNG_RS00425,WP_010903157.1,hbt,hbt&hvol,S,COG1479@NOG,Protein of unknown function DUF262
+VNG_RS00430,WP_010903199.1,hbt,hbt&hvol,E,COG0512@NOG,anthranilate synthase
+VNG_RS00525,WP_010903452.1,hbt,hbt&hvol,K,COG1349@NOG,Inherit from arCOG: Phage PhiH1 repressor protein
+VNG_RS00745,WP_010903541.1,hbt,hbt&hvol,K,COG1522@NOG,AsnC family transcriptional regulator
+VNG_RS00750,WP_010904064.1,hbt,hbt&hvol,T,COG0589@NOG,UspA domain protein
+VNG_RS00790,WP_010904158.1,hbt,hbt&hvol,C,COG1757@NOG,Na H antiporter
+VNG_RS00795,WP_012289235.1,hbt,hbt&hvol,NA,0YYDE@NOG,NA
+VNG_RS00835,WP_012289608.1,hbt,hbt&hvol,L,11UJV@NOG,Transposase (ISH5)
+VNG_RS00870,WP_010902106.1,hbt,hbt&hmed,NA,0YSDR@NOG,NA
+VNG_RS13265,WP_010902113.1,hbt,hbt&hmed,S,0YQVI@NOG,Pfam:TRF2
+VNG_RS00880,WP_010902147.1,hbt,hbt&hmed,K,COG1695@NOG,regulator
+VNG_RS00885,WP_010902522.1,hbt,hbt&hmed,K,COG1695@NOG,Transcriptional regulator
+VNG_RS01050,WP_010903076.1,hbt,hbt&hmed,M,COG1361@NOG,CARDB
+VNG_RS01055,WP_010903232.1,hbt,hbt&hmed,G,COG0477@NOG,Major Facilitator Superfamily
+VNG_RS01140,WP_010903268.1,hbt,hbt&hmed,S,COG3217@NOG,MOSC domain containing protein
+VNG_RS01145,WP_010903343.1,hbt,hbt&hmed,K,COG1278@NOG,cold-shock DNA-binding domain protein
+VNG_RS02845,WP_010903450.1,hbt,hbt&hmed,P,COG3540@NOG,Inherit from COG: alkaline phosphatase
+VNG_RS02880,WP_010903453.1,hbt,hbt&hmed,K,COG2865@NOG,Transcriptional regulator
+VNG_RS02885,WP_010904078.1,hbt,hbt&hmed,O,COG0071@NOG,heat shock protease protein
+VNG_RS02950,WP_008526012.1,hbt,hbt,K,0ZHP4@NOG,Inherit from arCOG: Phage PhiH1 repressor protein
+VNG_RS03045,WP_010901954.1,hbt,hbt,NA,0YM3N@NOG,NA
+VNG_RS03290,WP_010901955.1,hbt,hbt,L,COG3359@NOG,Inherit from COG: Exonuclease-like protein
+VNG_RS03565,WP_010901967.1,hbt,hbt,NA,10ZN6@NOG,NA
+VNG_RS03570,WP_010901973.1,hbt,hbt,S,COG1598@NOG,Inherit from COG: family UPF0150
+VNG_RS03580,WP_010901974.1,hbt,hbt,S,0XUD5@NOG,YcfA family
+VNG_RS03780,WP_010901975.1,hbt,hbt,NA,0Z4Q9@NOG,NA
+VNG_RS03785,WP_010901979.1,hbt,hbt,L,COG1943@NOG,transposase IS200-family protein
+VNG_RS03790,WP_010901985.1,hbt,hbt,M,COG2244@NOG,Polysaccharide biosynthesis protein
+VNG_RS03795,WP_010901986.1,hbt,hbt,M,COG0438@NOG,glycosyl transferase group 1
+VNG_RS03800,WP_010901991.1,hbt,hbt,M,1110N@NOG,O-antigen polymerase
+VNG_RS03835,WP_010902028.1,hbt,hbt,V,COG0286@NOG,type I restriction-modification system
+VNG_RS13295,WP_010902029.1,hbt,hbt,V,COG0732@NOG,Restriction modification system DNA specificity domain protein
+VNG_RS03870,WP_010902030.1,hbt,hbt,V,COG0610@NOG,"Type I site-specific deoxyribonuclease, HsdR family"
+VNG_RS03905,WP_010902031.1,hbt,hbt,S,COG1451@NOG,Protein of unknown function DUF45
+VNG_RS13310,WP_010902046.1,hbt,hbt,O,COG0501@NOG,Peptidase M48 Ste24p
+VNG_RS03935,WP_010902090.1,hbt,hbt,S,COG5524@NOG,Halorhodopsin
+VNG_RS03980,WP_010902091.1,hbt,hbt,H,COG0095@NOG,biotin lipoate A B protein ligase
+VNG_RS04125,WP_010902100.1,hbt,hbt,K,COG3609@NOG,"transcriptional regulator, copg family"
+VNG_RS04130,WP_010902115.1,hbt,hbt,S,COG3378@NOG COG4983@NOG,Primase C terminal 2 (PriCT-2)
+VNG_RS04140,WP_010902148.1,hbt,hbt,C,COG0221@NOG,pyrophosphate phosphohydrolase
+VNG_RS04145,WP_010902166.1,hbt,hbt,L,COG1943@NOG,Transposase
+VNG_RS04150,WP_010902167.1,hbt,hbt,L,COG0675@NOG,Pfam:Transposase_35
+VNG_RS04155,WP_010902501.1,hbt,hbt,K,COG1309@NOG,"transcriptional regulator, TetR family"
+VNG_RS04240,WP_010902509.1,hbt,hbt,T,COG0784@NOG,response regulator receiver protein
+VNG_RS04245,WP_010902542.1,hbt,hbt,M,COG0615@NOG,Catalyzes the transfer of the AMP portion of ATP to flavin mononucleotide (FMN) to produce flavin adenine dinucleotide (FAD) coenzyme (By similarity)
+VNG_RS04250,WP_010902645.1,hbt,hbt,T,COG0642@NOG COG2202@NOG,His Kinase A (phospho-acceptor) domain
+VNG_RS04410,WP_010902647.1,hbt,hbt,M,COG0463@NOG,glycosyl transferase family 2
+VNG_RS04435,WP_010902689.1,hbt,hbt,N,COG1776@NOG,"CheC, inhibitor of MCP methylation"
+VNG_RS04750,WP_010902690.1,hbt,hbt,N,COG0643@NOG,CheA signal transduction histidine kinase
+VNG_RS04950,WP_010902691.1,hbt,hbt,N,COG2201@NOG,catalyzes the demethylation of specific methylglutamate residues introduced into the chemoreceptors (methyl-accepting chemotaxis proteins) by CheR (By similarity)
+VNG_RS04955,WP_010902692.1,hbt,hbt,T,COG0784@NOG,response regulator receiver protein
+VNG_RS13335,WP_010902693.1,hbt,hbt,N,COG0835@NOG,chemotaxis protein
+VNG_RS04975,WP_010902701.1,hbt,hbt,NA,110AR@NOG,NA
+VNG_RS05715,WP_010902708.1,hbt,hbt,NA,110ND@NOG,NA
+VNG_RS05750,WP_010902718.1,hbt,hbt,NA,1105A@NOG,NA
+VNG_RS05755,WP_010902728.1,hbt,hbt,I,COG0558@NOG,CDP-alcohol phosphatidyltransferase
+VNG_RS06165,WP_010902758.1,hbt,hbt,M,COG0438@NOG,Glycosyl transferases group 1
+VNG_RS06185,WP_010902761.1,hbt,hbt,NA,0YM5U@NOG,NA
+VNG_RS06380,WP_010902762.1,hbt,hbt,NA,0YGV9@NOG,NA
+VNG_RS06385,WP_010902764.1,hbt,hbt,M,COG0463@NOG,Glycosyl transferase family 2
+VNG_RS06390,WP_010902782.1,hbt,hbt,F,COG0104@NOG,Plays an important role in the de novo pathway of purine nucleotide biosynthesis
+VNG_RS06395,WP_010902783.1,hbt,hbt,S,COG2835@NOG,UPF0434 protein
+VNG_RS06405,WP_010902812.1,hbt,hbt,J,COG0099@NOG,"Located at the top of the head of the 30S subunit, it contacts several helices of the 16S rRNA. In the 70S ribosome it contacts the 23S rRNA (bridge B1a) and protein L5 of the 50S subunit (bridge B1b), connecting the 2 subunits"
+VNG_RS13355,WP_010902816.1,hbt,hbt,J,COG1727@NOG,50S ribosomal protein L18e
+VNG_RS06540,WP_010902878.1,hbt,hbt,NA,10ZXY@NOG,NA
+VNG_RS06550,WP_010902915.1,hbt,hbt,J,COG1601@NOG,eIF-2 functions in the early steps of protein synthesis by forming a ternary complex with GTP and initiator tRNA (By similarity)
+VNG_RS06555,WP_010902916.1,hbt,hbt,S,COG1745@NOG,Uncharacterised protein family UPF0058
+VNG_RS06560,WP_010902920.1,hbt,hbt,NA,11120@NOG,NA
+VNG_RS06565,WP_010902921.1,hbt,hbt,S,129N7@NOG,"Inherit from NOG: Phosphodiesterase, mj0936 family"
+VNG_RS06570,WP_010903069.1,hbt,hbt,S,COG5524@NOG,bacteriorhodopsin
+VNG_RS06575,WP_010903077.1,hbt,hbt,S,COG1033@NOG,Sterol-sensing domain of SREBP cleavage-activation
+VNG_RS06580,WP_010903159.1,hbt,hbt,NA,110F7@NOG,NA
+VNG_RS06585,WP_010903203.1,hbt,hbt,NA,0YTZS@NOG,NA
+VNG_RS06590,WP_010903205.1,hbt,hbt,O,COG0464@NOG,AAA domain (Cdc48 subfamily)
+VNG_RS06595,WP_010903233.1,hbt,hbt,S,COG2106@NOG,Pfam:DUF171
+VNG_RS06600,WP_010903234.1,hbt,hbt,J,COG0087@NOG,"One of the primary rRNA binding proteins, it binds directly near the 3'-end of the 23S rRNA, where it nucleates assembly of the 50S subunit (By similarity)"
+VNG_RS06605,WP_010903235.1,hbt,hbt,J,COG0088@NOG,"One of the primary rRNA binding proteins, this protein initially binds near the 5'-end of the 23S rRNA. It is important during the early stages of 50S assembly. It makes multiple contacts with different domains of the 23S rRNA in the assembled 50S subunit and ribosome (By similarity)"
+VNG_RS06610,WP_010903236.1,hbt,hbt,J,COG0089@NOG,Binds to 23S rRNA. One of the proteins that surrounds the polypeptide exit tunnel on the outside of the ribosome (By similarity)
+VNG_RS06615,WP_010903237.1,hbt,hbt,J,COG0090@NOG,"One of the primary rRNA binding proteins. Required for association of the 30S and 50S subunits to form the 70S ribosome, for tRNA binding and peptide bond formation. It has been suggested to have peptidyltransferase activity"
+VNG_RS06620,WP_010903238.1,hbt,hbt,J,COG0185@NOG,Protein S19 forms a complex with S13 that binds strongly to the 16S ribosomal RNA (By similarity)
+VNG_RS06625,WP_010903239.1,hbt,hbt,J,COG0091@NOG,"The globular domain of the protein is located near the polypeptide exit tunnel on the outside of the subunit, while an extended beta-hairpin is found that lines the wall of the exit tunnel in the center of the 70S ribosome (By similarity)"
+VNG_RS06630,WP_010903240.1,hbt,hbt,J,COG0092@NOG,Binds the lower part of the 30S subunit head (By similarity)
+VNG_RS06635,WP_010903241.1,hbt,hbt,J,COG0255@NOG,50S ribosomal protein L29P
+VNG_RS06640,WP_010903242.1,hbt,hbt,J,COG1588@NOG,"Part of ribonuclease P, a protein complex that generates mature tRNA molecules by cleaving their 5'-ends (By similarity)"
+VNG_RS06645,WP_010903243.1,hbt,hbt,J,COG0186@NOG,"One of the primary rRNA binding proteins, it binds specifically to the 5'-end of 16S ribosomal RNA (By similarity)"
+VNG_RS06650,WP_010903244.1,hbt,hbt,J,COG0093@NOG,Binds to 23S rRNA. Forms part of two intersubunit bridges in the 70S ribosome (By similarity)
+VNG_RS06655,WP_010903245.1,hbt,hbt,J,COG0198@NOG,Located at the polypeptide exit tunnel on the outside of the subunit (By similarity)
+VNG_RS06660,WP_010903246.1,hbt,hbt,J,COG1471@NOG,30S ribosomal protein S4E
+VNG_RS06665,WP_010903247.1,hbt,hbt,J,COG0094@NOG,"This is 1 of the proteins that binds and probably mediates the attachment of the 5S RNA into the large ribosomal subunit, where it forms part of the central protuberance. In the 70S ribosome it contacts protein S13 of the 30S subunit (bridge B1b), connecting the 2 subunits"
+VNG_RS06670,WP_010903248.1,hbt,hbt,J,COG0199@NOG,"Binds 16S rRNA, required for the assembly of 30S particles (By similarity)"
+VNG_RS06720,WP_010903249.1,hbt,hbt,J,COG0096@NOG,"One of the primary rRNA binding proteins, it binds directly to 16S rRNA central domain where it helps coordinate assembly of the platform of the 30S subunit (By similarity)"
+VNG_RS06730,WP_010903250.1,hbt,hbt,J,COG0097@NOG,"This protein binds to the 23S rRNA, and is important in its secondary structure. It is located near the subunit interface in the base of the L7 L12 stalk, and near the tRNA binding site of the peptidyltransferase center"
+VNG_RS06735,WP_010903251.1,hbt,hbt,J,COG0468@NOG COG1717@NOG,50S ribosomal protein L32e
+VNG_RS06810,WP_010903252.1,hbt,hbt,J,COG2147@NOG,Binds to the 23S rRNA (By similarity)
+VNG_RS07095,WP_010903253.1,hbt,hbt,J,COG0256@NOG,"This is one of the proteins that binds and probably mediates the attachment of the 5S RNA into the large ribosomal subunit, where it forms part of the central protuberance (By similarity)"
+VNG_RS07110,WP_010903254.1,hbt,hbt,J,COG0098@NOG,With S4 and S12 plays an important role in translational accuracy (By similarity)
+VNG_RS07115,WP_010903255.1,hbt,hbt,J,COG1841@NOG,50S ribosomal protein L30P
+VNG_RS07335,WP_010903256.1,hbt,hbt,J,COG0200@NOG,Binds to the 23S rRNA (By similarity)
+VNG_RS07650,WP_010903257.1,hbt,hbt,U,COG0201@NOG,"The central subunit of the protein translocation channel SecYEG. Consists of two halves formed by TMs 1-5 and 6-10. These two domains form a lateral gate at the front which open onto the bilayer between TMs 2 and 7, and are clamped together by SecE at the back. The channel is closed by both a pore ring composed of hydrophobic SecY resides and a short helix (helix 2A) on the extracellular side of the membrane which forms a plug. The plug probably moves laterally to allow the channel to open. The ring and the pore may move independently (By similarity)"
+VNG_RS07655,WP_010903265.1,hbt,hbt,P,1279I@NOG COG1226@NOG,ion transport 2 domain protein
+VNG_RS07660,WP_010903267.1,hbt,hbt,NA,10ZTS@NOG,NA
+VNG_RS13370,WP_010903282.1,hbt,hbt,NA,10ZTS@NOG,NA
+VNG_RS08100,WP_010903386.1,hbt,hbt,L,101KW@NOG,NurA domain
+VNG_RS08105,WP_010903451.1,hbt,hbt,S,COG3430@NOG,Inherit from arCOG: Protein of unknown function (DUF1628)
+VNG_RS08560,WP_010903540.1,hbt,hbt,E,COG0174@NOG,glutamine synthetase
+VNG_RS08870,WP_010903629.1,hbt,hbt,C,COG3794@NOG,Halocyanin
+VNG_RS08950,WP_010903690.1,hbt,hbt,NA,0ZFRM@NOG,NA
+VNG_RS08955,WP_010903706.1,hbt,hbt,S,110P6@NOG,Protein of unknown function (DUF2029)
+VNG_RS08960,WP_010903707.1,hbt,hbt,C,COG0633@NOG,Ferredoxin
+VNG_RS09955,WP_010903708.1,hbt,hbt,E,COG0106@NOG,Phosphoribosylformimino-5-aminoimidazole carboxamide ribotide isomerase
+VNG_RS10400,WP_010903901.1,hbt,hbt,S,COG2078@NOG,AMMECR1 domain protein
+VNG_RS10405,WP_010903989.1,hbt,hbt,L,COG1943@NOG,Transposase
+VNG_RS10430,WP_010903994.1,hbt,hbt,K,COG0195@NOG,Transcription elongation factor NusA-like protein
+VNG_RS10435,WP_010903995.1,hbt,hbt,K,COG0086@NOG,"DNA-directed RNA polymerase, subunit a'"
+VNG_RS10440,WP_010903996.1,hbt,hbt,K,COG0086@NOG,"DNA-directed RNA polymerase, subunit a'"
+VNG_RS10445,WP_010903997.1,hbt,hbt,K,COG0085@NOG,DNA-directed RNA polymerase subunit b'
+VNG_RS11050,WP_010904032.1,hbt,hbt,L,COG0433@NOG,Inherit from COG: Aaa atpase
+VNG_RS11075,WP_010904036.1,hbt,hbt,NA,11GG8@NOG,NA
+VNG_RS11080,WP_010904046.1,hbt,hbt,NA,0XXT4@NOG,NA
+VNG_RS11090,WP_010904053.1,hbt,hbt,NA,0YNY9@NOG,NA
+VNG_RS11095,WP_010904054.1,hbt,hbt,NA,0XTGC@NOG,NA
+VNG_RS11120,WP_010904055.1,hbt,hbt,P,COG0569@NOG,TRK potassium uptake system protein
+VNG_RS13500,WP_010904056.1,hbt,hbt,P,COG2060@NOG,"One of the components of the high-affinity ATP-driven potassium transport (or KDP) system, which catalyzes the hydrolysis of ATP coupled with the exchange of hydrogen and potassium ions (By similarity)"
+VNG_RS11165,WP_010904063.1,hbt,hbt,S,COG0618@NOG,phosphoesterase RecJ domain protein
+VNG_RS11170,WP_010904071.1,hbt,hbt,K,COG2161@NOG,CopG family transcriptional regulator
+VNG_RS11180,WP_010904073.1,hbt,hbt,L,0ZZTP@NOG,Inherit from NOG: Transposase
+VNG_RS11215,WP_010904139.1,hbt,hbt,K,COG2161@NOG,CopG domain protein DNA-binding domain protein
+VNG_RS11220,WP_010904142.1,hbt,hbt,L,COG3316@NOG,Transposase
+VNG_RS13520,WP_010904144.1,hbt,hbt,P,COG0376@NOG,Bifunctional enzyme with both catalase and broad- spectrum peroxidase activity (By similarity)
+VNG_RS11240,WP_010904147.1,hbt,hbt,I,COG4670@NOG,CoA transferase having broad substrate specificity for short-chain acyl-CoA thioesters with the activity decreasing when the length of the carboxylic acid chain exceeds four carbons (By similarity)
+VNG_RS13525,WP_010904157.1,hbt,hbt,J,COG0018@NOG,Arginyl-tRNA synthetase
+VNG_RS11255,WP_010904162.1,hbt,hbt,K,COG1414@NOG,regulator
+VNG_RS11535,WP_010904164.1,hbt,hbt,L,COG0419@NOG,Inherit from NOG: Involved in DNA double-strand break repair (DSBR). The Rad50 Mre11 complex possesses single-strand endonuclease activity and ATP-dependent double-strand-specific 3'-5' exonuclease activity. Rad50 provides an ATP-dependent control of Mre11 by unwinding and or repositioning DNA ends into the Mre11 active site (By similarity)
+VNG_RS13560,WP_010904167.1,hbt,hbt,NA,10ZRF@NOG,NA
+VNG_RS11555,WP_010904188.1,hbt,hbt,S,COG2333@NOG,beta-lactamase domain protein
+VNG_RS13565,WP_010904190.1,hbt,hbt,K,111DM@NOG,Transcriptional regulator
+VNG_RS11565,WP_010904192.1,hbt,hbt,L,COG0675@NOG,Transposase
+VNG_RS11600,WP_010904195.1,hbt,hbt,V,COG1403@NOG,hnh endonuclease
+VNG_RS11605,WP_010904198.1,hbt,hbt,L,110XS@NOG COG3385@NOG,transposase (ISH3)
+VNG_RS11615,WP_010904200.1,hbt,hbt,K,111D7@NOG,Pfam:SpoVT_AbrB
+VNG_RS11620,WP_010904202.1,hbt,hbt,NA,110T0@NOG,NA
+VNG_RS11640,WP_010904211.1,hbt,hbt,K,COG2002@NOG,AbrB family transcriptional regulator
+VNG_RS11650,WP_010904215.1,hbt,hbt,V,COG2402@NOG,nucleic acid-binding protein contains PIN domain-like region
+VNG_RS11660,WP_010904224.1,hbt,hbt,S,COG0384@NOG,Phenazine
+VNG_RS11715,WP_010904242.1,hbt,hbt,NA,1108B@NOG,NA
+VNG_RS11760,WP_010904243.1,hbt,hbt,N,COG3430@NOG,Protein of unknown function (DUF1628)
+VNG_RS11775,WP_012289116.1,hbt,hbt,D,COG0206@NOG,Essential cell division protein that forms a contractile ring structure (Z ring) at the future cell division site. The regulation of the ring assembly controls the timing and the location of cell division. One of the functions of the FtsZ ring is to recruit other cell division proteins to the septum to produce a new cell wall between the dividing cells. Binds GTP and shows GTPase activity (By similarity)
+VNG_RS11785,WP_012289247.1,hbt,hbt,T,COG0784@NOG,response regulator receiver protein
+VNG_RS11800,WP_012289261.1,hbt,hbt,F,COG0516@NOG COG0517@NOG,"Catalyzes the conversion of inosine 5'-phosphate (IMP) to xanthosine 5'-phosphate (XMP), the first committed and rate- limiting step in the de novo synthesis of guanine nucleotides, and therefore plays an important role in the regulation of cell growth (By similarity)"
+VNG_RS11810,WP_012289276.1,hbt,hbt,NA,COG3388@NOG,NA
+VNG_RS13645,WP_012289386.1,hbt,hbt,NA,0Y4YD@NOG,NA
+VNG_RS11825,WP_012289388.1,hbt,hbt,J,COG0441@NOG,Threonyl-tRNA synthetase
+VNG_RS11840,WP_012289533.1,hbt,hbt,L,COG0675@NOG,Inherit from arCOG: IS1341-type transposase
+VNG_RS11845,WP_012289610.1,hbt,hbt,D,COG1192@NOG,Cobyrinic acid ac-diamide synthase
+VNG_RS11850,WP_012289640.1,hbt,hbt,F,COG0540@NOG,Aspartate transcarbamylase
+VNG_RS11855,WP_012289734.1,hbt,hbt,D,COG1192@NOG,CobQ/CobB/MinD/ParA nucleotide binding domain
+VNG_RS11880,WP_012289743.1,hbt,hbt,V,COG1715@NOG,restriction endonuclease
+VNG_RS11885,WP_012289746.1,hbt,hbt,S,COG1556@NOG,"Uncharacterised ACR, YkgG family COG1556"
+VNG_RS11890,WP_012289747.1,hbt,hbt,C,COG1620@NOG,l-lactate permease
+VNG_RS11895,WP_012289748.1,hbt,hbt,V,COG1848@NOG,VapC-type toxin
+VNG_RS11915,WP_049892468.1,hbt,hbt,NA,0YM5U@NOG,NA
+VNG_RS11950,WP_049892694.1,hbt,hbt,NA,10ZXQ@NOG,NA
+VNG_RS11965,WP_049892719.1,hbt,hbt,C,COG1301@NOG,sodium dicarboxylate symporter
+VNG_RS13700,WP_049928196.1,hbt,hbt,NA,0YC5Q@NOG,NA
+VNG_RS12020,WP_081422761.1,hbt,hbt,K,COG3177@NOG,filamentation induced by cAMP protein fic
+HFX_RS00350,WP_004056913.1,hmed,hbt&hvol&hmed,K,COG1405@NOG,Stabilizes TBP binding to an archaeal box-A promoter. Also responsible for recruiting RNA polymerase II to the pre- initiation complex (DNA-TBP-TFIIB) (By similarity)
+HFX_RS00445,WP_004057217.1,hmed,hbt&hvol&hmed,L,COG1474@NOG,orc1 cdc6 family replication initiation protein
+HFX_RS00450,WP_004059481.1,hmed,hbt&hvol&hmed,Q,COG0500@NOG,Methyltransferase type 11
+HFX_RS00455,WP_004059659.1,hmed,hbt&hvol&hmed,T,COG1520@NOG,Pyrrolo-quinoline quinone
+HFX_RS00855,WP_004059907.1,hmed,hbt&hvol&hmed,E,COG0147@NOG,anthranilate synthase component I
+HFX_RS00860,WP_004059909.1,hmed,hbt&hvol&hmed,E,COG0135@NOG,N-(5'phosphoribosyl)anthranilate isomerase
+HFX_RS00875,WP_004059911.1,hmed,hbt&hvol&hmed,E,COG0547@NOG,anthranilate phosphoribosyltransferase (EC 2.4.2.18)
+HFX_RS01050,WP_014732396.1,hmed,hbt&hvol&hmed,L,COG0582@NOG,Integrase
+HFX_RS01600,WP_004056114.1,hmed,hbt&hmed,H,COG3540@NOG,PhoD-like phosphatase
+HFX_RS01700,WP_004056227.1,hmed,hbt&hmed,M,COG1361@NOG,Inherit from arCOG: domain protein
+HFX_RS01705,WP_004056704.1,hmed,hbt&hmed,K,COG1695@NOG,PadR family
+HFX_RS02250,WP_004057677.1,hmed,hbt&hmed,NA,0YSDR@NOG,NA
+HFX_RS02255,WP_004057690.1,hmed,hbt&hmed,S,0YQVI@NOG,Pfam:TRF2
+HFX_RS02495,WP_004057907.1,hmed,hbt&hmed,K,COG1278@NOG,cold-shock DNA-binding domain protein
+HFX_RS02500,WP_004059314.1,hmed,hbt&hmed,G,COG0477@NOG,major facilitator superfamily
+HFX_RS02520,WP_004060423.1,hmed,hbt&hmed,S,COG3217@NOG,MOSC domain containing protein
+HFX_RS02535,WP_004060998.1,hmed,hbt&hmed,K,COG1695@NOG,Transcriptional regulator
+HFX_RS02540,WP_004061007.1,hmed,hbt&hmed,K,COG2865@NOG,Transcriptional regulator
+HFX_RS02545,WP_004061044.1,hmed,hbt&hmed,O,COG0071@NOG,heat shock protease protein
+HFX_RS02550,WP_014732347.1,hmed,hbt&hmed,O,COG0071@NOG,GvpH
+HFX_RS02740,WP_004056735.1,hmed,hvol&hmed,S,COG5485@NOG,SnoaL-like polyketide cyclase
+HFX_RS02745,WP_004056736.1,hmed,hvol&hmed,P,11HND@NOG,Ferrichrome-binding protein
+HFX_RS02750,WP_004057391.1,hmed,hvol&hmed,Q,0ZWTH@NOG,Met-10+ like-protein
+HFX_RS02755,WP_004057818.1,hmed,hvol&hmed,T,0Z77K@NOG,Inherit from NOG: Histidine kinase
+HFX_RS02760,WP_004059116.1,hmed,hvol&hmed,K,COG3413@NOG,Bacterio-opsin activator HTH domain protein
+HFX_RS02830,WP_004059234.1,hmed,hvol&hmed,K,COG3413@NOG,bacterio-opsin activator HTH domain protein
+HFX_RS02835,WP_004059584.1,hmed,hvol&hmed,P,11HND@NOG,Ferrichrome-binding protein
+HFX_RS02845,WP_004059823.1,hmed,hvol&hmed,T,COG3413@NOG,PAS PAC sensor protein
+HFX_RS02865,WP_004059913.1,hmed,hvol&hmed,S,111CV@NOG,Uncharacterized protein conserved in bacteria (DUF2062)
+HFX_RS02870,WP_004060332.1,hmed,hvol&hmed,T,0Z77K@NOG,Inherit from NOG: Histidine kinase
+HFX_RS02875,WP_004060631.1,hmed,hvol&hmed,S,121J4@NOG,DoxX family
+HFX_RS02880,WP_004060823.1,hmed,hvol&hmed,T,0Z77K@NOG,Inherit from NOG: Histidine kinase
+HFX_RS02885,WP_004572414.1,hmed,hvol&hmed,S,COG5485@NOG,SnoaL-like polyketide cyclase
+HFX_RS02890,WP_014732321.1,hmed,hvol&hmed,L,COG1525@NOG,nuclease-like protein
+HFX_RS02895,WP_014732346.1,hmed,hvol&hmed,T,COG0467@NOG,GvpD gas vesicle
+HFX_RS04055,WP_014732423.1,hmed,hvol&hmed,P,11HND@NOG,ABC-type Fe3 -hydroxamate transport system periplasmic component-like protein
+HFX_RS04060,WP_014732665.1,hmed,hvol&hmed,K,COG3413@NOG,Bacterio-opsin activator HTH domain protein
+HFX_RS04835,WP_014732814.1,hmed,hvol&hmed,T,0Z77K@NOG,Inherit from NOG: Histidine kinase
+HFX_RS04840,WP_049917571.1,hmed,hvol&hmed,P,11HND@NOG,Ferrichrome-binding protein
+HFX_RS04845,WP_004056209.1,hmed,hmed,S,COG2079@NOG,MmgE/PrpD family
+HFX_RS04850,WP_004056211.1,hmed,hmed,H,COG1809@NOG,(2R)-phospho-3-sulfolactate synthase (ComA)
+HFX_RS05100,WP_004056225.1,hmed,hmed,V,COG1136@NOG,ABC transporter
+HFX_RS05105,WP_004056229.1,hmed,hmed,K,11GX7@NOG,Inherit from arCOG: Thrombospondin type 3 repeat-containing protein
+HFX_RS05110,WP_004056305.1,hmed,hmed,T,COG0642@NOG,Histidine kinase
+HFX_RS05330,WP_004056315.1,hmed,hmed,Q,COG4716@NOG,Streptococcal 67 kDa myosin-cross-reactive antigen like family
+HFX_RS06135,WP_004056367.1,hmed,hmed,I,COG4221@NOG,KR domain
+HFX_RS06440,WP_004056368.1,hmed,hmed,H,COG0502@NOG,Catalyzes the conversion of dethiobiotin (DTB) to biotin by the insertion of a sulfur atom into dethiobiotin via a radical- based mechanism (By similarity)
+HFX_RS06445,WP_004056369.1,hmed,hmed,NA,0ZC0B@NOG,NA
+HFX_RS06975,WP_004056370.1,hmed,hmed,H,COG0156@NOG,8-amino-7-oxononanoate synthase (EC 2.3.1.47)
+HFX_RS07110,WP_004056371.1,hmed,hmed,H,COG0132@NOG,"Catalyzes a mechanistically unusual reaction, the ATP- dependent insertion of CO2 between the N7 and N8 nitrogen atoms of 7,8-diaminopelargonic acid (DAPA) to form an ureido ring (By similarity)"
+HFX_RS07540,WP_004056430.1,hmed,hmed,V,COG1131@NOG,ABC transporter
+HFX_RS07545,WP_004056431.1,hmed,hmed,NA,11NF1@NOG,NA
+HFX_RS07715,WP_004056451.1,hmed,hmed,G,COG1082@NOG,Xylose isomerase domain protein TIM barrel
+HFX_RS07720,WP_004056485.1,hmed,hmed,NA,0YUMU@NOG,NA
+HFX_RS07725,WP_004056498.1,hmed,hmed,S,COG0824@NOG,Thioesterase superfamily protein
+HFX_RS08150,WP_004056500.1,hmed,hmed,H,COG0720@NOG,synthase
+HFX_RS08155,WP_004056508.1,hmed,hmed,H,COG0602@NOG,"Catalyzes the conversion of 6-carboxy-5,6,7,8- tetrahydropterin (CPH4) to 7-carboxy-7-deazaguanine (CDG) (By similarity)"
+HFX_RS08160,WP_004056510.1,hmed,hmed,S,COG0603@NOG,Catalyzes the ATP-dependent conversion of 7-carboxy-7- deazaguanine (CDG) to 7-cyano-7-deazaguanine (preQ(0)) (By similarity)
+HFX_RS08305,WP_004056517.1,hmed,hmed,S,COG4276@NOG,Cyclase dehydrase
+HFX_RS08310,WP_004056519.1,hmed,hmed,G,COG3387@NOG,Glucan 14-alpha-glucosidase
+HFX_RS08315,WP_004056634.1,hmed,hmed,T,COG0642@NOG,HATPase_c
+HFX_RS08320,WP_004056696.1,hmed,hmed,Q,0XUMF@NOG,"Gas vesicles are small, hollow, gas filled protein structures that are found in several microbial planktonic microorganisms. They allow the positioning of the organism at the favorable depth for growth (By similarity)"
+HFX_RS08325,WP_004056697.1,hmed,hmed,Q,1209X@NOG,Gas vesicle synthesis GvpLGvpF
+HFX_RS08330,WP_004056698.1,hmed,hmed,Q,0ZY4M@NOG,Gas vesicle K
+HFX_RS08335,WP_004056699.1,hmed,hmed,Q,0ZXDU@NOG,"Gas vesicles are small, hollow, gas filled protein structures that are found in several microbial planktonic microorganisms. They allow the positioning of the organism at the favorable depth for growth (By similarity)"
+HFX_RS08340,WP_004056700.1,hmed,hmed,NA,111CS@NOG,NA
+HFX_RS08345,WP_004056702.1,hmed,hmed,Q,0Y69N@NOG,gas-vesicle operon protein
+HFX_RS08350,WP_004056703.1,hmed,hmed,Q,11VUC@NOG,Gas vesicle synthesis GvpLGvpF
+HFX_RS08565,WP_004056734.1,hmed,hmed,J,COG0012@NOG,Translation-associated GTPase
+HFX_RS08815,WP_004056877.1,hmed,hmed,K,127TA@NOG,CopG family transcriptional regulator
+HFX_RS08820,WP_004056878.1,hmed,hmed,S,COG1310@NOG,"Inherit from COG: Component of the eukaryotic translation initiation factor 3 (eIF-3) complex, which is involved in protein synthesis and, together with other initiation factors, stimulates binding of mRNA and methionyl-tRNAi to the 40S ribosome (By similarity)"
+HFX_RS08845,WP_004057001.1,hmed,hmed,S,COG3173@NOG,Aminoglycoside phosphotransferase
+HFX_RS08850,WP_004057032.1,hmed,hmed,S,COG3291@NOG,"Inherit from COG: Part of the outer membrane protein assembly complex, which is involved in assembly and insertion of beta-barrel proteins into the outer membrane (By similarity)"
+HFX_RS08855,WP_004057215.1,hmed,hmed,S,0ZCAN@NOG,Uncharacterised protein family (UPF0175)
+HFX_RS08860,WP_004057392.1,hmed,hmed,S,COG0385@NOG,Bile acid sodium symporter
+HFX_RS08960,WP_004057670.1,hmed,hmed,N,COG0630@NOG,type II secretion system protein
+HFX_RS08965,WP_004057672.1,hmed,hmed,N,0Y9Z9@NOG,type II secretion system
+HFX_RS09160,WP_004057673.1,hmed,hmed,M,0Y99T@NOG,"Inherit from NOG: von Willebrand factor, type A"
+HFX_RS09165,WP_004057675.1,hmed,hmed,NA,0YY3A@NOG,NA
+HFX_RS09285,WP_004057679.1,hmed,hmed,NA,0YPGV@NOG,NA
+HFX_RS09290,WP_004057681.1,hmed,hmed,NA,0YTEX@NOG,NA
+HFX_RS09350,WP_004057696.1,hmed,hmed,NA,10ZZ6@NOG,NA
+HFX_RS09355,WP_004057729.1,hmed,hmed,P,COG0619@NOG,cobalt abc transporter
+HFX_RS09360,WP_004057731.1,hmed,hmed,G,COG1122@NOG,ABC transporter related
+HFX_RS09365,WP_004057736.1,hmed,hmed,H,COG2045@NOG,2-phosphosulfolactate phosphatase
+HFX_RS09370,WP_004057738.1,hmed,hmed,G,COG1082@NOG,Xylose isomerase-like TIM barrel
+HFX_RS09375,WP_004057805.1,hmed,hmed,N,COG0840@NOG,Methyl-accepting chemotaxis sensory transducer
+HFX_RS09380,WP_004057806.1,hmed,hmed,E,COG0683@NOG,system periplasmic substrate-binding protein
+HFX_RS11175,WP_004057807.1,hmed,hmed,L,COG0249@NOG,that it carries out the mismatch recognition step. This protein has a weak ATPase activity (By similarity)
+HFX_RS11190,WP_004057808.1,hmed,hmed,L,11QGQ@NOG COG0323@NOG,"This protein is involved in the repair of mismatches in DNA. It is required for dam-dependent methyl-directed DNA mismatch repair. May act as a molecular matchmaker , a protein that promotes the formation of a stable complex between two or more DNA-binding proteins in an ATP-dependent manner without itself being part of a final effector complex (By similarity)"
+HFX_RS11195,WP_004057811.1,hmed,hmed,G,COG0524@NOG,PfkB domain protein
+HFX_RS11200,WP_004057819.1,hmed,hmed,K,COG0864@NOG,Transcriptional regulator (By similarity)
+HFX_RS11295,WP_004057905.1,hmed,hmed,P,COG3119@NOG,sulfatase
+HFX_RS11300,WP_004058140.1,hmed,hmed,NA,111H1@NOG,NA
+HFX_RS11445,WP_004058142.1,hmed,hmed,T,COG0784@NOG COG2202@NOG,multi-sensor signal transduction histidine kinase
+HFX_RS11450,WP_004058177.1,hmed,hmed,D,COG0239@NOG,Protein CrcB homolog
+HFX_RS12260,WP_004058401.1,hmed,hmed,NA,1113Q@NOG,NA
+HFX_RS12265,WP_004058473.1,hmed,hmed,J,COG0293@NOG,Specifically methylates the uridine in position 2552 of 23S rRNA at the 2'-O position of the ribose in the fully assembled 50S ribosomal subunit (By similarity)
+HFX_RS12630,WP_004058479.1,hmed,hmed,T,COG0642@NOG,Histidine kinase
+HFX_RS12635,WP_004058481.1,hmed,hmed,NA,0YC8Q@NOG,NA
+HFX_RS12665,WP_004058648.1,hmed,hmed,E,COG0347@NOG,nitrogen regulatory protein P-II
+HFX_RS12880,WP_004058650.1,hmed,hmed,P,COG0004@NOG,Ammonium transporter
+HFX_RS12885,WP_004058652.1,hmed,hmed,E,COG0347@NOG,nitrogen regulatory protein P-II
+HFX_RS13055,WP_004058688.1,hmed,hmed,K,COG0569@NOG COG1522@NOG,asnC family transcriptional regulator
+HFX_RS13060,WP_004058963.1,hmed,hmed,S,COG4666@NOG,"TRAP transporter, 4TM 12TM fusion protein"
+HFX_RS13075,WP_004058965.1,hmed,hmed,S,COG4729@NOG,TRAP-type transport system protein small subunit
+HFX_RS13080,WP_004058967.1,hmed,hmed,P,COG2358@NOG,"TRAP transporter solute receptor, TAXI family"
+HFX_RS13430,WP_004059117.1,hmed,hmed,E,0XQIW@NOG,ABC transporter
+HFX_RS13435,WP_004059118.1,hmed,hmed,E,COG0559@NOG,Branched-chain amino acid ABC transporter permease protein
+HFX_RS13440,WP_004059119.1,hmed,hmed,E,COG4177@NOG,Branched-chain amino acid ABC transporter permease protein
+HFX_RS13610,WP_004059269.1,hmed,hmed,E,COG1164@NOG,oligoendopeptidase F
+HFX_RS13615,WP_004059270.1,hmed,hmed,S,COG2234@NOG,Peptidase M28
+HFX_RS13655,WP_004059313.1,hmed,hmed,L,COG0494@NOG,NUDiX hydrolase
+HFX_RS13840,WP_004059349.1,hmed,hmed,S,COG0491@NOG,beta-lactamase domain protein
+HFX_RS13845,WP_004059350.1,hmed,hmed,V,COG1131@NOG,ABC transporter
+HFX_RS14015,WP_004059351.1,hmed,hmed,S,COG1277@NOG,Inherit from arCOG: ABC-type transport system involved in multi-copper enzyme maturation permease component-like protein
+HFX_RS14020,WP_004059477.1,hmed,hmed,S,COG0596@NOG,Alpha beta hydrolase fold protein
+HFX_RS14310,WP_004059478.1,hmed,hmed,NA,11NKY@NOG,NA
+HFX_RS14315,WP_004059531.1,hmed,hmed,F,COG0737@NOG,5'-nucleotidase
+HFX_RS14320,WP_004059532.1,hmed,hmed,G,COG1109@NOG,Phosphoglucosamine mutase
+HFX_RS14325,WP_004059578.1,hmed,hmed,S,COG2130@NOG,Alcohol dehydrogenase zinc-binding domain protein
+HFX_RS14590,WP_004059585.1,hmed,hmed,K,10ZYJ@NOG,DNA binding protein
+HFX_RS14595,WP_004059660.1,hmed,hmed,F,COG0152@NOG,phosphoribosylaminoimidazolesuccinocarboxamide synthase
+HFX_RS14600,WP_004059824.1,hmed,hmed,J,COG0442@NOG,"Catalyzes the attachment of proline to tRNA(Pro) in a two-step reaction proline is first activated by ATP to form Pro- AMP and then transferred to the acceptor end of tRNA(Pro). As ProRS can inadvertently accommodate and process non-cognate amino acids such as alanine and cysteine, to avoid such errors it has two additional distinct editing activities against alanine. One activity is designated as 'pretransfer' editing and involves the tRNA(Pro)-independent hydrolysis of activated Ala-AMP. The other activity is designated 'posttransfer' editing and involves deacylation of mischarged Ala-tRNA(Pro). The misacylated Cys- tRNA(Pro) is not edited by ProRS (By similarity)"
+HFX_RS15525,WP_004059877.1,hmed,hmed,NA,110DB@NOG,NA
+HFX_RS15530,WP_004060333.1,hmed,hmed,S,COG2719@NOG,Stage V sporulation protein R-like protein
+HFX_RS15810,WP_004060335.1,hmed,hmed,S,COG2718@NOG,Protein of unknown function (DUF444)
+HFX_RS15815,WP_004060338.1,hmed,hmed,T,COG2766@NOG,serine protein kinase
+HFX_RS15820,WP_004060340.1,hmed,hmed,T,COG2766@NOG,Serine protein kinase
+HFX_RS15825,WP_004060342.1,hmed,hmed,NA,0YQSW@NOG,NA
+HFX_RS15830,WP_004060344.1,hmed,hmed,S,COG1860@NOG,UPF0179 protein
+HFX_RS15995,WP_004060357.1,hmed,hmed,NA,0YG7Y@NOG,NA
+HFX_RS16025,WP_004060358.1,hmed,hmed,E,COG0112@NOG,"Catalyzes the reversible interconversion of serine and glycine with tetrahydrofolate (THF) serving as the one-carbon carrier. Also exhibits THF-independent aldolase activity toward beta-hydroxyamino acids, producing glycine and aldehydes, via a retro-aldol mechanism (By similarity)"
+HFX_RS16035,WP_004060383.1,hmed,hmed,K,COG0454@NOG,GCN5-related N-acetyltransferase
+HFX_RS16180,WP_004060384.1,hmed,hmed,N,COG0840@NOG,transducer
+HFX_RS16185,WP_004060424.1,hmed,hmed,F,COG1228@NOG,amidohydrolase
+HFX_RS16190,WP_004060604.1,hmed,hmed,S,COG0517@NOG,CBS
+HFX_RS16225,WP_004060606.1,hmed,hmed,S,COG1545@NOG,DUF35 OB-fold domain
+HFX_RS16230,WP_004060622.1,hmed,hmed,Q,COG1335@NOG,isochorismatase hydrolase
+HFX_RS16590,WP_004060623.1,hmed,hmed,Q,COG1335@NOG,Isochorismatase
+HFX_RS16600,WP_004060628.1,hmed,hmed,S,11GP4@NOG,phospholipase Carboxylesterase
+HFX_RS16610,WP_004060641.1,hmed,hmed,L,COG0494@NOG,NUDIX hydrolase
+HFX_RS16780,WP_004060713.1,hmed,hmed,P,COG0605@NOG,radicals which are normally produced within the cells and which are toxic to biological systems
+HFX_RS16895,WP_004060714.1,hmed,hmed,NA,110NM@NOG,NA
+HFX_RS16900,WP_004060783.1,hmed,hmed,P,COG0446@NOG,FAD-dependent pyridine nucleotide-disulfide oxidoreductase
+HFX_RS16905,WP_004060828.1,hmed,hmed,G,COG1109@NOG,Phosphoglucosamine mutase
+HFX_RS17155,WP_004060946.1,hmed,hmed,C,COG2141@NOG,Luciferase-like monooxygenase
+HFX_RS17160,WP_004060947.1,hmed,hmed,NA,11NF1@NOG,NA
+HFX_RS17165,WP_004060948.1,hmed,hmed,V,COG1131@NOG,ABC transporter
+HFX_RS17330,WP_004060955.1,hmed,hmed,H,COG0171@NOG COG0388@NOG,nh(3)-dependent nad( ) synthetase
+HFX_RS17375,WP_004060997.1,hmed,hmed,S,COG3608@NOG,deacylase-like protein
+HFX_RS17380,WP_004061042.1,hmed,hmed,O,0Y5RZ@NOG,"peptidase (S8 and S53, subtilisin, kexin, sedolisin"
+HFX_RS17585,WP_004572579.1,hmed,hmed,H,COG0285@NOG COG0294@NOG,dihydropteroate synthase
+HFX_RS17590,WP_004572623.1,hmed,hmed,E,COG0367@NOG,Asparagine synthase
+HFX_RS17620,WP_004572624.1,hmed,hmed,S,COG0613@NOG,PHP domain protein
+HFX_RS17625,WP_004572625.1,hmed,hmed,S,COG0517@NOG,signal transduction protein with CBS domains
+HFX_RS17630,WP_004572675.1,hmed,hmed,E,COG0006@NOG,peptidase M24
+HFX_RS18150,WP_004572676.1,hmed,hmed,P,COG1253@NOG,Domain of unknown function DUF21
+HFX_RS18170,WP_004572677.1,hmed,hmed,O,COG1404@NOG,S53 subtilisin kexin sedolisin
+HFX_RS18175,WP_004572678.1,hmed,hmed,NA,125Q4@NOG,NA
+HFX_RS18355,WP_014732138.1,hmed,hmed,NA,11M6G@NOG,NA
+HFX_RS18620,WP_014732145.1,hmed,hmed,H,COG0382@NOG,UbiA prenyltransferase
+HFX_RS18625,WP_014732380.1,hmed,hmed,NA,1267B@NOG,NA
+HFX_RS18965,WP_014732699.1,hmed,hmed,NA,0ZJV0@NOG,NA
+HFX_RS18970,WP_014732744.1,hmed,hmed,O,11KPI@NOG,Subtilase family
+HFX_RS18975,WP_049917400.1,hmed,hmed,NA,0Y98F@NOG,NA
+HFX_RS18995,WP_049917496.1,hmed,hmed,NA,110YE@NOG,NA
+HFX_RS19000,WP_049917527.1,hmed,hmed,E,COG0560@NOG,phosphoserine phosphatase
+HVO_RS05015,WP_004041399.1,hvol,hbt&hvol&hmed,Q,COG0500@NOG,FkbM family methyltransferase
+HVO_RS05020,WP_004041510.1,hvol,hbt&hvol&hmed,L,COG0582@NOG,Integrase
+HVO_RS05465,WP_004042185.1,hvol,hbt&hvol&hmed,L,COG1474@NOG,orc1 cdc6 family replication initiation protein
+HVO_RS05470,WP_004042367.1,hvol,hbt&hvol&hmed,E,COG0147@NOG,anthranilate synthase component I
+HVO_RS05525,WP_004042369.1,hvol,hbt&hvol&hmed,E,COG0135@NOG,N-(5'phosphoribosyl)anthranilate isomerase
+HVO_RS05530,WP_004042371.1,hvol,hbt&hvol&hmed,E,COG0547@NOG,anthranilate phosphoribosyltransferase (EC 2.4.2.18)
+HVO_RS05535,WP_004043066.1,hvol,hbt&hvol&hmed,K,COG1405@NOG,Stabilizes TBP binding to an archaeal box-A promoter. Also responsible for recruiting RNA polymerase II to the pre- initiation complex (DNA-TBP-TFIIB) (By similarity)
+HVO_RS05775,WP_004043457.1,hvol,hbt&hvol&hmed,K,COG1405@NOG,Stabilizes TBP binding to an archaeal box-A promoter. Also responsible for recruiting RNA polymerase II to the pre- initiation complex (DNA-TBP-TFIIB) (By similarity)
+HVO_RS05855,WP_004043513.1,hvol,hbt&hvol&hmed,L,COG0582@NOG,Integrase
+HVO_RS05860,WP_004043609.1,hvol,hbt&hvol&hmed,Q,COG0500@NOG,Inherit from eurNOG: Methyltransferase domain
+HVO_RS05865,WP_004045104.1,hvol,hbt&hvol&hmed,M,COG1520@NOG,Pyrrolo-quinoline quinone
+HVO_RS06585,WP_004045434.1,hvol,hbt&hvol&hmed,L,COG1474@NOG,Involved in regulation of DNA replication (By similarity)
+HVO_RS06590,WP_013035225.1,hvol,hbt&hvol&hmed,L,COG1474@NOG,Involved in regulation of DNA replication (By similarity)
+HVO_RS06705,WP_013035252.1,hvol,hbt&hvol&hmed,L,COG1474@NOG,Orc1-type DNA replication protein
+HVO_RS07260,WP_049941486.1,hvol,hbt&hvol&hmed,Q,COG0500@NOG,Inherit from eurNOG: Methyltransferase domain
+HVO_RS07265,WP_004041404.1,hvol,hbt&hvol,NA,0YCQD@NOG,NA
+HVO_RS07270,WP_004041509.1,hvol,hbt&hvol,NA,0YYDE@NOG,NA
+HVO_RS07890,WP_004041894.1,hvol,hbt&hvol,K,COG1349@NOG,Inherit from arCOG: Phage PhiH1 repressor protein
+HVO_RS07895,WP_004042149.1,hvol,hbt&hvol,NA,111T3@NOG,NA
+HVO_RS08850,WP_004042365.1,hvol,hbt&hvol,E,COG0512@NOG,anthranilate synthase
+HVO_RS09030,WP_004043223.1,hvol,hbt&hvol,K,COG1522@NOG,AsnC family transcriptional regulator
+HVO_RS09110,WP_004043512.1,hvol,hbt&hvol,K,COG1349@NOG,PhiH1 repressor-like
+HVO_RS09630,WP_004043677.1,hvol,hbt&hvol,C,COG1757@NOG,Na H antiporter
+HVO_RS09635,WP_004043743.1,hvol,hbt&hvol,T,COG0589@NOG,Universal stress protein family
+HVO_RS09860,WP_004044018.1,hvol,hbt&hvol,K,COG1522@NOG,"transcriptional regulator, AsnC family"
+HVO_RS09865,WP_013035369.1,hvol,hbt&hvol,N,COG1681@NOG,Flagellin
+HVO_RS10455,WP_013035682.1,hvol,hbt&hvol,L,11UJV@NOG,Transposase (ISH5)
+HVO_RS10460,WP_081442889.1,hvol,hbt&hvol,S,COG1479@NOG,Protein of unknown function (DUF1524)
+HVO_RS10520,WP_004041012.1,hvol,hvol&hmed,P,11HND@NOG,ABC-type Fe3 -hydroxamate transport system periplasmic component-like protein
+HVO_RS10525,WP_004041107.1,hvol,hvol&hmed,P,11HND@NOG,ABC-type Fe3 -hydroxamate transport system periplasmic component-like protein
+HVO_RS10730,WP_004041808.1,hvol,hvol&hmed,K,COG3413@NOG,Bacterio-opsin activator HTH domain protein
+HVO_RS10735,WP_004041809.1,hvol,hvol&hmed,T,0Z77K@NOG,Inherit from NOG: Histidine kinase
+HVO_RS10740,WP_004042374.1,hvol,hvol&hmed,S,111CV@NOG,Uncharacterized protein conserved in bacteria (DUF2062)
+HVO_RS10745,WP_004043458.1,hvol,hvol&hmed,L,COG1525@NOG,nuclease-like protein
+HVO_RS10750,WP_004043530.1,hvol,hvol&hmed,S,121J4@NOG,DoxX family
+HVO_RS10755,WP_004043688.1,hvol,hvol&hmed,S,COG5485@NOG,SnoaL-like polyketide cyclase
+HVO_RS10760,WP_004043730.1,hvol,hvol&hmed,T,COG0467@NOG,Circadian clock protein KaiC
+HVO_RS10765,WP_004044072.1,hvol,hvol&hmed,Q,0ZWTH@NOG,Met-10+ like-protein
+HVO_RS10770,WP_004040803.1,hvol,hvol,S,11X1C@NOG,Calcium binding
+HVO_RS11100,WP_004040823.1,hvol,hvol,S,COG1741@NOG,Pirin domain protein
+HVO_RS11105,WP_004040943.1,hvol,hvol,M,COG1208@NOG,Nucleotidyl transferase
+HVO_RS11480,WP_004040944.1,hvol,hvol,T,COG0642@NOG COG2203@NOG,His Kinase A (phospho-acceptor) domain
+HVO_RS11485,WP_004040951.1,hvol,hvol,M,COG0449@NOG,"Catalyzes the first step in hexosamine metabolism, converting fructose-6P into glucosamine-6P using glutamine as a nitrogen source (By similarity)"
+HVO_RS11490,WP_004040952.1,hvol,hvol,M,COG1208@NOG,Nucleotidyl transferase
+HVO_RS11560,WP_004041011.1,hvol,hvol,H,COG1402@NOG,creatinine amidohydrolase (EC 3.5.2.10)
+HVO_RS11565,WP_004041108.1,hvol,hvol,E,COG0160@NOG,Aminotransferase
+HVO_RS11830,WP_004041109.1,hvol,hvol,E,COG0076@NOG,Pyridoxal-dependent decarboxylase conserved domain
+HVO_RS11835,WP_004041110.1,hvol,hvol,Q,COG4264@NOG,IucA / IucC family
+HVO_RS20145,WP_004041111.1,hvol,hvol,J,COG1670@NOG,"Siderophore biosynthesis protein, conserved region"
+HVO_RS20150,WP_004041112.1,hvol,hvol,Q,COG3486@NOG,Inherit from COG: L-lysine 6-monooxygenase (NADPH)
+HVO_RS20165,WP_004041113.1,hvol,hvol,Q,COG4264@NOG,IucA / IucC family
+HVO_RS12035,WP_004041121.1,hvol,hvol,G,0XQ0Q@NOG,Extracellular solute-binding protein family 1
+HVO_RS12475,WP_004041153.1,hvol,hvol,K,COG2101@NOG,General factor that plays a role in the activation of archaeal genes transcribed by RNA polymerase. Binds specifically to the TATA box promoter element which lies close to the position of transcription initiation (By similarity)
+HVO_RS12480,WP_004041154.1,hvol,hvol,K,COG0819@NOG,transcriptional activator TenA
+HVO_RS13515,WP_004041155.1,hvol,hvol,K,COG0819@NOG,transcriptional
+HVO_RS20190,WP_004041156.1,hvol,hvol,E,0YD2X@NOG,symporter
+HVO_RS13945,WP_004041390.1,hvol,hvol,P,COG1173@NOG,"abc transporter, permease"
+HVO_RS13950,WP_004041391.1,hvol,hvol,P,COG0601@NOG,"Binding-protein-dependent transport systems, inner membrane component"
+HVO_RS14345,WP_004041400.1,hvol,hvol,NA,10ZVZ@NOG,NA
+HVO_RS14355,WP_004041405.1,hvol,hvol,M,COG1209@NOG,glucose-1-phosphate thymidylyltransferase
+HVO_RS14400,WP_004041892.1,hvol,hvol,J,COG1549@NOG,"tRNA-guanine transglycosylase, various specificities"
+HVO_RS15050,WP_004041903.1,hvol,hvol,S,COG1873@NOG,PRC-barrel domain protein
+HVO_RS15170,WP_004042036.1,hvol,hvol,Q,COG2132@NOG,Multicopper oxidase type
+HVO_RS15225,WP_004042068.1,hvol,hvol,T,0ZG8J@NOG,Inherit from NOG: response regulator
+HVO_RS15230,WP_004042080.1,hvol,hvol,F,COG0047@NOG,Phosphoribosylformylglycinamidine synthase I
+HVO_RS15235,WP_004042081.1,hvol,hvol,F,COG1828@NOG,"Phosphoribosylformylglycinamidine synthase, PurS"
+HVO_RS15575,WP_004042082.1,hvol,hvol,G,COG2610@NOG,gluconate permease
+HVO_RS15595,WP_004042153.1,hvol,hvol,NA,12987@NOG,NA
+HVO_RS15700,WP_004042177.1,hvol,hvol,NA,111IT@NOG,NA
+HVO_RS15705,WP_004042178.1,hvol,hvol,S,111IZ@NOG,Domain of unknown function (DUF932)
+HVO_RS15735,WP_004042280.1,hvol,hvol,S,0ZRVB@NOG,Inherit from arCOG: Cell surface glycoprotein
+HVO_RS20270,WP_004042747.1,hvol,hvol,K,COG1594@NOG,DNA-dependent RNA polymerase catalyzes the transcription of DNA into RNA using the four ribonucleoside triphosphates as substrates (By similarity)
+HVO_RS16215,WP_004042830.1,hvol,hvol,NA,10ZQE@NOG,NA
+HVO_RS16220,WP_004043092.1,hvol,hvol,E,COG3938@NOG,proline racemase
+HVO_RS16530,WP_004043093.1,hvol,hvol,NA,0Y70W@NOG,NA
+HVO_RS16535,WP_004043228.1,hvol,hvol,K,COG1476@NOG,"Transcriptional regulator, XRE family"
+HVO_RS16540,WP_004043317.1,hvol,hvol,NA,111TT@NOG,NA
+HVO_RS16545,WP_004043401.1,hvol,hvol,NA,0YSJA@NOG,NA
+HVO_RS16560,WP_004043402.1,hvol,hvol,K,COG0640@NOG,Transcription regulator
+HVO_RS17410,WP_004043531.1,hvol,hvol,K,0Z3X3@NOG,Inherit from arCOG: Transcriptional regulator
+HVO_RS17610,WP_004043608.1,hvol,hvol,NA,10ZW8@NOG,NA
+HVO_RS18500,WP_004043678.1,hvol,hvol,S,0XSMX@NOG,Aerotolerance regulator N-terminal
+HVO_RS18900,WP_004043679.1,hvol,hvol,S,0ZVCK@NOG,von Willebrand factor type A
+HVO_RS19450,WP_004043680.1,hvol,hvol,M,1251F@NOG,Inherit from NOG: ribonuclease BN
+HVO_RS19465,WP_004043681.1,hvol,hvol,NA,10ZTR@NOG,NA
+HVO_RS19475,WP_004043682.1,hvol,hvol,S,COG0714@NOG,methanol dehydrogenase regulatory protein
+HVO_RS19480,WP_004043683.1,hvol,hvol,S,COG1721@NOG,Protein of unknown function DUF58
+HVO_RS19490,WP_004043684.1,hvol,hvol,G,0ZVZD@NOG,Major facilitator family
+HVO_RS19510,WP_004043744.1,hvol,hvol,T,0YEZV@NOG,RIO1 family
+HVO_RS19530,WP_004043862.1,hvol,hvol,M,COG1208@NOG,Nucleotidyl transferase
+HVO_RS19545,WP_004043863.1,hvol,hvol,K,COG3357@NOG,transcriptional regulator containing an HTH domain fused to a Zn-ribbon
+HVO_RS19550,WP_004043914.1,hvol,hvol,I,COG1028@NOG,Short-chain dehydrogenase reductase SDR
+HVO_RS19555,WP_004043915.1,hvol,hvol,U,COG1826@NOG,"twin-arginine translocation protein, TatA E family subunit"
+HVO_RS19565,WP_004044035.1,hvol,hvol,O,COG0526@NOG,Thioredoxin
+HVO_RS19570,WP_004044271.1,hvol,hvol,NA,11171@NOG,NA
+HVO_RS19575,WP_004044272.1,hvol,hvol,Q,0ZWK3@NOG,Methyltransferase type 11
+HVO_RS19580,WP_004044398.1,hvol,hvol,G,COG0395@NOG,binding-protein-dependent transport systems inner membrane component
+HVO_RS19595,WP_004044399.1,hvol,hvol,G,COG1175@NOG,binding-protein-dependent transport systems inner membrane component
+HVO_RS00155,WP_004044400.1,hvol,hvol,G,COG1653@NOG,Extracellular solute-binding protein family 1
+HVO_RS00195,WP_004044506.1,hvol,hvol,V,COG3440@NOG,"Inherit from NOG: ubiquitin-like with PHD and ring finger domains 2, E3 ubiquitin protein ligase"
+HVO_RS00200,WP_004044531.1,hvol,hvol,D,COG2450@NOG,Protein of unknown function (DUF552)
+HVO_RS00205,WP_004044532.1,hvol,hvol,S,COG3342@NOG,Family of unknown function (DUF1028)
+HVO_RS00210,WP_004044671.1,hvol,hvol,S,COG1547@NOG,Domain of unknown function (DUF309)
+HVO_RS00215,WP_004044777.1,hvol,hvol,L,111TP@NOG,Inherit from NOG: Sulfatase
+HVO_RS00220,WP_004045269.1,hvol,hvol,L,COG1041@NOG,RNA methylase
+HVO_RS00225,WP_004045270.1,hvol,hvol,S,0Y2H8@NOG,Inherit from NOG: Domain of unknown function (DUF1508)
+HVO_RS00700,WP_004045282.1,hvol,hvol,P,COG2076@NOG,quaternary ammonium compound-resistance protein
+HVO_RS00705,WP_004045284.1,hvol,hvol,L,COG1591@NOG,holliday junction resolvase
+HVO_RS01825,WP_004045334.1,hvol,hvol,L,COG1241@NOG,mcm family
+HVO_RS01830,WP_004045350.1,hvol,hvol,J,COG1867@NOG,Dimethylates a single guanine residue at position 26 of a number of tRNAs using S-adenosyl-L-methionine as donor of the methyl groups (By similarity)
+HVO_RS01835,WP_004045351.1,hvol,hvol,L,COG1295@NOG,ribonuclease BN
+HVO_RS01840,WP_004045462.1,hvol,hvol,P,COG0601@NOG,binding-protein-dependent transport systems inner membrane component
+HVO_RS01905,WP_004065787.1,hvol,hvol,C,0YX3A@NOG,Inherit from arCOG: Small CPxCG-related zinc finger protein
+HVO_RS02040,WP_013035036.1,hvol,hvol,J,COG0361@NOG,Seems to be required for maximal rate of protein biosynthesis. Enhances ribosome dissociation into subunits and stabilizes the binding of the initiator Met-tRNA(I) to 40 S ribosomal subunits (By similarity)
+HVO_RS02045,WP_013035037.1,hvol,hvol,V,120IG@NOG,"Inherit from NOG: transcriptional modulator of maze toxin, mazf"
+HVO_RS19800,WP_013035046.1,hvol,hvol,L,COG3385@NOG,Transposase
+HVO_RS19820,WP_013035056.1,hvol,hvol,P,COG0733@NOG,Sodium:neurotransmitter symporter family
+HVO_RS19825,WP_013035091.1,hvol,hvol,NA,111ND@NOG,NA
+HVO_RS02490,WP_013035099.1,hvol,hvol,E,COG0747@NOG,"Oligopeptide dipeptide ABC transporter, peptide-binding protein"
+HVO_RS02595,WP_013035103.1,hvol,hvol,NA,110TF@NOG,NA
+HVO_RS02600,WP_013035189.1,hvol,hvol,E,COG4608@NOG,"ABC transporter, ATP-binding protein"
+HVO_RS02605,WP_013035196.1,hvol,hvol,L,COG3385@NOG,Transposase
+HVO_RS02985,WP_013035217.1,hvol,hvol,"E, P",COG0444@NOG,Abc transporter
+HVO_RS03230,WP_013035308.1,hvol,hvol,I,124VT@NOG,Phosphoesterase PA-phosphatase related
+HVO_RS03255,WP_013035385.1,hvol,hvol,S,COG4923@NOG,Protein of unknown function (DUF429)
+HVO_RS19920,WP_013035537.1,hvol,hvol,NA,110FC@NOG,NA
+HVO_RS20010,WP_013035670.1,hvol,hvol,L,COG3385@NOG,Transposase
+HVO_RS20015,WP_013035676.1,hvol,hvol,NA,1110P@NOG,NA
+HVO_RS03740,WP_013035678.1,hvol,hvol,S,COG0673@NOG,Oxidoreductase domain protein
+HVO_RS03745,WP_013035688.1,hvol,hvol,L,COG3039@NOG,Transposase
+HVO_RS03750,WP_013035693.1,hvol,hvol,E,COG1123@NOG,ABC transporter
+HVO_RS03810,WP_013035708.1,hvol,hvol,V,0ZNZA@NOG,Inherit from arCOG: HNH endonuclease domain protein
+HVO_RS03825,WP_013035721.1,hvol,hvol,P,COG0735@NOG,Ferric uptake
+HVO_RS03930,WP_013035729.1,hvol,hvol,E,COG0665@NOG,FAD dependent oxidoreductase
+HVO_RS04295,WP_013035730.1,hvol,hvol,E,COG0665@NOG,sarcosine oxidase (EC 1.5.3.1)
+HVO_RS04470,WP_013035731.1,hvol,hvol,P,COG1173@NOG,ABC transporter
+HVO_RS04475,WP_013035734.1,hvol,hvol,K,0XQQ7@NOG,Helicase conserved C-terminal domain
+HVO_RS04510,WP_049914834.1,hvol,hvol,L,COG1961@NOG,resolvase
+HVO_RS04515,WP_049914915.1,hvol,hvol,K,COG1378@NOG,"transcriptional regulator, TrmB"
+HVO_RS04705,WP_049941497.1,hvol,hvol,S,COG2259@NOG,DoxX family
