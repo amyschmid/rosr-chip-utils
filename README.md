@@ -34,4 +34,4 @@ ChIP-seq processing pipeline for Darnell and Hackley et al. "Functional divergen
 
 ## Dependences
 
-## Steps to recreats table X and figure Y:
+## Steps to recreate table X and figure Y:
