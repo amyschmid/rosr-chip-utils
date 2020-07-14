@@ -1,0 +1,320 @@
+---
+title: "RosR growth full"
+author: "Cynthia L Darnell"
+date: "July 1, 2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+```
+
+## Read in raw data files and tidy
+
+```{r read and tidy}
+
+Raw_untidy <- read.csv("Raw_growth_data_rosR_full.csv", header=TRUE, check.names=FALSE)
+
+Raw <- Raw_untidy %>%
+  pivot_longer(cols = `0`:`96`, names_to = "Time", values_to = "OD")
+
+Raw$Time <- as.numeric(Raw$Time)
+head(Raw)
+
+```
+```{r}
+
+unique(Raw$Experiment)
+
+```
+
+## Subtract blank per experiment (lowest value - 0.02)
+
+```{r}
+blank <- Raw %>%
+  group_by(interaction(Experiment, Species)) %>%
+  summarise(minOD = min(OD, na.rm = TRUE) - 0.002) %>%
+  rename(blank_ID = `interaction(Experiment, Species)`)
+
+data <- Raw %>%
+  mutate(blank_ID = interaction(Experiment, Species)) %>%
+  left_join(blank, by = 'blank_ID') %>%
+  mutate(newOD = OD - minOD)
+
+
+```
+
+## Plot data
+### Data Halobacterium salinarum
+
+```{r echo=FALSE}
+
+hs <- filter(data, Species == 'Halobacterium salinarum')
+
+hs_data <- filter(hs, Strain == c('ura3', 'rosR'))
+
+
+ggplot(hs_data, aes(x = Time, y = newOD)) +
+  geom_line(aes(color = Strain, group = interaction(Strain, Biological_replicate, Technical_replicate)), 
+            size = 0.5, alpha = 0.5) +
+  scale_y_continuous(trans = 'log2', expand = c(0, 0)) +
+  scale_x_continuous(limits = c(0, 48), expand = c(0, 0)) +
+  theme_light() +
+  labs(x = "Time (hours)", y = "OD600") +
+  facet_wrap(vars(interaction(Experiment, Condition, Speed))) +
+  theme(axis.text = element_blank(), strip.text = element_text(size = 4),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'), 
+        legend.position = 'bottom') +
+  scale_color_viridis_d('strain', begin = 0, end = 0.7) +
+  NULL
+
+ggsave("Hs_all.pdf", width = 8.5, height = 11)
+
+```
+
+### Data Haloferax volcanii
+
+```{r}
+hv <- filter(data, Species == 'Haloferax volcanii')
+
+hv_data <- filter(hv, Strain == c('pyrE2', 'rosR'))
+
+
+ggplot(hv_data, aes(x = Time, y = newOD)) +
+  geom_line(aes(color = Strain, group = interaction(Strain, Biological_replicate, Technical_replicate)), 
+            size = 0.5, alpha = 0.5) +
+  scale_y_continuous(trans = 'log2', expand = c(0, 0)) +
+  scale_x_continuous(limits = c(0, 48), expand = c(0, 0)) +
+  theme_light() +
+  labs(x = "Time (hours)", y = "OD600") +
+  facet_wrap(vars(interaction(Experiment, Condition, Speed))) +
+  theme(axis.text = element_blank(), strip.text = element_text(size = 5),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'),
+        legend.position = 'bottom') +
+  scale_color_viridis_d('strain', begin = 0, end = 0.7) +
+  NULL
+
+ggsave("Hv_all.pdf", width = 8.5, height = 11)
+
+
+```
+
+### Data Haloferax mediterranei
+
+```{r echo=FALSE}
+
+hm <- filter(data, Species == 'Haloferax mediterranei')
+
+hm_data <- filter(hm, Strain == c('pyrE2', 'rosR')) %>%
+  filter(., Experiment != 'RH_HmHv')
+
+
+ggplot(hm_data, aes(x = Time, y = newOD)) +
+  geom_line(aes(color = Strain, group = interaction(Strain, Biological_replicate, Technical_replicate)), 
+            size = 0.5, alpha = 0.5) +
+  scale_y_continuous(trans = 'log2', expand = c(0, 0)) +
+  scale_x_continuous(limits = c(0, 48), expand = c(0, 0)) +
+  theme_light() +
+  labs(x = "Time (hours)", y = "OD600") +
+  facet_wrap(vars(interaction(Experiment, Condition, Speed))) +
+  theme(axis.text = element_blank(), strip.text = element_text(size = 5),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'),
+        legend.position = 'bottom') +
+  scale_color_viridis_d('strain', begin = 0, end = 0.7) +
+  NULL
+
+ggsave("Hm_all.pdf", width = 8.5, height = 11)
+
+
+```
+
+### Data Haloarcula hispanica
+
+```{r}
+
+hh <- filter(data, Species == 'Haloarcula hispanica')
+
+hh_data <- filter(hh, Strain == c('pyrF', 'rosR'))
+
+
+ggplot(hh_data, aes(x = Time, y = newOD)) +
+  geom_line(aes(color = Strain, group = interaction(Strain, Biological_replicate, Technical_replicate)), 
+            size = 0.5, alpha = 0.5) +
+  scale_y_continuous(trans = 'log2', expand = c(0, 0)) +
+  scale_x_continuous(limits = c(0, 48), expand = c(0, 0)) +
+  theme_light() +
+  labs(x = "Time (hours)", y = "OD600") +
+  facet_wrap(vars(interaction(Experiment, Condition, Speed))) +
+  theme(axis.text = element_blank(), strip.text = element_text(size = 5),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'),
+        legend.position = 'bottom') +
+  scale_color_viridis_d('strain', begin = 0, end = 0.7) +
+  NULL
+
+ggsave("Hh_all.pdf", width = 8.5, height = 11)
+
+```
+
+### Format for bsd
+
+``` {r echo = FALSE}
+
+reuntidy <- data %>%
+  select(-c(OD, minOD)) %>%
+  pivot_wider(names_from = Time, values_from = newOD)
+
+bsd_data <- reuntidy %>%
+  select(-c(Experiment, Well, Species, Strain, Biological_replicate, 
+            Technical_replicate, Speed, Media, Condition, blank_ID))
+
+bsd_data_colnames <- bsd_data$name
+bsd_data_rownames <- bsd_data$ID
+bsd_data_t <- as.data.frame(t(bsd_data[, -1]))
+colnames(bsd_data_t) <- bsd_data_colnames %>%
+  as.numeric()
+colnames(bsd_data_t) <- bsd_data_rownames
+
+bsd_data_t <- tibble::rownames_to_column(bsd_data_t, "Time")
+
+
+# Trim to 48 hours for bsd
+
+bsd_48 <- bsd_data_t[1:97,]
+
+write.csv(bsd_48, 'bsd_input.csv', row.names = FALSE)
+
+```
+
+## Source bsd and extract xn.auc
+#Rmd spits out errors that console doesn't, so you may want to copy/paste lines
+
+
+```{r echo = FALSE}
+#make sure bsdAnalysisFunc.R is in working directory
+
+source('bsdAnalysisFunc.R')   
+
+bsd <- bsdProcess('bsd_input.csv', convert.time = FALSE)
+result_AUC <- apply(bsd$xn, 2, function(y) {simp(y, x=bsd$at)})
+#mumax <- getMuMax(bsd$mu)
+#result <- cbind(xn.auc, mumax)
+write.csv(result_AUC, 'bsd_result.csv', row.names = TRUE)
+
+```
+
+## Merge AUC back to data frame
+
+```{r}
+
+result_AUC_frame <- as.data.frame(result_AUC)
+result_AUC_frame <- tibble::rownames_to_column(result_AUC_frame, "ID")
+
+data_AUC <- merge(data, result_AUC_frame, by = 'ID', all.y = TRUE)
+
+```
+
+### Plot AUCs
+
+```{r}
+
+hs_AUC <- filter(data_AUC, Species == 'Halobacterium salinarum' & 
+                   Condition == c('standard', '0.333 mM paraquat', '5 mM H2O2'))
+
+
+ggplot(hs_AUC, aes(x = Strain, y = result_AUC)) +
+  geom_boxplot(aes(fill = Strain), color = 'black', alpha = 0.5) +
+  geom_point(aes(color = Strain, group = ID)) +
+  theme_light() +
+  labs(y = "AUC") +
+  facet_wrap(vars(interaction(Condition, Speed)), scales = 'free_y') +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'), 
+        legend.position = 'bottom') +
+  scale_color_viridis_d('Strain', begin = 0, end = 0.7) +
+  scale_fill_viridis_d('Strain', begin = 0, end = 0.7) +
+  NULL
+
+
+ggsave("Hs_AUC_all.pdf", width = 8.5, height = 11)
+
+```
+```{r}
+
+hv_AUC <- filter(data_AUC, Species == 'Haloferax volcanii' & 
+                   Condition == c('standard', '0.667 mM paraquat', '1 mM H2O2'))
+
+
+ggplot(hv_AUC, aes(x = Strain, y = result_AUC)) +
+  geom_boxplot(aes(fill = Strain), color = 'black', alpha = 0.5) +
+  geom_point(aes(color = Strain, group = ID)) +
+  theme_light() +
+  labs(y = "AUC") +
+  facet_wrap(vars(interaction(Condition, Speed)), scales = 'free_y') +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'), 
+        legend.position = 'bottom') +
+  scale_color_viridis_d('Strain', begin = 0, end = 0.7) +
+  scale_fill_viridis_d('Strain', begin = 0, end = 0.7) +
+  NULL
+
+
+ggsave("Hv_AUC_all.pdf", width = 8.5, height = 11)
+
+```
+```{r}
+
+hm_AUC <- filter(data_AUC, Species == 'Haloferax mediterranei' & 
+                   Condition == c('standard', '2 mM paraquat', '1 mM H2O2'))
+
+hm_AUC <- filter(hm_AUC, result_AUC > 0)
+
+
+ggplot(hm_AUC, aes(x = Strain, y = result_AUC)) +
+  geom_boxplot(aes(fill = Strain), color = 'black', alpha = 0.5) +
+  geom_point(aes(color = Strain, group = ID)) +
+  theme_light() +
+  labs(y = "AUC") +
+  facet_wrap(vars(interaction(Condition, Speed)), scales = 'free_y') +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'), 
+        legend.position = 'bottom') +
+  scale_color_viridis_d('Strain', begin = 0, end = 0.7) +
+  scale_fill_viridis_d('Strain', begin = 0, end = 0.7) +
+  NULL
+
+
+ggsave("Hm_AUC_all.pdf", width = 8.5, height = 11)
+
+```
+
+```{r}
+
+hh_AUC <- filter(data_AUC, Species == 'Haloarcula hispanica' & 
+                   Condition == c('standard', '1 mM paraquat', '1 mM H2O2'))
+
+
+ggplot(hh_AUC, aes(x = Strain, y = result_AUC)) +
+  geom_boxplot(aes(fill = Strain), color = 'black', alpha = 0.5) +
+  geom_point(aes(color = Strain, group = ID)) +
+  theme_light() +
+  labs(y = "AUC") +
+  facet_wrap(vars(interaction(Condition, Speed)), scales = 'free_y') +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        strip.background = element_rect(fill = 'black'), 
+        legend.position = 'bottom') +
+  scale_color_viridis_d('Strain', begin = 0, end = 0.7) +
+  scale_fill_viridis_d('Strain', begin = 0, end = 0.7) +
+  NULL
+
+
+ggsave("Hh_AUC_all.pdf", width = 8.5, height = 11)
+
+```
